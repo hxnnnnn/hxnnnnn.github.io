@@ -24,12 +24,31 @@ npm run preview
 目标仓库：**[hxnnnnn/hxnnnnn.github.io](https://github.com/hxnnnnn/hxnnnnn.github.io)**  
 上线地址：**https://hxnnnnn.github.io**
 
-1. 在 GitHub 创建仓库 `hxnnnnn.github.io`（必须与此用户名完全匹配）
-2. 推送本目录代码到 `main` 分支
-3. 仓库 Settings → Pages → Source 选择 **GitHub Actions**
-4. push 后 Actions 会自动构建并部署
+### 首次上线（必做，只需一次）
 
-`VITE_BASE_PATH` 已设为 `/`，适用于 `username.github.io` 根域名。
+若 Actions 报错 `Failed to create deployment (status: 404)`，说明 **Pages 还没开**。按下面做：
+
+**第一步：等 Actions 跑绿**  
+打开 [Actions](https://github.com/hxnnnnn/hxnnnnn.github.io/actions)，等 `Deploy to GitHub Pages` 成功（会生成 `gh-pages` 分支）。
+
+**第二步：开启 Pages**  
+1. 打开 [Settings → Pages](https://github.com/hxnnnnn/hxnnnnn.github.io/settings/pages)
+2. **Build and deployment → Source** 选 **`Deploy from a branch`**
+3. **Branch** 选 **`gh-pages`**，文件夹选 **`/ (root)`**
+4. 点 **Save**
+
+**第三步：访问**  
+等 1–2 分钟，打开 https://hxnnnnn.github.io
+
+> 注意：不要选 `GitHub Actions` 作为 Source（当前 workflow 用的是 `gh-pages` 分支方案）。
+
+### 日常更新
+
+```bash
+git add .
+git commit -m "update content"
+git push
+```
 
 ## 更新内容
 
