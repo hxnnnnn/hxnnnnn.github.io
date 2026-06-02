@@ -97,7 +97,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .text-role {
-    color: #5f7a6e;
+    color: #4e3d5e;
   }
 
   .text-body {
@@ -129,7 +129,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .section-rule {
-    @apply from-[#8a7e9a] to-[#7a9488];
+    @apply from-[#b8a9c9] to-[#d4cce0];
   }
 
   /* Badges — Morandi */
@@ -154,7 +154,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .badge-status {
-    @apply border-[#9bb5a8] bg-[#dce8df] text-[#3d5248];
+    @apply border-[#c5b8d4] bg-[#ebe4f0] text-[#4e3d5e];
   }
 
   .badge-venue {
@@ -162,7 +162,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .badge-venue {
-    @apply border-[#9aafc0] bg-[#d8e2ea] text-[#2f4554];
+    @apply border-[#b8a9c9] bg-[#e8e0ef] text-[#4e3d5e];
   }
 
   .badge-venue-meta {
@@ -269,12 +269,105 @@ html[data-theme="dark"] {
     @apply border-[#c5bfb4] bg-[#f5f2ec] shadow-sm;
   }
 
-  .timeline-role {
+  .timeline-label {
     @apply text-cyan-300/90;
   }
 
-  html[data-theme="light"] .timeline-role {
-    color: #5f7a6e;
+  html[data-theme="light"] .timeline-label {
+    color: #453d4a;
+  }
+
+  /* Publication top accent bars */
+  .pub-venue-bar {
+    @apply h-1 bg-gradient-to-r;
+  }
+
+  .pub-venue-bar--siggraph {
+    @apply from-orange-500/90 to-amber-400/80;
+  }
+
+  .pub-venue-bar--ieee {
+    @apply from-blue-500/85 to-sky-400/75;
+  }
+
+  .pub-venue-bar--acm {
+    @apply from-emerald-500/80 to-teal-400/70;
+  }
+
+  .pub-venue-bar--sensors {
+    @apply from-violet-500/85 to-purple-400/75;
+  }
+
+  .pub-venue-bar--default {
+    @apply from-indigo-500/85 to-violet-400/75;
+  }
+
+  html[data-theme="light"] .pub-venue-bar--siggraph {
+    @apply from-[#c4b8d4] to-[#d8cfe6];
+  }
+
+  html[data-theme="light"] .pub-venue-bar--ieee {
+    @apply from-[#b8c0d4] to-[#d0d6e4];
+  }
+
+  html[data-theme="light"] .pub-venue-bar--acm {
+    @apply from-[#c0c8d8] to-[#d6dce8];
+  }
+
+  html[data-theme="light"] .pub-venue-bar--sensors {
+    @apply from-[#c9bfd8] to-[#ddd4e8];
+  }
+
+  html[data-theme="light"] .pub-venue-bar--default {
+    @apply from-[#b8a9c9] to-[#d4cce0];
+  }
+
+  /* Experience timeline */
+  .experience-timeline::before {
+    content: '';
+    @apply absolute bottom-0 left-[7px] top-2 w-px bg-gradient-to-b from-indigo-500 to-cyan-400/30;
+  }
+
+  html[data-theme="light"] .experience-timeline::before {
+    @apply from-[#b8a9c9] to-[#d4cce0]/50;
+  }
+
+  .experience-timeline-dot {
+    @apply border-indigo-400;
+  }
+
+  html[data-theme="light"] .experience-timeline-dot {
+    @apply border-[#9a8aad];
+  }
+
+  .list-bullet {
+    @apply bg-cyan-400/80;
+  }
+
+  html[data-theme="light"] .list-bullet {
+    @apply bg-[#9a8aad];
+  }
+
+  /* Practice horizontal timeline */
+  .practice-axis-line {
+    @apply bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent;
+  }
+
+  html[data-theme="light"] .practice-axis-line {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(184 169 201 / 0.55),
+      transparent
+    );
+  }
+
+  .practice-axis-dot {
+    @apply border-cyan-400/80 shadow-[0_0_8px_rgba(34,211,238,0.35)];
+  }
+
+  html[data-theme="light"] .practice-axis-dot {
+    @apply border-[#a99ab8] shadow-none;
   }
 
   .marquee-card {
@@ -324,7 +417,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .gradient-text {
-    @apply from-[#6b5b7a] to-[#5f7a6e];
+    @apply from-[#6b5b7a] to-[#8a7e9a];
   }
 
   .section-container {

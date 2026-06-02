@@ -38,7 +38,7 @@ export function PracticeTimelineSection() {
                       className="timeline-card w-full max-w-[108px]"
                       title={`${item.role} · ${item.org}`}
                     >
-                      <p className="timeline-role text-[10px] font-medium leading-tight">
+                      <p className="timeline-label text-[10px] font-medium leading-tight">
                         {item.role}
                       </p>
                       <p className="text-muted mt-0.5 text-[9px] leading-tight">
@@ -48,9 +48,9 @@ export function PracticeTimelineSection() {
                   ))}
                 </div>
 
-                <div className="relative flex w-full flex-col items-center">
-                  <span className="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
-                  <span className="relative z-10 h-3 w-3 rounded-full border-2 border-cyan-400/80 bg-lab-bg shadow-[0_0_8px_rgba(34,211,238,0.35)]" />
+                <div className="practice-axis relative flex w-full flex-col items-center">
+                  <span className="practice-axis-line absolute -top-px left-0 right-0 h-px" />
+                  <span className="practice-axis-dot relative z-10 h-3 w-3 rounded-full border-2 bg-lab-bg" />
                   <span className="text-body mt-2 text-xs font-semibold">
                     {year}
                   </span>

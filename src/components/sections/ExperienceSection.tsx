@@ -13,7 +13,7 @@ export function ExperienceSection() {
         title={ui.sections.experience}
         subtitle={ui.sections.experienceSubtitle}
       />
-      <div className="relative space-y-8 pl-6 before:absolute before:bottom-0 before:left-[7px] before:top-2 before:w-px before:bg-gradient-to-b before:from-indigo-500 before:to-cyan-400/30">
+      <div className="experience-timeline relative space-y-8 pl-6">
         {profile.experience.map((exp, i) => (
           <motion.div
             key={exp.org + exp.role}
@@ -23,7 +23,7 @@ export function ExperienceSection() {
             transition={{ delay: i * 0.1 }}
             className="relative"
           >
-            <span className="absolute -left-6 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-indigo-400 bg-lab-bg" />
+            <span className="experience-timeline-dot absolute -left-6 top-1.5 h-3.5 w-3.5 rounded-full border-2 bg-lab-bg" />
             <div className="glass-card p-6">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
@@ -44,7 +44,7 @@ export function ExperienceSection() {
                       key={point}
                       className="text-muted flex items-start gap-2 text-xs leading-relaxed"
                     >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan-400/80" />
+                      <span className="list-bullet mt-1.5 h-1 w-1 shrink-0 rounded-full" />
                       {point}
                     </li>
                   ))}

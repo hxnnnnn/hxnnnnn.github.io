@@ -2,20 +2,18 @@ import type { Locale, Publication, SiteBundle } from './types'
 import { profileZh } from '../data/profile.zh'
 import { profileEn } from '../data/profile.en'
 
-export const venueColors: Record<string, string> = {
-  SIGGRAPH: 'from-orange-500 to-amber-400',
-  IEEE: 'from-blue-500 to-sky-400',
-  ACM: 'from-emerald-500 to-teal-400',
-  Sensors: 'from-violet-500 to-purple-400',
-  default: 'from-indigo-500 to-cyan-400',
+export type VenueBarKind = 'siggraph' | 'ieee' | 'acm' | 'sensors' | 'default'
+
+export function getVenueBarKind(venue: string): VenueBarKind {
+  if (venue.includes('SIGGRAPH')) return 'siggraph'
+  if (venue.includes('IEEE')) return 'ieee'
+  if (venue.includes('ACM')) return 'acm'
+  if (venue.includes('Sensors')) return 'sensors'
+  return 'default'
 }
 
-export function getVenueColor(venue: string): string {
-  if (venue.includes('SIGGRAPH')) return venueColors.SIGGRAPH
-  if (venue.includes('IEEE')) return venueColors.IEEE
-  if (venue.includes('ACM')) return venueColors.ACM
-  if (venue.includes('Sensors')) return venueColors.Sensors
-  return venueColors.default
+export function getVenueBarClass(venue: string): string {
+  return `pub-venue-bar pub-venue-bar--${getVenueBarKind(venue)}`
 }
 
 export function isPublished(pub: Publication): boolean {

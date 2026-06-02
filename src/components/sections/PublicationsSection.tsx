@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
-  getVenueColor,
+  getVenueBarClass,
   getPublicationStatusLabel,
   isPublished,
 } from '../../i18n/site'
@@ -64,9 +64,7 @@ export function PublicationsSection() {
             transition={{ delay: Math.min(i * 0.05, 0.3) }}
             className="glass-card group overflow-hidden transition hover:border-indigo-500/30 dark:hover:border-indigo-500/30"
           >
-            <div
-              className={`h-1 bg-gradient-to-r ${getVenueColor(pub.venue)}`}
-            />
+            <div className={getVenueBarClass(pub.venue)} />
             <div className="p-5">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge

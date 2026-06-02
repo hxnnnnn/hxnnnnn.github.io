@@ -9,7 +9,8 @@ export type {
 
 export {
   getSiteData,
-  getVenueColor,
+  getVenueBarClass,
+  getVenueBarKind,
   isPublished,
   getPublicationStatusLabel,
   getLocaleFromPath,

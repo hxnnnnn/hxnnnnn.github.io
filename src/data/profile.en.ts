@@ -284,11 +284,11 @@ const profile: ProfileData = {
       role: 'Research Assistant, 3D Reconstruction',
       period: 'Aug 2025 — Present',
       description:
-        'Research on 3D head reconstruction and generative vision, covering large-scale data construction, reconstruction-generation pipelines, and downstream validation.',
+        '3D head reconstruction and generative vision: data, pipelines, and validation.',
       highlights: [
-        'Built a 10M-scale balanced dataset with FLUX and Qwen-VL to mitigate viewpoint bias in 3D-aware GANs',
-        'Connected 3D reconstruction features to autoregressive video diffusion for ~15 FPS high-fidelity upper-body video synthesis',
-        'Disentangled single-image reconstruction into identity, expression, and pose for real-time 360° interactive digital human synthesis, achieving SOTA on multiple metrics',
+        '10M-scale FLUX + Qwen-VL dataset to reduce 3D GAN viewpoint bias.',
+        '3D recon features to video diffusion for ~15 FPS upper-body synthesis.',
+        'Single-image identity–expression–pose disentanglement for real-time 360° avatars (SOTA).',
       ],
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
@@ -297,11 +297,11 @@ const profile: ProfileData = {
       role: '3D Generation Algorithm Intern',
       period: 'Mar 2026 — Present',
       description:
-        'Working on SeeDream-related 3D generation training data strategy, model iteration support, and data toolchain development.',
+        'SeeDream 3D generation: training data strategy, iteration support, and toolchain.',
       highlights: [
-        'Contributed to SeeDream training data design with multimodal pairing and admission criteria to improve consistency and trainability.',
-        'Used 3D rendering to support image-editing workflows and version iteration; built and maintained training subsets and analyzed feedback-driven data strategy.',
-        'Developed and optimized data-processing operators; modeled and rendered in Blender; established team engineering standards and delivered multiple data initiatives.',
+        'SeeDream data design: multimodal pairing and admission criteria.',
+        '3D rendering for image editing; training subsets and feedback-driven strategy.',
+        'Data operators and Blender pipeline; team standards and multi-project delivery.',
       ],
       tags: ['SeeDream', '3D Generation', 'Blender', 'Data Pipeline'],
     },
