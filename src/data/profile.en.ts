@@ -493,6 +493,10 @@ const ui: UiStrings = {
     contact: 'Contact',
     langSwitch: '中文',
   },
+  theme: {
+    switchToLight: 'Switch to light mode',
+    switchToDark: 'Switch to dark mode',
+  },
   hero: {
     loading: 'Reconstructing 3D model...',
     scrollWebGL: 'Drag to rotate · Scroll down',

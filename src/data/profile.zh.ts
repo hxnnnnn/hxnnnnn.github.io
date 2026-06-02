@@ -471,6 +471,10 @@ const ui: UiStrings = {
     contact: '联系',
     langSwitch: 'EN',
   },
+  theme: {
+    switchToLight: '切换到浅色模式',
+    switchToDark: '切换到深色模式',
+  },
   hero: {
     loading: '正在重建 3D 模型...',
     scrollWebGL: '拖拽旋转 · 向下滚动',

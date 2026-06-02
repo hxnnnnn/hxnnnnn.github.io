@@ -22,7 +22,12 @@ npm run preview
 ## 部署到 GitHub Pages
 
 目标仓库：**[hxnnnnn/hxnnnnn.github.io](https://github.com/hxnnnnn/hxnnnnn.github.io)**  
-上线地址：**https://hxnnnnn.github.io**
+上线地址：
+
+- 中文：**https://hxnnnnn.github.io**
+- English：**https://hxnnnnn.github.io/en**
+
+导航栏右上角可切换语言。
 
 ### 首次上线（必做，只需一次）
 

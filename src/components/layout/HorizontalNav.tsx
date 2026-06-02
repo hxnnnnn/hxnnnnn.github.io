@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useActiveSection } from '../../hooks/useActiveSection'
 import { useLocale } from '../../i18n/LocaleContext'
 import { getAlternateLocalePath } from '../../i18n/site'
+import { ThemeToggle } from '../ui/ThemeToggle'
 
 export function HorizontalNav() {
   const { ui, locale } = useLocale()
@@ -54,12 +55,15 @@ export function HorizontalNav() {
             )
           })}
         </div>
-        <Link
-          to={`${alternatePath}${location.hash}`}
-          className="shrink-0 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300 transition hover:text-white"
-        >
-          {ui.nav.langSwitch}
-        </Link>
+        <div className="flex shrink-0 items-center gap-2">
+          <ThemeToggle />
+          <Link
+            to={`${alternatePath}${location.hash}`}
+            className="rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300 transition hover:text-white"
+          >
+            {ui.nav.langSwitch}
+          </Link>
+        </div>
       </div>
     </motion.nav>
   )

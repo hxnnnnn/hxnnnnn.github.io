@@ -93,6 +93,10 @@ export interface UiStrings {
     contact: string
     langSwitch: string
   }
+  theme: {
+    switchToLight: string
+    switchToDark: string
+  }
   hero: {
     loading: string
     scrollWebGL: string

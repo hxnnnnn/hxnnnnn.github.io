@@ -4,9 +4,11 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import { LocaleProvider } from './i18n/LocaleContext.tsx'
+import { ThemeProvider } from './theme/ThemeContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <ThemeProvider>
     <BrowserRouter>
       <Routes>
         <Route
@@ -28,5 +30,6 @@ createRoot(document.getElementById('root')!).render(
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>,
 )
