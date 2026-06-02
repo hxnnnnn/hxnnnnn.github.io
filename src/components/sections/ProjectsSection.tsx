@@ -26,7 +26,7 @@ export function ProjectsSection() {
             </div>
             <p className="mt-3 text-xs text-zinc-500">{proj.program}</p>
             <h3 className="mt-2 text-base font-medium leading-snug text-white">
-              《{proj.fullTitle}》
+              {proj.fullTitle}
             </h3>
             <CollapsibleBlock
               closedLabel="展开项目内容"

@@ -355,13 +355,13 @@ export const profile = {
       role: '3D 生成算法实习生',
       period: '2026.03 — 至今',
       description:
-        '负责 3D 生成方向训练数据的全链路建设与多模态场景内容生产。',
+        '参与 SeeDream 相关 3D 生成训练数据方案、模型迭代支撑与数据工具链建设。',
       highlights: [
-        '协同算法、工程与产品团队处理视角不一致与多模态融合问题，保障数据里程碑按期交付',
-        '搭建并维护团队内部 3D 生成数据集及清洗、标注与标准化流程',
-        '使用 Blender / Unity 完成场景建模与渲染，独立交付 3 项数据专项',
+        '参与 SeeDream 训练数据方案设计：对齐生成目标与失败模式，制定多模态数据配对与准入标准，优化采样配比与筛选规则，提升数据一致性与训练可用性。',
+        '支撑 3D 生成与版本迭代：按实验需求构建与维护训练子集，配合离线评测与 badcase 分析回流数据策略，为消融与里程碑验收提供可复现的数据版本与对照基线。',
+        '开发并优化 3D 数据预处理与质检工具，配合 Blender 完成场景建模与渲染，独立交付多项数据专项；搭建并维护团队 3D 生成数据标准化流程，参与数据工具链优化。',
       ],
-      tags: ['3D Generation', 'Blender', 'Unity', 'Data Pipeline'],
+      tags: ['SeeDream', '3D Generation', 'Blender', 'Data Pipeline'],
     },
   ] satisfies Experience[],
   projects: [

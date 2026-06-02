@@ -24,18 +24,25 @@ export function ContactSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="glass-card p-8 text-center"
+        className="glass-card flex items-center justify-between gap-6 p-6 sm:p-8"
       >
-        <p className="text-2xl font-bold text-white">{profile.heroName}</p>
-        <p className="mt-2 text-sm text-zinc-500">{profile.contact.location}</p>
+        <div className="min-w-0 text-left">
+          <p className="text-xl font-bold leading-tight text-white sm:text-2xl">
+            {profile.heroName}
+          </p>
+          <p className="mt-1 text-sm text-zinc-500">{profile.name}</p>
+        </div>
 
-        <button
-          type="button"
-          onClick={copyEmail}
-          className="mt-8 rounded-xl border border-lab-border bg-lab-bg px-6 py-3 text-sm text-zinc-300 transition hover:border-cyan-500/40 hover:text-white"
-        >
-          {copied ? '已复制 ✓' : profile.contact.email}
-        </button>
+        <div className="shrink-0 text-right text-sm">
+          <p className="text-zinc-500">{profile.contact.location}</p>
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="mt-1 text-zinc-300 transition hover:text-cyan-300"
+          >
+            {copied ? '已复制 ✓' : profile.contact.email}
+          </button>
+        </div>
       </motion.div>
     </section>
   )
