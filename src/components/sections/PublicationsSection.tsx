@@ -10,7 +10,6 @@ const filters: Filter[] = ['全部', '在投', '已发表', '第一作者']
 
 export function PublicationsSection() {
   const [filter, setFilter] = useState<Filter>('全部')
-  const [expanded, setExpanded] = useState<string | null>(null)
 
   const filtered = useMemo(() => {
     return profile.publications.filter((pub) => {
@@ -25,7 +24,7 @@ export function PublicationsSection() {
       <SectionHeader
         id="publications"
         title="科研论文"
-        subtitle={`${profile.publications.length} 篇论文，涵盖 3D 视觉、目标检测、边缘-云协作与人机交互等方向。`}
+        subtitle={`${profile.publications.length} 篇论文，涵盖 3D 视觉、目标检测与边缘-云协作等方向。`}
       />
 
       <div className="mb-8 flex flex-wrap gap-2">
@@ -80,24 +79,6 @@ export function PublicationsSection() {
                   </span>
                 ))}
               </div>
-              {pub.abstract && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpanded(expanded === pub.title ? null : pub.title)
-                    }
-                    className="mt-3 text-sm text-indigo-400 transition hover:text-cyan-400"
-                  >
-                    {expanded === pub.title ? '收起简介' : '查看论文简介'}
-                  </button>
-                  {expanded === pub.title && (
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-500">
-                      {pub.abstract}
-                    </p>
-                  )}
-                </>
-              )}
             </div>
           </motion.article>
         ))}

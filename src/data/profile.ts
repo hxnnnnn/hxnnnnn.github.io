@@ -125,23 +125,11 @@ export const profile = {
   publications: [
     {
       title:
-        'LEPS: A lightweight and effective single-stage detector for pothole segmentation',
-      venue: 'IEEE Sensors Journal',
-      status: '已发表',
-      role: '第一作者',
-      tags: ['Segmentation', 'Edge Computing'],
-      impact: 'SCI Q2, IF=4.30',
-      abstract:
-        '针对城市路面坑洼识别的复杂性与边缘计算设备的部署需求，自主研发并实现了一种轻量化实例分割检测器 LEPS。通过在主干网络中引入卷积叠加补充卷积核模块，有效增强了特征提取能力；同时对颈部层进行轻量化创新设计，并优化检测头结构以实现细粒度特征的高质量掩码生成。实验结果表明，该模型在 URTIRI 与 COCO 权威数据集上展现了极强的竞争力，成功平衡了检测精度与模型负载，为视觉传感器在真实环境下的实时巡检提供了高效的解决方案。',
-    },
-    {
-      title:
-        'Yolo-Pest: An Insect Pest Object Detection Algorithm via CAC3 Module',
-      venue: 'Sensors',
-      status: '已发表',
+        'InfiHead: Learning a Feedforward Disentangled 3D Full-Head Model from Scalable Monocular 2D Data',
+      venue: 'SIGGRAPH Asia 2026',
+      status: '在投',
       role: '第二作者',
-      tags: ['Agriculture', 'YOLO'],
-      impact: 'SCI Q3, IF=3.90',
+      tags: ['3D', 'NeRF', 'Full-Head'],
     },
     {
       title:
@@ -150,16 +138,7 @@ export const profile = {
       status: '在投',
       role: '第二作者',
       tags: ['Edge-Cloud', 'Detection'],
-      impact: 'SCI Q2, IF=5.90',
-    },
-    {
-      title:
-        'Real-time Underwater Visual Target Sensing System with Multitasking via Edge-Cloud Collaboration',
-      venue: 'IEEE Journal of Oceanic Engineering',
-      status: '在投',
-      role: '第二作者',
-      tags: ['Underwater', 'Edge-Cloud'],
-      impact: 'SCI Q2, IF=3.80',
+      impact: 'Q2, IF=5.90',
     },
     {
       title:
@@ -168,7 +147,34 @@ export const profile = {
       status: '在投',
       role: '第二作者',
       tags: ['Fatigue', 'Lightweight'],
-      impact: 'SCI Q1, IF=7.20',
+      impact: 'Q1, IF=7.20',
+    },
+    {
+      title:
+        'LEPS: A lightweight and effective single-stage detector for pothole segmentation',
+      venue: 'IEEE Sensors Journal',
+      status: '已发表',
+      role: '第一作者',
+      tags: ['Segmentation', 'Detection'],
+      impact: 'Q2, IF=4.30',
+    },
+    {
+      title:
+        'Real-time Underwater Visual Target Sensing System with Multitasking via Edge-Cloud Collaboration',
+      venue: 'IEEE Journal of Oceanic Engineering',
+      status: '已发表',
+      role: '第二作者',
+      tags: ['Underwater', 'Edge-Cloud'],
+      impact: 'Q2, IF=3.80',
+    },
+    {
+      title:
+        'Yolo-Pest: An Insect Pest Object Detection Algorithm via CAC3 Module',
+      venue: 'Sensors',
+      status: '已发表',
+      role: '第二作者',
+      tags: ['Agriculture', 'YOLO'],
+      impact: 'Q3, IF=3.90',
     },
     {
       title:
@@ -200,15 +206,13 @@ export const profile = {
       status: '已发表',
       role: '第三作者',
       tags: ['Agriculture', 'YOLO'],
-      impact: '北大核心',
     },
     {
       title: '基于改进 YOLO11 的无人机小目标轻量级高速检测器',
       venue: '华南师范大学学报（自然科学版）',
-      status: '在投',
+      status: '已发表',
       role: '第三作者',
       tags: ['UAV', 'Detection'],
-      impact: '北大核心',
     },
   ] satisfies Publication[],
   patents: [
@@ -227,36 +231,20 @@ export const profile = {
   ] satisfies Patent[],
   experience: [
     {
-      org: '香港中文大学（深圳）GAP Lab',
+      org: '港中深 · GAP 实验室',
       role: '科研助理',
-      period: '2025.09 — 至今',
+      period: '2025.08 — 至今',
       description:
-        '深度参与多项前沿 3D 视觉与生成式 AI 研究。针对 3D-aware GAN 的视角偏差问题，利用 FLUX.1 与 Qwen2.5-VL 构建了包含 1120 万样本的平衡数据集。协助开发实时上半身化身生成框架，将 3D 重建特征与自回归视频扩散模型结合，实现 15 FPS 高保真视频合成。目前负责下一代可控人脸模型的数据代码，利用生成模型补齐表情与光照数据缺口，支持大视角人脸识别等下游任务研究。',
+        '深度参与前沿 3D 视觉与生成式 AI 研究。针对视角偏差问题，利用 FLUX.1 与 Qwen2.5-VL 构建了包含 1120 万样本的平衡数据集。协助开发了实时上半身化身生成框架，将 3D 重建特征与自回归视频扩散模型结合，实现 15 FPS 的高保真视频合成。负责可控人脸模型的数据代码，用生成模型补齐表情与光照数据缺口，支持大视角人脸识别等下游任务研究。',
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
     {
-      org: '深圳市一零二四机器人科技有限公司',
-      role: '产品经理',
-      period: '2025.07 — 2025.09',
+      org: '字节跳动',
+      role: '3D 生成算法实习生',
+      period: '2026.03 — 至今',
       description:
-        '聚焦低速自动驾驶领域，深度参与商用无人洗地机与物流车的产品定义与迭代。通过实地调研与竞品分析识别用户痛点，利用仿真与实测数据驱动识别技术瓶颈，为感知定位模块的优化提供决策支持。负责跨职能团队协作，协调研发与测试推进功能交付，成功构建从底层功能定义到交互原型的完整闭环。',
-      tags: ['Autonomous Driving', 'Product', 'Perception'],
-    },
-    {
-      org: '奥智元科技（深圳）有限公司',
-      role: 'AI 解决方案助理实习生',
-      period: '2025.02 — 2025.07',
-      description:
-        '负责 AI 驱动方案的端到端设计与落地，重点实施面向香港工地的安全生产视觉检测系统，通过对 YOLO、VLM 及 LLM 的优化提升识别精度与边缘端部署效率。主导 Text-to-SQL 自然语言交互框架搭建，实现业务数据的智能化提取。深度参与从客户需求分析到技术架构整合的全流程，协调跨部门资源确保 AI 解决方案的交付与闭环调整。',
-      tags: ['YOLO', 'VLM', 'LLM', 'Text-to-SQL'],
-    },
-    {
-      org: '华南师范大学 RI Lab',
-      role: '科研助理',
-      period: '2021.09 — 2025.09',
-      description:
-        '主导计算机视觉与边缘计算方向多项研发：设计并实现轻量化单阶段实例分割检测器 LEPS；针对农业与水下场景研发基于端云协同的动态适配感知系统（DAS）及实时多任务感知框架；优化复杂背景下小目标轻量化检测算法；开发多尺度疲劳驾驶检测模块及实时面部表情识别模型；负责多传感器融合定位与机器人路径规划算法优化。',
-      tags: ['Computer Vision', 'Edge-Cloud', 'Robotics'],
+        '聚焦 3D 生成方向，协同算法、工程及产品团队，攻克 3D 生成过程中视角不一致、多模态融合困难等技术难题，保障项目按节点交付。负责多类型 3D 数据的生成、清洗、标注与标准化预处理，构建并维护团队内部 3D 生成专用数据集。使用 Blender/Unity 进行 3D 场景建模与渲染，独立完成 3 项数据专项任务的交付，支撑模型的训练与迭代。',
+      tags: ['3D Generation', 'Blender', 'Unity', 'Data Pipeline'],
     },
   ] satisfies Experience[],
   projects: [
