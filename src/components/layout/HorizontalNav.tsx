@@ -44,7 +44,7 @@ export function HorizontalNav() {
                 <span
                   className={`mb-1.5 block h-0.5 rounded-full transition-all duration-300 ${
                     isActive
-                      ? 'w-full bg-gradient-to-r from-indigo-400 to-cyan-400'
+                      ? 'nav-indicator w-full'
                       : 'w-0 bg-transparent'
                   }`}
                 />

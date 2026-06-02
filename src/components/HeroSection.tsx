@@ -42,7 +42,7 @@ export function HeroSection() {
           <p className="text-muted text-sm">{ui.hero.loading}</p>
           <div className="mt-4 h-1 w-48 overflow-hidden rounded-full bg-lab-border">
             <motion.div
-              className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400"
+              className="hero-scroll-progress h-full"
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
               transition={{ duration: 1.5, ease: 'easeInOut' }}
