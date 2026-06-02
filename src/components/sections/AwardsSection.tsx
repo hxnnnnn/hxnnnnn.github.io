@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion'
 import { profile } from '../../data/profile'
 import { SectionHeader } from '../ui/SectionHeader'
+import { Badge } from '../ui/Badge'
 import { PracticeTimelineSection } from './PracticeTimelineSection'
 
 function MarqueeRow({
@@ -12,7 +14,7 @@ function MarqueeRow({
   const doubled = [...items, ...items]
 
   return (
-    <div className="marquee-mask relative overflow-hidden py-2">
+    <div className="marquee-interactive marquee-mask relative overflow-hidden py-2">
       <div
         className={`marquee-track flex w-max gap-3 ${direction === 'right' ? 'marquee-reverse' : ''}`}
       >
@@ -28,13 +30,16 @@ function MarqueeRow({
           </div>
         ))}
       </div>
+      <p className="mt-1 text-center text-[10px] text-zinc-600">
+        悬停可加速滚动
+      </p>
     </div>
   )
 }
 
 export function AwardsSection() {
   return (
-    <section className="section-container">
+    <section className="section-container scroll-mt-28">
       <SectionHeader id="awards" title="荣誉与实践" />
 
       <h3 className="mb-4 text-sm font-medium uppercase tracking-wider text-zinc-500">
@@ -48,6 +53,30 @@ export function AwardsSection() {
       <MarqueeRow items={profile.honors} direction="right" />
 
       <PracticeTimelineSection />
+
+      <h3
+        id="patents"
+        className="mb-4 mt-10 scroll-mt-28 text-sm font-medium uppercase tracking-wider text-zinc-500"
+      >
+        发明专利
+      </h3>
+      <div className="grid gap-4 md:grid-cols-3">
+        {profile.patents.map((pat, i) => (
+          <motion.div
+            key={pat.title}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
+            className="glass-card flex h-full flex-col p-4"
+          >
+            <Badge variant="status">{pat.role}</Badge>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-300">
+              {pat.title}
+            </p>
+          </motion.div>
+        ))}
+      </div>
 
       <h3 className="mb-4 mt-10 text-sm font-medium uppercase tracking-wider text-zinc-500">
         专业技能

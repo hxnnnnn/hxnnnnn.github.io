@@ -5,7 +5,7 @@ import { Badge } from '../ui/Badge'
 
 export function ProjectsSection() {
   return (
-    <section className="section-container">
+    <section className="section-container scroll-mt-28">
       <SectionHeader
         id="projects"
         title="项目经历"
@@ -25,9 +25,10 @@ export function ProjectsSection() {
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="accent">{proj.role}</Badge>
               <Badge>{proj.period}</Badge>
+              <span className="text-sm text-zinc-300">{proj.name}</span>
+              <Badge variant="status">{proj.level}</Badge>
             </div>
-            <h3 className="mt-3 font-medium text-white">{proj.name}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+            <p className="mt-4 text-sm leading-relaxed text-zinc-400">
               {proj.description}
             </p>
           </motion.div>

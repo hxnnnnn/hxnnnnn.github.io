@@ -4,9 +4,9 @@ import { profile, getVenueColor, type PublicationStatus } from '../../data/profi
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
 
-type Filter = '全部' | PublicationStatus | '第一作者'
+type Filter = '全部' | PublicationStatus
 
-const filters: Filter[] = ['全部', '在投', '已发表', '第一作者']
+const filters: Filter[] = ['全部', '在投', '已发表']
 
 export function PublicationsSection() {
   const [filter, setFilter] = useState<Filter>('全部')
@@ -14,13 +14,12 @@ export function PublicationsSection() {
   const filtered = useMemo(() => {
     return profile.publications.filter((pub) => {
       if (filter === '全部') return true
-      if (filter === '第一作者') return pub.role.includes('第一')
       return pub.status === filter
     })
   }, [filter])
 
   return (
-    <section className="section-container">
+    <section className="section-container scroll-mt-28">
       <SectionHeader
         id="publications"
         title="科研论文"
@@ -63,7 +62,8 @@ export function PublicationsSection() {
                   {pub.status}
                 </Badge>
                 <Badge variant="accent">{pub.role}</Badge>
-                {pub.impact && <Badge>{pub.impact}</Badge>}
+                <Badge>{pub.venue}</Badge>
+                <Badge>{pub.venueMeta}</Badge>
               </div>
               <h3 className="mt-3 font-medium leading-snug text-white group-hover:text-cyan-100">
                 {pub.url ? (
@@ -82,7 +82,6 @@ export function PublicationsSection() {
                   pub.title
                 )}
               </h3>
-              <p className="mt-2 text-sm text-zinc-400">{pub.venue}</p>
               {pub.url && pub.status === '已发表' && (
                 <a
                   href={pub.url}

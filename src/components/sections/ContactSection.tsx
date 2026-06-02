@@ -13,7 +13,7 @@ export function ContactSection() {
   }
 
   return (
-    <section className="section-container">
+    <section className="section-container scroll-mt-28">
       <SectionHeader
         id="contact"
         title="联系我"
@@ -26,10 +26,19 @@ export function ContactSection() {
         viewport={{ once: true }}
         className="glass-card p-8 text-center"
       >
-        <p className="text-2xl font-bold text-white">{profile.name}</p>
-        <p className="mt-2 gradient-text">{profile.tagline}</p>
+        <p className="text-2xl font-bold text-white">{profile.heroName}</p>
+        <div className="mt-3 flex flex-wrap justify-center gap-2">
+          {profile.identities.map((id) => (
+            <span
+              key={id}
+              className="text-sm text-cyan-400/90"
+            >
+              {id}
+            </span>
+          ))}
+        </div>
 
-        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <button
             type="button"
             onClick={copyEmail}
@@ -45,18 +54,7 @@ export function ContactSection() {
           >
             GitHub · @hxnnnnn
           </a>
-          <a
-            href={`${import.meta.env.BASE_URL}resume.pdf`}
-            download
-            className="rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
-          >
-            下载 PDF 简历
-          </a>
         </div>
-
-        <p className="mt-6 text-xs text-zinc-600">
-          电话可在 PDF 简历中查看
-        </p>
       </motion.div>
     </section>
   )

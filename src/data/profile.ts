@@ -5,8 +5,8 @@ export interface Publication {
   venue: string
   status: PublicationStatus
   role: string
+  venueMeta: string
   tags: string[]
-  impact?: string
   url?: string
 }
 
@@ -16,7 +16,6 @@ export interface PracticeTimelineItem {
   org: string
   startYear: number
   endYear: number
-  summary: string
 }
 
 export interface Experience {
@@ -46,6 +45,7 @@ export interface Project {
   name: string
   period: string
   role: string
+  level: string
   description: string
 }
 
@@ -56,41 +56,20 @@ export interface AwardItem {
 
 export const profile = {
   name: '黄晓宁',
-  tagline: '3D 计算机视觉与图形学研究者',
-  heroSubtitle:
-    '致力于以有限成本为所有人实时生成并驱动高保真 3D 虚拟形象',
+  heroName: 'XiaoningHuang',
+  identities: ['CUHK-DS-硕士生', 'ByteDance-Seed-实习生'] as const,
   contact: {
     email: '225040002@link.cuhk.edu.cn',
-    phone: '+86 150-1521-3166',
     github: 'https://github.com/hxnnnnn',
     site: 'https://hxnnnnn.github.io',
     scholar: '',
   },
   publicationsSummary:
-    '涵盖 3D 全头部重建（NeRF / 3DGS）、轻量化目标检测与实例分割、端云协同多任务感知、农业/水下/道路场景视觉、疲劳驾驶与人脸表情识别，以及教育文本分类等方向；发表于 SIGGRAPH Asia、IEEE / ACM 期刊与会议及北大核心期刊。',
+    '专注于3D和2D计算机视觉领域，包括但不限于重建、检测、分割任务。',
   research: {
+    title: '3D计算机视觉',
     intro:
-      '在香港中文大学（深圳）数据科学学院攻读硕士，于韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究。',
-    focus: [
-      {
-        title: '泛化性',
-        description:
-          '基于 NeRF/3DGS 技术，从大规模单目 2D 数据学习可泛化的全头部 3D 模型，应对不同身份与外观。',
-        icon: '◈',
-      },
-      {
-        title: '实时性',
-        description:
-          '探索前馈式 3D 重建与自回归视频扩散的结合，实现 15 FPS 级别的高保真化身驱动与合成。',
-        icon: '⧖',
-      },
-      {
-        title: '鲁棒性',
-        description:
-          '针对大视角、光照与表情变化，用生成模型补齐数据缺口，提升虚拟形象在真实场景下的稳定性。',
-        icon: '◎',
-      },
-    ],
+      '于韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究。',
   },
   education: [
     {
@@ -139,6 +118,7 @@ export const profile = {
       title:
         'InfiHead: Learning a Feedforward Disentangled 3D Full-Head Model from Scalable Monocular 2D Data',
       venue: 'SIGGRAPH Asia 2026',
+      venueMeta: 'CCF-A 会议 · 在投',
       status: '在投',
       role: '第二作者',
       tags: ['3D', 'NeRF', 'Full-Head'],
@@ -147,54 +127,55 @@ export const profile = {
       title:
         'DAS: A Dynamic Adaptation System for Pest Detection via Edge-Cloud Collaboration',
       venue: 'IEEE Transactions on Instrumentation and Measurement',
+      venueMeta: 'SCI 二区 · IF 5.90',
       status: '在投',
-      role: '第二作者',
+      role: '学生第一作者',
       tags: ['Edge-Cloud', 'Detection'],
-      impact: 'Q2, IF=5.90',
     },
     {
       title:
         'MS-FDD: A Lightweight Multi-Scale Module for Fatigue Driving Detection',
       venue: 'ACM Transactions on Intelligent Systems and Technology',
+      venueMeta: 'SCI 一区 · IF 7.20',
       status: '在投',
       role: '第二作者',
       tags: ['Fatigue', 'Lightweight'],
-      impact: 'Q1, IF=7.20',
     },
     {
       title:
         'LEPS: A lightweight and effective single-stage detector for pothole segmentation',
       venue: 'IEEE Sensors Journal',
+      venueMeta: 'SCI 二区 · IF 4.30',
       status: '已发表',
       role: '第一作者',
       tags: ['Segmentation', 'Detection'],
-      impact: 'Q2, IF=4.30',
       url: 'https://doi.org/10.1109/JSEN.2023.3330335',
     },
     {
       title:
         'Real-time Underwater Visual Target Sensing System with Multitasking via Edge-Cloud Collaboration',
       venue: 'IEEE Journal of Oceanic Engineering',
+      venueMeta: 'SCI 二区 · IF 3.80',
       status: '已发表',
       role: '第二作者',
       tags: ['Underwater', 'Edge-Cloud'],
-      impact: 'Q2, IF=3.80',
       url: 'https://doi.org/10.1109/JOE.2026.3678825',
     },
     {
       title:
         'Yolo-Pest: An Insect Pest Object Detection Algorithm via CAC3 Module',
       venue: 'Sensors',
+      venueMeta: 'SCI 三区 · IF 3.90',
       status: '已发表',
       role: '第二作者',
       tags: ['Agriculture', 'YOLO'],
-      impact: 'Q3, IF=3.90',
       url: 'https://doi.org/10.3390/s23063221',
     },
     {
       title:
         'Mini-SCXception: Balancing Accuracy and Efficiency in Real-Time Facial Expression Recognition',
       venue: 'AIIIP 2024',
+      venueMeta: '国际会议',
       status: '已发表',
       role: '第二作者',
       tags: ['FER', 'Real-time'],
@@ -204,6 +185,7 @@ export const profile = {
       title:
         'A Robust Robot System via Multi-sensor Fusion Localization and Optimized Path Planning',
       venue: 'ICRAE 2023',
+      venueMeta: 'IEEE 国际会议',
       status: '已发表',
       role: '第二作者',
       tags: ['Robotics', 'SLAM'],
@@ -213,24 +195,27 @@ export const profile = {
       title:
         'Discussion on the effect of classroom concept learning based on BERT text classification',
       venue: 'ICICSP 2022',
+      venueMeta: 'IEEE 国际会议',
       status: '已发表',
-      role: '第二作者',
+      role: '学生第一作者',
       tags: ['NLP', 'Education'],
       url: 'https://doi.org/10.1109/ICICSP55539.2022.10050570',
     },
     {
       title: '基于改进 YOLOv5 的农业害虫检测',
-      venue: '华南师范大学学报（自然科学版）',
+      venue: '学报（自然科学版）',
+      venueMeta: '北大核心',
       status: '已发表',
-      role: '第三作者',
+      role: '学生第二作者',
       tags: ['Agriculture', 'YOLO'],
       url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2023048',
     },
     {
       title: '基于改进 YOLO11 的无人机小目标轻量级高速检测器',
-      venue: '华南师范大学学报（自然科学版）',
+      venue: '学报（自然科学版）',
+      venueMeta: '北大核心',
       status: '已发表',
-      role: '第三作者',
+      role: '学生第三作者',
       tags: ['UAV', 'Detection'],
       url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2025050',
     },
@@ -264,7 +249,7 @@ export const profile = {
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
     {
-      org: '字节跳动',
+      org: '字节跳动·Seed视觉',
       role: '3D 生成算法实习生',
       period: '2026.03 — 至今',
       description:
@@ -282,29 +267,33 @@ export const profile = {
       name: '智保百千村—多领域基础设施智能巡检与保险定损一体化研究',
       period: '2025.03 — 至今',
       role: '参与成员',
+      level: '省级一般项目',
       description:
-        '「攀登计划」科技创新培育省级一般项目。负责基础设施智能巡检系统的端到端算法设计与落地，优化轻量化模型及边缘侧部署效率，提升低空复杂背景下小目标识别精度。主导基于遥感图像的目标识别与保险定损一体化框架搭建，协调巡检作业与定损理赔业务协同，确保 AI 解决方案在「智能巡检-自动定损」场景中的完整闭环。',
+        '负责基础设施智能巡检系统的端到端算法设计与落地，优化轻量化模型及边缘侧部署效率，提升低空复杂背景下小目标识别精度。主导基于遥感图像的目标识别与保险定损一体化框架搭建，协调巡检作业与定损理赔业务协同。',
     },
     {
       name: '基于改进 YOLOv5 的 5G 通信干扰源检测研究',
       period: '2022.11 — 2024.05',
       role: '负责人',
+      level: '省级重点项目',
       description:
-        '「大学生创新创业训练计划」省级重点项目。结合传统移动通信干扰源排查流程，创新研发目标检测算法，采用无人机搭载检测器对高处、隐蔽处天线进行检测，辅助甚至替代人工巡检，填补天线干扰源目标检测领域在学习样本与检测模型上的空白，极大提升排查效率。',
+        '结合传统移动通信干扰源排查流程，创新研发目标检测算法，采用无人机搭载检测器对高处、隐蔽处天线进行检测，辅助甚至替代人工巡检，填补天线干扰源目标检测领域在学习样本与检测模型上的空白。',
     },
     {
       name: '基于人脸情感识别的高校课堂教学评价研究',
       period: '2022.03 — 2023.03',
       role: '核心成员',
+      level: '校级一般课题',
       description:
-        '「金种子」校级一般课题。构建高校课堂学生人脸情感识别模型，采用基于边缘的双通道特征融合模型进行特征提取，通过 MSAFNet 网络进行表情分类，并引入 PAD 三维情感模型测量情感投入评估。',
+        '构建高校课堂学生人脸情感识别模型，采用基于边缘的双通道特征融合模型进行特征提取，通过 MSAFNet 网络进行表情分类，并引入 PAD 三维情感模型测量情感投入评估。',
     },
     {
       name: '「双减」政策下课堂过程性智能评价模型的构建及其教学应用研究',
       period: '2021.11 — 2024.11',
       role: '参与成员',
+      level: '省级重点项目',
       description:
-        '「攀登计划」科技创新培育省级重点项目。构建用于测量学生课堂学习状态的评价模型，引入面部情感识别、语音语义分析等技术对学生个体状态进行多角度、持续性课堂评价，为教师改进教学设计、提升课堂质量提供反馈参考。',
+        '构建用于测量学生课堂学习状态的评价模型，引入面部情感识别、语音语义分析等技术对学生个体状态进行多角度、持续性课堂评价，为教师改进教学设计、提升课堂质量提供反馈参考。',
     },
   ] satisfies Project[],
   awards: [
@@ -325,60 +314,53 @@ export const profile = {
     { title: '2024 年中国国际大学生创新大赛省级三等奖', date: '2024.11' },
     { title: '2023 年全国大学生数学建模竞赛省级三等奖', date: '2023.11' },
     {
-      title: '华南师范大学「三下乡」暑期社会实践活动优秀团队、先进个人',
+      title: '「三下乡」暑期社会实践活动优秀团队、先进个人',
       date: '2022 — 2024',
     },
   ] satisfies AwardItem[],
   honors: [
-    { title: '华南师范大学百佳优秀毕业生', date: '2025.06' },
-    { title: '华南师范大学华为基座奖学金一等奖', date: '2024.04' },
-    { title: '华南师范大学百佳共青团员', date: '2024.04' },
-    { title: '华南师范大学创新奖学金特等奖（论文类）', date: '2024.04' },
-    { title: '华南师范大学优秀学生干部', date: '2022 — 2024' },
-    { title: '华南师范大学综合奖学金一等奖', date: '2022 — 2025' },
+    { title: '百佳优秀毕业生', date: '2025.06' },
+    { title: '华为基座奖学金一等奖', date: '2024.04' },
+    { title: '百佳共青团员', date: '2024.04' },
+    { title: '创新奖学金特等奖（论文类）', date: '2024.04' },
+    { title: '优秀学生干部', date: '2022 — 2024' },
+    { title: '综合奖学金一等奖', date: '2022 — 2025' },
   ] satisfies AwardItem[],
   practiceTimeline: [
     {
       id: 'ri-lab',
-      role: '科研助理 · 本科团队负责人',
-      org: '华南师范大学 RI Lab',
+      role: 'RI Lab 科研助理',
+      org: '本科团队负责人',
       startYear: 2021,
       endYear: 2025,
-      summary:
-        '主导计算机视觉与边缘计算方向研发，产出 LEPS、端云协同感知等多篇论文与专利。',
     },
     {
       id: 'class-monitor',
       role: '班长',
-      org: '华南师范大学 · 2021 级数据科学与大数据技术',
+      org: '2021 级数据科学',
       startYear: 2021,
       endYear: 2025,
-      summary: '负责班级日常事务、学风建设与活动组织。',
     },
     {
       id: 'student-union',
-      role: '主席团成员',
-      org: '华南师范大学行知书院学生会',
+      role: '学生会主席团',
+      org: '行知书院',
       startYear: 2022,
       endYear: 2023,
-      summary: '参与书院学生会统筹与大型活动策划执行。',
     },
     {
       id: 'part-time-ta',
-      role: '学生兼职班主任',
-      org: '华南师范大学 · 2023 级数据科学与大数据技术',
+      role: '兼职班主任',
+      org: '2023 级数据科学',
       startYear: 2023,
       endYear: 2024,
-      summary: '协助新生适应、学业辅导与班级管理。',
     },
     {
       id: 'conferences',
-      role: '会议参与',
-      org: '国际学术会议',
+      role: '学术会议',
+      org: 'SIGGRAPH Asia 等',
       startYear: 2022,
       endYear: 2025,
-      summary:
-        'SIGGRAPH Asia 2025、AIIIP 2024、ICEIT 2024、ICAUS 2023、ICICSP 2022 等。',
     },
   ] satisfies PracticeTimelineItem[],
   skills: [

@@ -51,9 +51,25 @@
     animation: marquee-scroll 45s linear infinite;
   }
 
+  .marquee-interactive:hover .marquee-track {
+    animation-duration: 14s;
+  }
+
   .marquee-reverse {
     animation-direction: reverse;
     animation-duration: 50s;
+  }
+
+  .marquee-interactive:hover .marquee-reverse {
+    animation-duration: 16s;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 
   @keyframes marquee-scroll {

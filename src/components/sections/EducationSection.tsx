@@ -8,7 +8,7 @@ export function EducationSection() {
   const [openCourses, setOpenCourses] = useState<number | null>(null)
 
   return (
-    <section className="section-container pt-0">
+    <section className="section-container scroll-mt-28 pt-0">
       <SectionHeader id="education" title="教育背景" />
       <div className="space-y-6">
         {profile.education.map((edu, i) => (
