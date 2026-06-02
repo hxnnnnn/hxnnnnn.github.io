@@ -1,52 +1,57 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
-  profile,
   getVenueColor,
   getPublicationStatusLabel,
   isPublished,
-  type PublicationStatus,
-} from '../../data/profile'
+} from '../../i18n/site'
+import type { PublicationStatus } from '../../i18n/types'
+import { useLocale } from '../../i18n/LocaleContext'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
 import { CollapsibleBlock } from '../ui/CollapsibleBlock'
 
-type Filter = '全部' | PublicationStatus | '已发表'
-
-const filters: Filter[] = ['全部', '在投', '已发表']
+type FilterKey = 'all' | PublicationStatus | 'publishedFilter'
 
 export function PublicationsSection() {
-  const [filter, setFilter] = useState<Filter>('全部')
+  const { profile, ui, locale } = useLocale()
+  const [filter, setFilter] = useState<FilterKey>('all')
+
+  const filters: { key: FilterKey; label: string }[] = [
+    { key: 'all', label: ui.filters.all },
+    { key: 'submitted', label: ui.filters.submitted },
+    { key: 'publishedFilter', label: ui.filters.published },
+  ]
 
   const filtered = useMemo(() => {
     return profile.publications.filter((pub) => {
-      if (filter === '全部') return true
-      if (filter === '已发表') return isPublished(pub)
+      if (filter === 'all') return true
+      if (filter === 'publishedFilter') return isPublished(pub)
       return pub.status === filter
     })
-  }, [filter])
+  }, [filter, profile.publications])
 
   return (
     <section className="section-container scroll-mt-28">
       <SectionHeader
         id="publications"
-        title="科研论文"
+        title={ui.sections.publications}
         subtitle={profile.publicationsSummary}
       />
 
       <div className="mb-8 flex flex-wrap gap-2">
         {filters.map((f) => (
           <button
-            key={f}
+            key={f.key}
             type="button"
-            onClick={() => setFilter(f)}
+            onClick={() => setFilter(f.key)}
             className={`rounded-full px-4 py-1.5 text-sm transition ${
-              filter === f
+              filter === f.key
                 ? 'bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/40'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
-            {f}
+            {f.label}
           </button>
         ))}
       </div>
@@ -66,8 +71,10 @@ export function PublicationsSection() {
             />
             <div className="p-5">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge variant={pub.status === '在投' ? 'status' : 'default'}>
-                  {getPublicationStatusLabel(pub)}
+                <Badge
+                  variant={pub.status === 'submitted' ? 'status' : 'default'}
+                >
+                  {getPublicationStatusLabel(pub, locale)}
                 </Badge>
                 <Badge variant="accent">{pub.role}</Badge>
                 <Badge variant="venue">{pub.venue}</Badge>
@@ -100,7 +107,10 @@ export function PublicationsSection() {
                   </span>
                 ))}
               </div>
-              <CollapsibleBlock closedLabel="展开摘要" openLabel="收起摘要">
+              <CollapsibleBlock
+                closedLabel={ui.collapsible.expandAbstract}
+                openLabel={ui.collapsible.collapseAbstract}
+              >
                 <p>{pub.abstract}</p>
               </CollapsibleBlock>
             </div>

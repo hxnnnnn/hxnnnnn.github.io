@@ -1,18 +1,24 @@
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useActiveSection } from '../../hooks/useActiveSection'
-
-const navItems = [
-  { id: 'education', label: '教育' },
-  { id: 'publications', label: '论文' },
-  { id: 'experience', label: '实习' },
-  { id: 'projects', label: '项目' },
-  { id: 'awards', label: '荣誉' },
-  { id: 'contact', label: '联系' },
-] as const
-
-const sectionIds = navItems.map((item) => item.id)
+import { useLocale } from '../../i18n/LocaleContext'
+import { getAlternateLocalePath } from '../../i18n/site'
 
 export function HorizontalNav() {
+  const { ui, locale } = useLocale()
+  const location = useLocation()
+  const alternatePath = getAlternateLocalePath(locale)
+
+  const navItems = [
+    { id: 'education', label: ui.nav.education },
+    { id: 'publications', label: ui.nav.publications },
+    { id: 'experience', label: ui.nav.experience },
+    { id: 'projects', label: ui.nav.projects },
+    { id: 'awards', label: ui.nav.awards },
+    { id: 'contact', label: ui.nav.contact },
+  ] as const
+
+  const sectionIds = navItems.map((item) => item.id)
   const activeId = useActiveSection([...sectionIds])
 
   return (
@@ -22,8 +28,8 @@ export function HorizontalNav() {
       transition={{ delay: 0.2, duration: 0.45 }}
       className="fixed top-0 z-50 w-full border-b border-lab-border/50 bg-lab-bg/85 backdrop-blur-md"
     >
-      <div className="mx-auto max-w-5xl px-4 py-3">
-        <div className="flex items-end justify-between gap-2 overflow-x-auto scrollbar-none">
+      <div className="mx-auto flex max-w-5xl items-end justify-between gap-3 px-4 py-3">
+        <div className="flex min-w-0 flex-1 items-end gap-2 overflow-x-auto scrollbar-none">
           {navItems.map((item) => {
             const isActive = activeId === item.id
             return (
@@ -48,6 +54,12 @@ export function HorizontalNav() {
             )
           })}
         </div>
+        <Link
+          to={`${alternatePath}${location.hash}`}
+          className="shrink-0 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300 transition hover:text-white"
+        >
+          {ui.nav.langSwitch}
+        </Link>
       </div>
     </motion.nav>
   )

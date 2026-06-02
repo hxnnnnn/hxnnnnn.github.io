@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
-import { profile } from '../../data/profile'
+import { useLocale } from '../../i18n/LocaleContext'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
 import { CollapsibleBlock } from '../ui/CollapsibleBlock'
 
 export function ProjectsSection() {
+  const { profile, ui } = useLocale()
+
   return (
     <section className="section-container scroll-mt-28">
-      <SectionHeader id="projects" title="项目经历" />
+      <SectionHeader id="projects" title={ui.sections.projects} />
 
       <div className="space-y-4">
         {profile.projects.map((proj, i) => (
@@ -29,8 +31,8 @@ export function ProjectsSection() {
               {proj.fullTitle}
             </h3>
             <CollapsibleBlock
-              closedLabel="展开项目内容"
-              openLabel="收起项目内容"
+              closedLabel={ui.collapsible.expandProject}
+              openLabel={ui.collapsible.collapseProject}
             >
               <p>{proj.description}</p>
             </CollapsibleBlock>

@@ -26,6 +26,9 @@ jobs:
         env:
           VITE_BASE_PATH: /
 
+      - name: Add SPA fallback for GitHub Pages
+        run: cp dist/index.html dist/404.html
+
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:

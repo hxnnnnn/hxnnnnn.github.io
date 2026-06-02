@@ -1,6 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
-import { profile } from '../data/profile'
+import { useLocale } from '../i18n/LocaleContext'
 import { useScrollProgress } from '../hooks/useScrollProgress'
 import { useIsMobile, usePrefersReducedMotion } from '../hooks/useMediaQuery'
 import { HeroFallback } from './hero/HeroFallback'
@@ -10,6 +10,7 @@ const GaussianHero = lazy(() =>
 )
 
 export function HeroSection() {
+  const { profile, ui } = useLocale()
   const progress = useScrollProgress()
   const isMobile = useIsMobile()
   const reducedMotion = usePrefersReducedMotion()
@@ -38,7 +39,7 @@ export function HeroSection() {
 
       {loading && showWebGL && (
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-lab-bg">
-          <p className="text-sm text-zinc-400">正在重建 3D 模型...</p>
+          <p className="text-sm text-zinc-400">{ui.hero.loading}</p>
           <div className="mt-4 h-1 w-48 overflow-hidden rounded-full bg-lab-border">
             <motion.div
               className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400"
@@ -83,7 +84,7 @@ export function HeroSection() {
         className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-zinc-500"
       >
         <span className="text-xs">
-          {showWebGL ? '拖拽旋转 · 向下滚动' : '向下滚动探索'}
+          {showWebGL ? ui.hero.scrollWebGL : ui.hero.scrollMobile}
         </span>
         <motion.span
           animate={{ y: [0, 6, 0] }}

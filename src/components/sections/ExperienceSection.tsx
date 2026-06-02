@@ -1,15 +1,17 @@
 import { motion } from 'framer-motion'
-import { profile } from '../../data/profile'
+import { useLocale } from '../../i18n/LocaleContext'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
 
 export function ExperienceSection() {
+  const { profile, ui } = useLocale()
+
   return (
     <section className="section-container scroll-mt-28">
       <SectionHeader
         id="experience"
-        title="实习经历"
-        subtitle="3D视觉在科研界与工业界的算法研究、数据工程、业务应用"
+        title={ui.sections.experience}
+        subtitle={ui.sections.experienceSubtitle}
       />
       <div className="relative space-y-8 pl-6 before:absolute before:bottom-0 before:left-[7px] before:top-2 before:w-px before:bg-gradient-to-b before:from-indigo-500 before:to-cyan-400/30">
         {profile.experience.map((exp, i) => (

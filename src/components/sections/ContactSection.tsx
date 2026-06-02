@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { profile } from '../../data/profile'
+import { useLocale } from '../../i18n/LocaleContext'
 import { SectionHeader } from '../ui/SectionHeader'
 
 export function ContactSection() {
+  const { profile, ui } = useLocale()
   const [copied, setCopied] = useState(false)
 
   const copyEmail = async () => {
@@ -16,8 +17,8 @@ export function ContactSection() {
     <section className="section-container scroll-mt-28">
       <SectionHeader
         id="contact"
-        title="联系我"
-        subtitle="欢迎就 3D 视觉、图形学或合作研究进行交流。"
+        title={ui.sections.contact}
+        subtitle={ui.sections.contactSubtitle}
       />
 
       <motion.div
@@ -40,7 +41,7 @@ export function ContactSection() {
             onClick={copyEmail}
             className="mt-1 text-zinc-300 transition hover:text-cyan-300"
           >
-            {copied ? '已复制 ✓' : profile.contact.email}
+            {copied ? ui.contact.copied : profile.contact.email}
           </button>
         </div>
       </motion.div>

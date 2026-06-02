@@ -1,10 +1,12 @@
 import { useMemo } from 'react'
-import { profile } from '../../data/profile'
+import { useLocale } from '../../i18n/LocaleContext'
 
 const MIN_YEAR = 2021
 const MAX_YEAR = 2026
 
 export function PracticeTimelineSection() {
+  const { profile, ui } = useLocale()
+
   const years = useMemo(() => {
     const list: number[] = []
     for (let y = MIN_YEAR; y <= MAX_YEAR; y++) list.push(y)
@@ -14,11 +16,11 @@ export function PracticeTimelineSection() {
   return (
     <section className="mt-10">
       <h3 className="mb-8 text-sm font-medium uppercase tracking-wider text-zinc-500">
-        实践经历
+        {ui.sections.practice}
       </h3>
 
       <div className="relative overflow-x-auto pb-2">
-        <div className="flex min-w-[640px] justify-between gap-1 px-1">
+        <div className="flex min-w-[720px] justify-between gap-1 px-1">
           {years.map((year) => {
             const items = profile.practiceTimeline.filter(
               (item) => year >= item.startYear && year <= item.endYear,

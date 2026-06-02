@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { profile } from '../../data/profile'
+import { useLocale } from '../../i18n/LocaleContext'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
 import { PracticeTimelineSection } from './PracticeTimelineSection'
@@ -7,9 +7,11 @@ import { PracticeTimelineSection } from './PracticeTimelineSection'
 function MarqueeRow({
   items,
   direction = 'left',
+  hoverHint,
 }: {
   items: readonly { title: string; date?: string }[]
   direction?: 'left' | 'right'
+  hoverHint: string
 }) {
   const doubled = [...items, ...items]
 
@@ -30,27 +32,35 @@ function MarqueeRow({
           </div>
         ))}
       </div>
-      <p className="mt-1 text-center text-[10px] text-zinc-600">
-        悬停可加速滚动
-      </p>
+      <p className="mt-1 text-center text-[10px] text-zinc-600">{hoverHint}</p>
     </div>
   )
 }
 
 export function AwardsSection() {
+  const { profile, ui } = useLocale()
+
   return (
     <section className="section-container scroll-mt-28">
-      <SectionHeader id="awards" title="荣誉与实践" />
+      <SectionHeader id="awards" title={ui.sections.awards} />
 
       <h3 className="mb-4 text-sm font-medium uppercase tracking-wider text-zinc-500">
-        获奖情况
+        {ui.sections.awardsList}
       </h3>
-      <MarqueeRow items={profile.awards} direction="left" />
+      <MarqueeRow
+        items={profile.awards}
+        direction="left"
+        hoverHint={ui.marquee.hoverHint}
+      />
 
       <h3 className="mb-4 mt-10 text-sm font-medium uppercase tracking-wider text-zinc-500">
-        个人荣誉
+        {ui.sections.honorsList}
       </h3>
-      <MarqueeRow items={profile.honors} direction="right" />
+      <MarqueeRow
+        items={profile.honors}
+        direction="right"
+        hoverHint={ui.marquee.hoverHint}
+      />
 
       <PracticeTimelineSection />
 
@@ -58,7 +68,7 @@ export function AwardsSection() {
         id="patents"
         className="mb-4 mt-10 scroll-mt-28 text-sm font-medium uppercase tracking-wider text-zinc-500"
       >
-        发明专利
+        {ui.sections.patents}
       </h3>
       <div className="grid gap-4 md:grid-cols-3">
         {profile.patents.map((pat, i) => (
@@ -79,7 +89,7 @@ export function AwardsSection() {
       </div>
 
       <h3 className="mb-4 mt-10 text-sm font-medium uppercase tracking-wider text-zinc-500">
-        专业技能
+        {ui.sections.skills}
       </h3>
       <div className="flex flex-wrap gap-2">
         {profile.skills.map((skill) => (

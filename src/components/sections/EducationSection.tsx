@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { profile } from '../../data/profile'
+import { useLocale } from '../../i18n/LocaleContext'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
 
 export function EducationSection() {
+  const { profile, ui } = useLocale()
   const [openCourses, setOpenCourses] = useState<number | null>(null)
 
   return (
     <section className="section-container scroll-mt-28 pt-0">
-      <SectionHeader id="education" title="教育背景" />
+      <SectionHeader id="education" title={ui.sections.education} />
       <div className="space-y-6">
         {profile.education.map((edu, i) => (
           <motion.div
@@ -46,7 +47,9 @@ export function EducationSection() {
                   }
                   className="mt-4 text-sm text-indigo-400 transition hover:text-cyan-400"
                 >
-                  {openCourses === i ? '收起核心课程' : '查看核心课程'}
+                  {openCourses === i
+                    ? ui.education.hideCourses
+                    : ui.education.showCourses}
                 </button>
                 <AnimatePresence>
                   {openCourses === i && (
