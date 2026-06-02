@@ -1,12 +1,14 @@
-export type PublicationStatus = '在投' | '已发表'
+export type PublicationStatus = '在投' | 'published'
 
 export interface Publication {
   title: string
   venue: string
   status: PublicationStatus
+  publishedYear?: number
   role: string
   venueMeta: string
   tags: string[]
+  abstract: string
   url?: string
 }
 
@@ -54,6 +56,11 @@ export interface AwardItem {
   date?: string
 }
 
+export function getPublicationStatusLabel(pub: Publication): string {
+  if (pub.status === '在投') return '在投'
+  return `${pub.publishedYear ?? ''}年发表`
+}
+
 export const profile = {
   name: '黄晓宁',
   heroName: 'XiaoningHuang',
@@ -66,21 +73,15 @@ export const profile = {
   },
   publicationsSummary:
     '专注于3D和2D计算机视觉领域，包括但不限于重建、检测、分割任务。',
-  research: {
-    title: '3D计算机视觉',
-    intro:
-      '于韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究。',
-  },
   education: [
     {
       school: '香港中文大学（深圳）',
       department: '数据科学学院 · 数据科学专业',
-      degree: '英文授课硕士',
+      degree: '英文授课硕士 · GPA 3.3/4.0',
       period: '2025.09 — 至今',
       details: [
-        '研究方向：在韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究',
-        '研究目标：以有限成本为所有人实时生成并驱动高保真 3D 虚拟形象',
-        '研究重点：基于 NeRF/3DGS 技术的大规模图像学习头部虚拟形象泛化性与鲁棒性',
+        '在韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究，围绕单目图像学习可分解、可泛化的全头部 3D 表征，并探索其与生成式模型的结合路径。',
+        '研究重点为 NeRF/3DGS 驱动的高保真头部重建与实时驱动；目标是在有限算力与数据成本下，为广泛人群提供稳定、实时且表情可控的 3D 虚拟形象生成能力。',
       ],
       courses: [
         '人工智能',
@@ -93,11 +94,11 @@ export const profile = {
     {
       school: '华南师范大学',
       department: '数据科学与工程学院 · 数据科学与大数据技术',
-      degree: '工学学士',
+      degree: '工学学士 · GPA 3.8/5.0',
       period: '2021.09 — 2025.06',
       details: [
-        'GPA 3.8/5.0 · 绩点排名 4/30 · 综测排名 1/30',
-        '语言能力：IELTS 6.5 · CET-4 574 · CET-6 438',
+        '本科阶段聚焦计算机视觉与智能感知，围绕目标检测、语义/实例分割、边缘-云协同推理及农业、交通、课堂等场景开展算法研究与系统落地。',
+        '研究重点为轻量化检测架构、多尺度特征融合与小目标鲁棒感知；目标是将模型效率、精度与部署成本平衡，并支撑无人机巡检、害虫监测、路面病害与课堂情感分析等应用。',
       ],
       courses: [
         '数据挖掘导论（100）',
@@ -118,10 +119,18 @@ export const profile = {
       title:
         'InfiHead: Learning a Feedforward Disentangled 3D Full-Head Model from Scalable Monocular 2D Data',
       venue: 'SIGGRAPH Asia 2026',
-      venueMeta: 'CCF-A 会议 · 在投',
+      venueMeta: 'CCF-A 会议',
       status: '在投',
       role: '第二作者',
-      tags: ['3D', 'NeRF', 'Full-Head'],
+      tags: [
+        '3D Reconstruction',
+        'Neural Radiance Fields',
+        'Full-Head Avatar',
+        'Monocular Learning',
+        'Disentangled Representation',
+      ],
+      abstract:
+        'Proposes a feedforward disentangled 3D full-head model learned from large-scale monocular 2D data, enabling scalable avatar creation with explicit control over identity, expression, and appearance without per-subject optimization.',
     },
     {
       title:
@@ -130,7 +139,15 @@ export const profile = {
       venueMeta: 'SCI 二区 · IF 5.90',
       status: '在投',
       role: '学生第一作者',
-      tags: ['Edge-Cloud', 'Detection'],
+      tags: [
+        'Edge-Cloud Collaboration',
+        'Pest Detection',
+        'Dynamic Adaptation',
+        'Object Detection',
+        'Agricultural Vision',
+      ],
+      abstract:
+        'Introduces a dynamic adaptation system that coordinates edge devices and cloud servers for pest detection, adjusting models and inference strategies under shifting field conditions to improve accuracy and deployment efficiency.',
     },
     {
       title:
@@ -139,16 +156,33 @@ export const profile = {
       venueMeta: 'SCI 一区 · IF 7.20',
       status: '在投',
       role: '第二作者',
-      tags: ['Fatigue', 'Lightweight'],
+      tags: [
+        'Fatigue Driving Detection',
+        'Multi-Scale Features',
+        'Lightweight Architecture',
+        'Driver Monitoring',
+        'Real-Time Inference',
+      ],
+      abstract:
+        'Presents MS-FDD, a lightweight multi-scale module designed for fatigue driving detection that captures fine-grained facial and behavioral cues while maintaining low latency suitable for in-vehicle deployment.',
     },
     {
       title:
         'LEPS: A lightweight and effective single-stage detector for pothole segmentation',
       venue: 'IEEE Sensors Journal',
       venueMeta: 'SCI 二区 · IF 4.30',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2023,
       role: '第一作者',
-      tags: ['Segmentation', 'Detection'],
+      tags: [
+        'Pothole Segmentation',
+        'Single-Stage Detector',
+        'Road Damage',
+        'Semantic Segmentation',
+        'Lightweight Model',
+      ],
+      abstract:
+        'Proposes LEPS, a lightweight single-stage detector tailored for pothole segmentation in road images, balancing detection speed and segmentation quality for practical infrastructure inspection pipelines.',
       url: 'https://doi.org/10.1109/JSEN.2023.3330335',
     },
     {
@@ -156,9 +190,18 @@ export const profile = {
         'Real-time Underwater Visual Target Sensing System with Multitasking via Edge-Cloud Collaboration',
       venue: 'IEEE Journal of Oceanic Engineering',
       venueMeta: 'SCI 二区 · IF 3.80',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2026,
       role: '第二作者',
-      tags: ['Underwater', 'Edge-Cloud'],
+      tags: [
+        'Underwater Vision',
+        'Edge-Cloud Collaboration',
+        'Multitask Learning',
+        'Real-Time Sensing',
+        'Target Detection',
+      ],
+      abstract:
+        'Develops a real-time underwater visual sensing system that performs multitask perception through edge-cloud collaboration, improving robustness and throughput for marine target monitoring in bandwidth-limited environments.',
       url: 'https://doi.org/10.1109/JOE.2026.3678825',
     },
     {
@@ -166,9 +209,18 @@ export const profile = {
         'Yolo-Pest: An Insect Pest Object Detection Algorithm via CAC3 Module',
       venue: 'Sensors',
       venueMeta: 'SCI 三区 · IF 3.90',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2023,
       role: '第二作者',
-      tags: ['Agriculture', 'YOLO'],
+      tags: [
+        'Insect Pest Detection',
+        'Agricultural Vision',
+        'Multi-Scale Features',
+        'Field Monitoring',
+        'Attention Mechanism',
+      ],
+      abstract:
+        'Introduces Yolo-Pest with a CAC3 module to enhance multi-scale representation for insect pest detection in complex agricultural scenes, improving recall on small pests while keeping the detector efficient.',
       url: 'https://doi.org/10.3390/s23063221',
     },
     {
@@ -176,9 +228,18 @@ export const profile = {
         'Mini-SCXception: Balancing Accuracy and Efficiency in Real-Time Facial Expression Recognition',
       venue: 'AIIIP 2024',
       venueMeta: '国际会议',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2024,
       role: '第二作者',
-      tags: ['FER', 'Real-time'],
+      tags: [
+        'Facial Expression Recognition',
+        'Lightweight CNN',
+        'Real-Time Inference',
+        'Edge Computing',
+        'Emotion Analysis',
+      ],
+      abstract:
+        'Presents Mini-SCXception, a compact network architecture that balances accuracy and efficiency for real-time facial expression recognition in classroom and human-computer interaction scenarios.',
       url: 'https://doi.org/10.1145/3707292.3707342',
     },
     {
@@ -186,9 +247,18 @@ export const profile = {
         'A Robust Robot System via Multi-sensor Fusion Localization and Optimized Path Planning',
       venue: 'ICRAE 2023',
       venueMeta: 'IEEE 国际会议',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2023,
       role: '第二作者',
-      tags: ['Robotics', 'SLAM'],
+      tags: [
+        'Mobile Robotics',
+        'Sensor Fusion',
+        'Path Planning',
+        'SLAM',
+        'Multi-Sensor Localization',
+      ],
+      abstract:
+        'Designs a robust mobile robot system that fuses multi-sensor localization with optimized path planning to improve navigation stability and task completion in structured indoor environments.',
       url: 'https://ieeexplore.ieee.org/document/10458454/',
     },
     {
@@ -196,27 +266,54 @@ export const profile = {
         'Discussion on the effect of classroom concept learning based on BERT text classification',
       venue: 'ICICSP 2022',
       venueMeta: 'IEEE 国际会议',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2022,
       role: '学生第一作者',
-      tags: ['NLP', 'Education'],
+      tags: [
+        'BERT',
+        'Text Classification',
+        'Concept Learning',
+        'Educational Mining',
+        'Classroom Analytics',
+      ],
+      abstract:
+        'Investigates classroom concept learning effects using BERT-based text classification, analyzing student-generated content to support formative assessment and instructional feedback.',
       url: 'https://doi.org/10.1109/ICICSP55539.2022.10050570',
     },
     {
       title: '基于改进 YOLOv5 的农业害虫检测',
-      venue: '学报（自然科学版）',
+      venue: '华南师范大学学报（自然科学版）',
       venueMeta: '北大核心',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2023,
       role: '学生第二作者',
-      tags: ['Agriculture', 'YOLO'],
+      tags: [
+        '农业害虫检测',
+        '目标检测',
+        '轻量化网络',
+        '田间监测',
+        '特征融合',
+      ],
+      abstract:
+        '针对复杂田间背景与小目标害虫识别难题，改进检测骨干与特征融合策略，在保持推理效率的同时提升农业害虫检测精度与鲁棒性。',
       url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2023048',
     },
     {
       title: '基于改进 YOLO11 的无人机小目标轻量级高速检测器',
-      venue: '学报（自然科学版）',
+      venue: '华南师范大学学报（自然科学版）',
       venueMeta: '北大核心',
-      status: '已发表',
+      status: 'published',
+      publishedYear: 2025,
       role: '学生第三作者',
-      tags: ['UAV', 'Detection'],
+      tags: [
+        '无人机视觉',
+        '小目标检测',
+        '轻量化模型',
+        '航拍图像',
+        '实时推理',
+      ],
+      abstract:
+        '面向无人机航拍场景中的小目标检测需求，设计轻量级高速检测器，在算力受限的机载平台上实现较高帧率与检测精度的平衡。',
       url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2025050',
     },
   ] satisfies Publication[],
@@ -237,14 +334,14 @@ export const profile = {
   experience: [
     {
       org: '港中深 · GAP 实验室',
-      role: '科研助理',
+      role: '3D重建方向科研助理',
       period: '2025.08 — 至今',
       description:
-        '参与 3D 视觉与生成式 AI 前沿研究：构建千万级平衡数据集，开发实时上半身化身生成管线（3D 重建 + 视频扩散，15 FPS），并负责人脸可控模型的数据工程与生成式数据增广。',
+        '从事 3D 头部重建与生成式视觉研究，覆盖大规模数据构建、重建-生成管线与下游任务验证。',
       highlights: [
-        'FLUX.1 + Qwen2.5-VL 构建 1120 万样本平衡数据集，缓解 3D-aware GAN 视角偏差',
-        '3D 重建特征对接自回归视频扩散，实现 15 FPS 高保真上半身视频合成',
-        '生成模型补齐表情/光照数据缺口，支撑大视角人脸识别等下游任务',
+        '基于 FLUX.1 与 Qwen2.5-VL 构建约 1120 万样本平衡数据集，缓解 3D-aware GAN 的视角分布偏差',
+        '将 3D 重建特征对接自回归视频扩散模型，实现约 15 FPS 的高保真上半身视频合成',
+        '通过生成式增广补齐表情与光照数据缺口，支撑大视角人脸识别等下游实验',
       ],
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
@@ -253,11 +350,11 @@ export const profile = {
       role: '3D 生成算法实习生',
       period: '2026.03 — 至今',
       description:
-        '负责 3D 生成数据全链路：多模态 3D 资产的生产、清洗、标注与标准化，维护团队专用训练集；使用 Blender/Unity 完成场景建模与渲染，独立交付 3 项数据专项。',
+        '负责 3D 生成方向训练数据的全链路建设与多模态场景内容生产。',
       highlights: [
-        '协同算法/工程/产品攻克视角不一致与多模态融合难题，保障里程碑交付',
-        '搭建并维护内部 3D 生成数据集与预处理规范',
-        'Blender / Unity 场景建模渲染，支撑模型训练迭代',
+        '协同算法、工程与产品团队处理视角不一致与多模态融合问题，保障数据里程碑按期交付',
+        '搭建并维护团队内部 3D 生成数据集及清洗、标注与标准化流程',
+        '使用 Blender / Unity 完成场景建模与渲染，独立交付 3 项数据专项',
       ],
       tags: ['3D Generation', 'Blender', 'Unity', 'Data Pipeline'],
     },
@@ -356,10 +453,31 @@ export const profile = {
       endYear: 2024,
     },
     {
-      id: 'conferences',
-      role: '学术会议',
-      org: 'SIGGRAPH Asia 等',
+      id: 'conf-2022',
+      role: 'ICICSP 2022',
+      org: 'IEEE 国际会议',
       startYear: 2022,
+      endYear: 2022,
+    },
+    {
+      id: 'conf-2023',
+      role: 'ICRAE 2023',
+      org: 'IEEE 国际会议',
+      startYear: 2023,
+      endYear: 2023,
+    },
+    {
+      id: 'conf-2024',
+      role: 'AIIIP 2024',
+      org: 'ACM 国际会议',
+      startYear: 2024,
+      endYear: 2024,
+    },
+    {
+      id: 'conf-2025',
+      role: 'SIGGRAPH Asia 2025',
+      org: 'CCF-A 会议',
+      startYear: 2025,
       endYear: 2025,
     },
   ] satisfies PracticeTimelineItem[],
@@ -391,4 +509,8 @@ export function getVenueColor(venue: string): string {
   if (venue.includes('ACM')) return venueColors.ACM
   if (venue.includes('Sensors')) return venueColors.Sensors
   return venueColors.default
+}
+
+export function isPublished(pub: Publication): boolean {
+  return pub.status === 'published'
 }

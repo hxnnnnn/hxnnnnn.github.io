@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { useActiveSection } from '../../hooks/useActiveSection'
 
 const navItems = [
-  { id: 'research', label: '研究' },
   { id: 'education', label: '教育' },
   { id: 'publications', label: '论文' },
   { id: 'experience', label: '实习' },

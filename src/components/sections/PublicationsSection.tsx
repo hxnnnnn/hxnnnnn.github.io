@@ -1,10 +1,17 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import { profile, getVenueColor, type PublicationStatus } from '../../data/profile'
+import {
+  profile,
+  getVenueColor,
+  getPublicationStatusLabel,
+  isPublished,
+  type PublicationStatus,
+} from '../../data/profile'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
+import { CollapsibleBlock } from '../ui/CollapsibleBlock'
 
-type Filter = '全部' | PublicationStatus
+type Filter = '全部' | PublicationStatus | '已发表'
 
 const filters: Filter[] = ['全部', '在投', '已发表']
 
@@ -14,6 +21,7 @@ export function PublicationsSection() {
   const filtered = useMemo(() => {
     return profile.publications.filter((pub) => {
       if (filter === '全部') return true
+      if (filter === '已发表') return isPublished(pub)
       return pub.status === filter
     })
   }, [filter])
@@ -59,7 +67,7 @@ export function PublicationsSection() {
             <div className="p-5">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant={pub.status === '在投' ? 'status' : 'default'}>
-                  {pub.status}
+                  {getPublicationStatusLabel(pub)}
                 </Badge>
                 <Badge variant="accent">{pub.role}</Badge>
                 <Badge>{pub.venue}</Badge>
@@ -82,16 +90,6 @@ export function PublicationsSection() {
                   pub.title
                 )}
               </h3>
-              {pub.url && pub.status === '已发表' && (
-                <a
-                  href={pub.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-block text-xs text-indigo-400 transition hover:text-cyan-400"
-                >
-                  查看论文 →
-                </a>
-              )}
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {pub.tags.map((tag) => (
                   <span
@@ -102,6 +100,9 @@ export function PublicationsSection() {
                   </span>
                 ))}
               </div>
+              <CollapsibleBlock closedLabel="展开摘要" openLabel="收起摘要">
+                <p>{pub.abstract}</p>
+              </CollapsibleBlock>
             </div>
           </motion.article>
         ))}

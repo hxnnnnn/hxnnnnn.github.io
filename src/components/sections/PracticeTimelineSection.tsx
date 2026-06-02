@@ -29,7 +29,7 @@ export function PracticeTimelineSection() {
                 key={year}
                 className="relative flex flex-1 flex-col items-center"
               >
-                <div className="mb-3 flex min-h-[100px] w-full flex-col items-center justify-end gap-1.5 px-0.5">
+                <div className="mb-3 flex min-h-[120px] w-full flex-col items-center justify-end gap-1.5 px-0.5">
                   {items.map((item) => (
                     <div
                       key={item.id}

@@ -1,7 +1,6 @@
 import { HorizontalNav } from './components/layout/HorizontalNav'
 import { Footer } from './components/layout/Footer'
 import { HeroSection } from './components/HeroSection'
-import { ResearchSection } from './components/sections/ResearchSection'
 import { EducationSection } from './components/sections/EducationSection'
 import { PublicationsSection } from './components/sections/PublicationsSection'
 import { ExperienceSection } from './components/sections/ExperienceSection'
@@ -15,7 +14,6 @@ function App() {
       <HorizontalNav />
       <main className="pt-14">
         <HeroSection />
-        <ResearchSection />
         <EducationSection />
         <PublicationsSection />
         <ExperienceSection />

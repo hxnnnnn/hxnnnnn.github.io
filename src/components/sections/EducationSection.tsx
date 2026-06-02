@@ -31,13 +31,13 @@ export function EducationSection() {
               </div>
               <Badge variant="accent">{edu.period}</Badge>
             </div>
-            <ul className="mt-4 space-y-1">
+            <div className="mt-4 space-y-3">
               {edu.details.map((d) => (
-                <li key={d} className="text-sm leading-relaxed text-zinc-400">
+                <p key={d} className="text-sm leading-relaxed text-zinc-400">
                   {d}
-                </li>
+                </p>
               ))}
-            </ul>
+            </div>
             {edu.courses && edu.courses.length > 0 && (
               <>
                 <button
