@@ -32,7 +32,7 @@ export function CollapsibleBlock({
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="mt-2 text-sm leading-relaxed text-zinc-500">
+            <div className="text-body mt-2 text-sm leading-relaxed">
               {children}
             </div>
           </motion.div>

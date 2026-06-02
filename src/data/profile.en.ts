@@ -299,9 +299,9 @@ const profile: ProfileData = {
       description:
         'Working on SeeDream-related 3D generation training data strategy, model iteration support, and data toolchain development.',
       highlights: [
-        'Contributed to SeeDream training data design: aligned generation goals and failure modes, defined multimodal pairing and admission criteria, and optimized sampling and filtering for consistency and trainability.',
-        'Supported 3D generation and version iteration: built and maintained training subsets per experiment, fed back data strategy via offline evaluation and badcase analysis, and delivered reproducible data versions and baselines for ablations and milestones.',
-        'Developed and optimized 3D preprocessing and QA tools; modeled and rendered scenes in Blender; delivered multiple data initiatives; maintained standardized 3D generation data workflows and toolchain improvements.',
+        'Contributed to SeeDream training data design with multimodal pairing and admission criteria to improve consistency and trainability.',
+        'Used 3D rendering to support image-editing workflows and version iteration; built and maintained training subsets and analyzed feedback-driven data strategy.',
+        'Developed and optimized data-processing operators; modeled and rendered in Blender; established team engineering standards and delivered multiple data initiatives.',
       ],
       tags: ['SeeDream', '3D Generation', 'Blender', 'Data Pipeline'],
     },

@@ -15,7 +15,7 @@ export function PracticeTimelineSection() {
 
   return (
     <section className="mt-10">
-      <h3 className="mb-8 text-sm font-medium uppercase tracking-wider text-zinc-500">
+      <h3 className="text-muted mb-8 text-sm font-medium uppercase tracking-wider">
         {ui.sections.practice}
       </h3>
 
@@ -38,10 +38,10 @@ export function PracticeTimelineSection() {
                       className="timeline-card w-full max-w-[108px]"
                       title={`${item.role} · ${item.org}`}
                     >
-                      <p className="timeline-role text-[10px] font-medium leading-tight text-cyan-300/90">
+                      <p className="timeline-role text-[10px] font-medium leading-tight">
                         {item.role}
                       </p>
-                      <p className="mt-0.5 text-[9px] leading-tight text-zinc-500">
+                      <p className="text-muted mt-0.5 text-[9px] leading-tight">
                         {item.org}
                       </p>
                     </div>
@@ -51,7 +51,7 @@ export function PracticeTimelineSection() {
                 <div className="relative flex w-full flex-col items-center">
                   <span className="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
                   <span className="relative z-10 h-3 w-3 rounded-full border-2 border-cyan-400/80 bg-lab-bg shadow-[0_0_8px_rgba(34,211,238,0.35)]" />
-                  <span className="mt-2 text-xs font-semibold text-zinc-300">
+                  <span className="text-body mt-2 text-xs font-semibold">
                     {year}
                   </span>
                 </div>

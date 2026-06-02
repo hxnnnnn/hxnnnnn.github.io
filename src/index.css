@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* —— Dark (default) —— */
 @theme {
   --color-lab-bg: #0a0a0f;
   --color-lab-surface: #12121a;
@@ -9,11 +10,12 @@
   --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
 }
 
+/* —— Light: Morandi-inspired —— */
 html[data-theme="light"] {
   color-scheme: light;
-  --color-lab-bg: #e8edf4;
-  --color-lab-surface: #ffffff;
-  --color-lab-border: #c5d0e0;
+  --color-lab-bg: #e4e0d8;
+  --color-lab-surface: #f5f2ec;
+  --color-lab-border: #bfb8ad;
 }
 
 html[data-theme="dark"] {
@@ -31,7 +33,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] body {
-    @apply text-slate-800;
+    color: #4a4540;
   }
 
   ::selection {
@@ -39,57 +41,104 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] ::selection {
-    @apply bg-indigo-500/25 text-slate-900;
-  }
-
-  html[data-theme="light"] .text-white {
-    @apply text-slate-900;
-  }
-
-  html[data-theme="light"] .text-zinc-100 {
-    @apply text-slate-800;
-  }
-
-  html[data-theme="light"] .text-zinc-300 {
-    @apply text-slate-700;
-  }
-
-  html[data-theme="light"] .text-zinc-400 {
-    @apply text-slate-600;
-  }
-
-  html[data-theme="light"] .text-zinc-500 {
-    @apply text-slate-600;
-  }
-
-  html[data-theme="light"] .text-zinc-600 {
-    @apply text-slate-500;
-  }
-
-  html[data-theme="light"] .hover\:text-white:hover {
-    @apply text-slate-900;
-  }
-
-  html[data-theme="light"] .group:hover .group-hover\:text-cyan-100 {
-    @apply text-cyan-800;
-  }
-
-  html[data-theme="light"] .hover\:text-cyan-300:hover {
-    @apply text-cyan-800;
-  }
-
-  html[data-theme="light"] .hover\:text-cyan-400:hover {
-    @apply text-cyan-700;
+    background-color: rgb(94 75 113 / 0.25);
+    color: #2f2834;
   }
 }
 
 @layer components {
+  /* Typography */
+  .text-hero-title {
+    @apply font-bold tracking-tight text-zinc-50;
+  }
+
+  html[data-theme="light"] .text-hero-title {
+    color: #5e4b71;
+  }
+
+  .text-section-title {
+    @apply font-bold tracking-tight text-zinc-50;
+  }
+
+  html[data-theme="light"] .text-section-title {
+    color: #453d4a;
+  }
+
+  .text-section-subtitle {
+    @apply leading-relaxed text-zinc-400;
+  }
+
+  html[data-theme="light"] .text-section-subtitle {
+    color: #6b6560;
+  }
+
+  .text-card-title {
+    @apply font-medium leading-snug text-zinc-100;
+  }
+
+  html[data-theme="light"] .text-card-title {
+    color: #453d4a;
+  }
+
+  .card-title-link {
+    @apply inline-flex items-start gap-2 text-inherit transition;
+  }
+
+  html[data-theme="light"] .card-title-link {
+    color: #453d4a;
+  }
+
+  html[data-theme="light"] .card-title-link:hover {
+    color: #5e4b71;
+  }
+
+  .text-role {
+    @apply text-sm text-cyan-400;
+  }
+
+  html[data-theme="light"] .text-role {
+    color: #5f7a6e;
+  }
+
+  .text-body {
+    @apply text-zinc-400;
+  }
+
+  html[data-theme="light"] .text-body {
+    color: #5c574f;
+  }
+
+  .text-muted {
+    @apply text-zinc-500;
+  }
+
+  html[data-theme="light"] .text-muted {
+    color: #7a746c;
+  }
+
+  .text-faint {
+    @apply text-zinc-600;
+  }
+
+  html[data-theme="light"] .text-faint {
+    color: #9a948c;
+  }
+
+  .section-rule {
+    @apply h-px w-16 bg-gradient-to-r from-indigo-500 to-cyan-400;
+  }
+
+  html[data-theme="light"] .section-rule {
+    @apply from-[#8a7e9a] to-[#7a9488];
+  }
+
+  /* Badges — Morandi */
   .badge-default {
     @apply border-lab-border bg-lab-surface text-zinc-300;
   }
 
   html[data-theme="light"] .badge-default {
-    @apply border-slate-300 bg-slate-100 text-slate-700;
+    @apply border-[#c5bfb4] bg-[#ebe6de] text-[#5c574f];
   }
 
   .badge-accent {
@@ -97,7 +146,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .badge-accent {
-    @apply border-indigo-300 bg-indigo-100 text-indigo-900;
+    @apply border-[#b8a9c9] bg-[#e3dce8] text-[#4e3d5e];
   }
 
   .badge-status {
@@ -105,7 +154,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .badge-status {
-    @apply border-cyan-400 bg-cyan-50 text-cyan-900;
+    @apply border-[#9bb5a8] bg-[#dce8df] text-[#3d5248];
   }
 
   .badge-venue {
@@ -113,7 +162,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .badge-venue {
-    @apply border-cyan-500 bg-cyan-100 text-cyan-950;
+    @apply border-[#9aafc0] bg-[#d8e2ea] text-[#2f4554];
   }
 
   .badge-venue-meta {
@@ -121,7 +170,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .badge-venue-meta {
-    @apply border-slate-400 bg-slate-200 text-slate-800;
+    @apply border-[#b5aea3] bg-[#ddd8cf] text-[#5a534c];
   }
 
   .pub-tag {
@@ -129,7 +178,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .pub-tag {
-    @apply border-slate-300 bg-slate-100 text-slate-700;
+    @apply border-[#c5bfb4] bg-[#ebe6de] text-[#5c574f];
   }
 
   .meta-pill {
@@ -137,7 +186,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .meta-pill {
-    @apply border-slate-300 bg-slate-100 text-slate-700;
+    @apply border-[#c5bfb4] bg-[#ebe6de] text-[#5c574f];
   }
 
   .course-pill {
@@ -145,7 +194,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .course-pill {
-    @apply bg-slate-100 text-slate-600;
+    @apply bg-[#ebe6de] text-[#6b6560];
   }
 
   .filter-pill-active {
@@ -153,15 +202,15 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .filter-pill-active {
-    @apply bg-indigo-100 text-indigo-900 ring-indigo-400;
+    @apply bg-[#e3dce8] text-[#4e3d5e] ring-[#b8a9c9];
   }
 
   .filter-pill-inactive {
-    @apply text-zinc-400 hover:text-white;
+    @apply text-zinc-400 transition hover:text-zinc-100;
   }
 
   html[data-theme="light"] .filter-pill-inactive {
-    @apply text-slate-600 hover:text-slate-900;
+    @apply text-[#7a746c] hover:text-[#453d4a];
   }
 
   .link-muted {
@@ -169,31 +218,31 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .link-muted {
-    @apply text-indigo-700 hover:text-cyan-800;
+    @apply text-[#6b5b7a] hover:text-[#5f7a6e];
   }
 
   .nav-link-active {
-    @apply scale-110 text-base font-semibold text-white;
+    @apply scale-110 text-base font-semibold text-zinc-50;
   }
 
   html[data-theme="light"] .nav-link-active {
-    @apply text-slate-900;
+    color: #453d4a;
   }
 
   .nav-link-inactive {
-    @apply text-sm font-medium text-zinc-500 hover:text-zinc-300;
+    @apply text-sm font-medium text-zinc-500 transition hover:text-zinc-200;
   }
 
   html[data-theme="light"] .nav-link-inactive {
-    @apply text-slate-600 hover:text-slate-900;
+    @apply text-[#7a746c] hover:text-[#453d4a];
   }
 
   .nav-btn {
-    @apply rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 transition hover:text-white;
+    @apply rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 transition hover:bg-indigo-500/20 hover:text-zinc-50;
   }
 
   html[data-theme="light"] .nav-btn {
-    @apply border-indigo-300 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 hover:text-indigo-950;
+    @apply border-[#b8a9c9] bg-[#ebe6de] text-[#4e3d5e] hover:bg-[#e3dce8] hover:text-[#3a2f48];
   }
 
   .theme-toggle-btn {
@@ -201,7 +250,15 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .theme-toggle-btn {
-    @apply border-slate-400 bg-white text-slate-700 hover:border-indigo-400 hover:text-indigo-800;
+    @apply border-[#b5aea3] bg-[#f5f2ec] text-[#5c574f] hover:border-[#8a7e9a] hover:text-[#4e3d5e];
+  }
+
+  .hero-identity {
+    @apply rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-200;
+  }
+
+  html[data-theme="light"] .hero-identity {
+    @apply border-[#b8a9c9] bg-[#ebe6de] text-[#4e3d5e];
   }
 
   .timeline-card {
@@ -209,31 +266,55 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .timeline-card {
-    @apply border-slate-300 bg-white shadow-sm;
+    @apply border-[#c5bfb4] bg-[#f5f2ec] shadow-sm;
+  }
+
+  .timeline-role {
+    @apply text-cyan-300/90;
   }
 
   html[data-theme="light"] .timeline-role {
-    @apply text-cyan-800;
+    color: #5f7a6e;
+  }
+
+  .marquee-card {
+    @apply border-lab-border bg-lab-surface;
   }
 
   html[data-theme="light"] .marquee-card {
-    @apply border-slate-300 bg-white shadow-sm;
+    @apply border-[#c5bfb4] bg-[#f5f2ec] shadow-sm;
   }
 
-  html[data-theme="light"] .marquee-card p:first-child {
-    @apply text-slate-800;
+  .marquee-title {
+    @apply text-zinc-300;
+  }
+
+  html[data-theme="light"] .marquee-card .marquee-title {
+    color: #453d4a;
+  }
+
+  .skill-pill {
+    @apply border-indigo-500/20 bg-indigo-500/5 text-indigo-300;
   }
 
   html[data-theme="light"] .skill-pill {
-    @apply border-indigo-300 bg-indigo-50 text-indigo-900;
+    @apply border-[#b8a9c9] bg-[#ebe6de] text-[#4e3d5e];
   }
 
-  .hero-identity {
-    @apply text-indigo-200;
+  .external-link-icon {
+    @apply shrink-0 text-cyan-400/80;
   }
 
-  html[data-theme="light"] .hero-identity {
-    @apply border-indigo-300 bg-indigo-50 text-indigo-900;
+  html[data-theme="light"] .external-link-icon {
+    color: #6b5b7a;
+  }
+
+  .contact-email {
+    @apply text-zinc-300 transition;
+  }
+
+  html[data-theme="light"] .contact-email {
+    @apply text-[#453d4a] hover:text-[#5e4b71];
   }
 }
 
@@ -243,7 +324,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .gradient-text {
-    @apply from-indigo-600 to-cyan-700;
+    @apply from-[#6b5b7a] to-[#5f7a6e];
   }
 
   .section-container {
@@ -255,11 +336,11 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .glass-card {
-    @apply border-slate-300 bg-white shadow-[0_4px_24px_rgba(15,23,42,0.08)];
+    @apply border-[#c5bfb4] bg-[#f5f2ec] shadow-[0_4px_20px_rgb(69_61_74_/_0.08)];
   }
 
   html[data-theme="light"] .glass-card:hover {
-    @apply border-slate-400 shadow-[0_6px_28px_rgba(15,23,42,0.1)];
+    @apply border-[#b5aea3] shadow-[0_6px_24px_rgb(69_61_74_/_0.1)];
   }
 
   .marquee-mask {
@@ -298,7 +379,11 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .hero-fallback-gradient {
-    @apply from-indigo-200/70 via-lab-bg to-cyan-200/60;
+    @apply from-[#d4cce0]/80 via-lab-bg to-[#c8d8d0]/70;
+  }
+
+  html[data-theme="light"] .hero-fallback-dot {
+    fill: #6b5b7a;
   }
 
   @keyframes marquee-scroll {

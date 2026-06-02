@@ -28,18 +28,18 @@ export function ContactSection() {
         className="glass-card flex items-center justify-between gap-6 p-6 sm:p-8"
       >
         <div className="min-w-0 text-left">
-          <p className="text-xl font-bold leading-tight text-white sm:text-2xl">
+          <p className="text-hero-title text-xl leading-tight sm:text-2xl">
             {profile.heroName}
           </p>
-          <p className="mt-1 text-sm text-zinc-500">{profile.name}</p>
+          <p className="text-muted mt-1 text-sm">{profile.name}</p>
         </div>
 
         <div className="shrink-0 text-right text-sm">
-          <p className="text-zinc-500">{profile.contact.location}</p>
+          <p className="text-muted">{profile.contact.location}</p>
           <button
             type="button"
             onClick={copyEmail}
-            className="mt-1 text-zinc-300 transition hover:text-cyan-300"
+            className="contact-email mt-1"
           >
             {copied ? ui.contact.copied : profile.contact.email}
           </button>

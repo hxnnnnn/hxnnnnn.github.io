@@ -22,7 +22,9 @@ export function EducationSection() {
             className="glass-card p-6"
           >
             <div className="flex flex-wrap items-start justify-between gap-2">
-              <h3 className="text-lg font-semibold text-white">{edu.school}</h3>
+              <h3 className="text-card-title text-lg font-semibold">
+                {edu.school}
+              </h3>
               <Badge variant="accent">{edu.period}</Badge>
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -35,7 +37,7 @@ export function EducationSection() {
                 </span>
               ))}
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+            <p className="text-body mt-4 text-sm leading-relaxed">
               {edu.research}
             </p>
             {edu.courses && edu.courses.length > 0 && (

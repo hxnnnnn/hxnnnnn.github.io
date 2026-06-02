@@ -62,7 +62,7 @@ export function PublicationsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: Math.min(i * 0.05, 0.3) }}
-            className="glass-card group overflow-hidden transition hover:border-indigo-500/30"
+            className="glass-card group overflow-hidden transition hover:border-indigo-500/30 dark:hover:border-indigo-500/30"
           >
             <div
               className={`h-1 bg-gradient-to-r ${getVenueColor(pub.venue)}`}
@@ -78,16 +78,16 @@ export function PublicationsSection() {
                 <Badge variant="venue">{pub.venue}</Badge>
                 <Badge variant="venueMeta">{pub.venueMeta}</Badge>
               </div>
-              <h3 className="mt-3 font-medium leading-snug text-white group-hover:text-cyan-100">
+              <h3 className="text-card-title mt-3">
                 {pub.url ? (
                   <a
                     href={pub.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-start gap-2 hover:text-cyan-300"
+                    className="card-title-link"
                   >
                     <span>{pub.title}</span>
-                    <span className="shrink-0 text-cyan-400/80" aria-hidden>
+                    <span className="external-link-icon" aria-hidden>
                       ↗
                     </span>
                   </a>

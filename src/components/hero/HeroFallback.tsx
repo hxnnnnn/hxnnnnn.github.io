@@ -43,8 +43,9 @@ export function HeroFallback({ progress }: HeroFallbackProps) {
               cx={cx}
               cy={cy}
               r={2 + (i % 3)}
+              className="hero-fallback-dot fill-cyan-400"
               fill="#22d3ee"
-              opacity={0.2 + progress * 0.4}
+              opacity={0.35 + progress * 0.45}
             />
           )
         })}

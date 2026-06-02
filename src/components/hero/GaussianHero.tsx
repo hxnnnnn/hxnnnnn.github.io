@@ -2,6 +2,7 @@ import { Suspense, useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
+import { useTheme } from '../../theme/ThemeContext'
 import {
   generateColors,
   generateDispersedPositions,
@@ -13,13 +14,14 @@ const PARTICLE_COUNT = 3500
 interface ParticleFieldProps {
   progress: number
   reducedMotion: boolean
+  theme: 'dark' | 'light'
 }
 
-function ParticleField({ progress, reducedMotion }: ParticleFieldProps) {
+function ParticleField({ progress, reducedMotion, theme }: ParticleFieldProps) {
   const pointsRef = useRef<THREE.Points>(null)
   const dispersed = useMemo(() => generateDispersedPositions(PARTICLE_COUNT), [])
   const target = useMemo(() => generateHeadTargetPositions(PARTICLE_COUNT), [])
-  const colors = useMemo(() => generateColors(PARTICLE_COUNT), [])
+  const colors = useMemo(() => generateColors(PARTICLE_COUNT, theme), [theme])
 
   const geometry = useMemo(() => {
     const geo = new THREE.BufferGeometry()
@@ -52,16 +54,20 @@ function ParticleField({ progress, reducedMotion }: ParticleFieldProps) {
     points.rotation.y = reducedMotion ? 0 : time * 0.05 * (1 - t * 0.5)
   })
 
+  const isLight = theme === 'light'
+
   return (
     <points ref={pointsRef} geometry={geometry}>
       <pointsMaterial
-        size={0.045}
+        size={isLight ? 0.052 : 0.045}
         vertexColors
         transparent
-        opacity={0.85}
+        opacity={isLight ? 0.9 : 0.85}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={
+          isLight ? THREE.NormalBlending : THREE.AdditiveBlending
+        }
       />
     </points>
   )
@@ -73,13 +79,29 @@ interface GaussianHeroProps {
   onReady?: () => void
 }
 
-function Scene({ progress, reducedMotion }: Omit<GaussianHeroProps, 'onReady'>) {
+function Scene({
+  progress,
+  reducedMotion,
+  theme,
+}: Omit<GaussianHeroProps, 'onReady'> & { theme: 'dark' | 'light' }) {
   return (
     <>
-      <ambientLight intensity={0.4} />
-      <pointLight position={[4, 4, 4]} intensity={1.2} color="#6366f1" />
-      <pointLight position={[-4, -2, 2]} intensity={0.6} color="#22d3ee" />
-      <ParticleField progress={progress} reducedMotion={reducedMotion} />
+      <ambientLight intensity={theme === 'light' ? 0.65 : 0.4} />
+      <pointLight
+        position={[4, 4, 4]}
+        intensity={theme === 'light' ? 0.9 : 1.2}
+        color={theme === 'light' ? '#8a7e9a' : '#6366f1'}
+      />
+      <pointLight
+        position={[-4, -2, 2]}
+        intensity={theme === 'light' ? 0.5 : 0.6}
+        color={theme === 'light' ? '#7a9488' : '#22d3ee'}
+      />
+      <ParticleField
+        progress={progress}
+        reducedMotion={reducedMotion}
+        theme={theme}
+      />
       <OrbitControls
         enableZoom={false}
         enablePan={false}
@@ -97,16 +119,23 @@ export function GaussianHero({
   reducedMotion,
   onReady,
 }: GaussianHeroProps) {
+  const { theme } = useTheme()
+
   return (
     <div className="absolute inset-0">
       <Canvas
+        key={theme}
         camera={{ position: [0, 0, 4.5], fov: 50 }}
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true }}
         onCreated={() => onReady?.()}
       >
         <Suspense fallback={null}>
-          <Scene progress={progress} reducedMotion={reducedMotion} />
+          <Scene
+            progress={progress}
+            reducedMotion={reducedMotion}
+            theme={theme}
+          />
         </Suspense>
       </Canvas>
     </div>

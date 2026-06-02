@@ -39,7 +39,7 @@ export function HeroSection() {
 
       {loading && showWebGL && (
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-lab-bg">
-          <p className="text-sm text-zinc-400">{ui.hero.loading}</p>
+          <p className="text-muted text-sm">{ui.hero.loading}</p>
           <div className="mt-4 h-1 w-48 overflow-hidden rounded-full bg-lab-border">
             <motion.div
               className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400"
@@ -56,7 +56,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-4xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
+          className="text-hero-title text-4xl sm:text-6xl md:text-7xl"
         >
           {profile.heroName}
         </motion.h1>
@@ -81,7 +81,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-zinc-500"
+        className="text-muted absolute bottom-10 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-xs">
           {showWebGL ? ui.hero.scrollWebGL : ui.hero.scrollMobile}

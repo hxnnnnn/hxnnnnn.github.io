@@ -25,14 +25,14 @@ function MarqueeRow({
             key={`${item.title}-${i}`}
             className="marquee-card w-64 shrink-0 rounded-xl border border-lab-border bg-lab-surface px-4 py-3"
           >
-            <p className="text-sm leading-snug text-zinc-300">{item.title}</p>
+            <p className="marquee-title text-sm leading-snug">{item.title}</p>
             {item.date && (
-              <p className="mt-1.5 text-xs text-zinc-500">{item.date}</p>
+              <p className="text-muted mt-1.5 text-xs">{item.date}</p>
             )}
           </div>
         ))}
       </div>
-      <p className="mt-1 text-center text-[10px] text-zinc-600">{hoverHint}</p>
+      <p className="text-faint mt-1 text-center text-[10px]">{hoverHint}</p>
     </div>
   )
 }
@@ -44,7 +44,7 @@ export function AwardsSection() {
     <section className="section-container scroll-mt-28">
       <SectionHeader id="awards" title={ui.sections.awards} />
 
-      <h3 className="mb-4 text-sm font-medium uppercase tracking-wider text-zinc-500">
+      <h3 className="text-muted mb-4 text-sm font-medium uppercase tracking-wider">
         {ui.sections.awardsList}
       </h3>
       <MarqueeRow
@@ -53,7 +53,7 @@ export function AwardsSection() {
         hoverHint={ui.marquee.hoverHint}
       />
 
-      <h3 className="mb-4 mt-10 text-sm font-medium uppercase tracking-wider text-zinc-500">
+      <h3 className="mb-4 mt-10 text-muted text-sm font-medium uppercase tracking-wider">
         {ui.sections.honorsList}
       </h3>
       <MarqueeRow
@@ -66,7 +66,7 @@ export function AwardsSection() {
 
       <h3
         id="patents"
-        className="mb-4 mt-10 scroll-mt-28 text-sm font-medium uppercase tracking-wider text-zinc-500"
+        className="mb-4 mt-10 scroll-mt-28 text-muted text-sm font-medium uppercase tracking-wider"
       >
         {ui.sections.patents}
       </h3>
@@ -81,21 +81,21 @@ export function AwardsSection() {
             className="glass-card flex h-full flex-col p-4"
           >
             <Badge variant="status">{pat.role}</Badge>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-300">
+            <p className="text-body mt-3 flex-1 text-sm leading-relaxed">
               {pat.title}
             </p>
           </motion.div>
         ))}
       </div>
 
-      <h3 className="mb-4 mt-10 text-sm font-medium uppercase tracking-wider text-zinc-500">
+      <h3 className="mb-4 mt-10 text-muted text-sm font-medium uppercase tracking-wider">
         {ui.sections.skills}
       </h3>
       <div className="flex flex-wrap gap-2">
         {profile.skills.map((skill) => (
           <span
             key={skill}
-            className="skill-pill rounded-lg border border-indigo-500/20 bg-indigo-500/5 px-3 py-1.5 text-sm text-indigo-300"
+            className="skill-pill rounded-lg border px-3 py-1.5 text-sm"
           >
             {skill}
           </span>

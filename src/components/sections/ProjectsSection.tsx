@@ -26,8 +26,8 @@ export function ProjectsSection() {
               <Badge>{proj.period}</Badge>
               <Badge variant="status">{proj.level}</Badge>
             </div>
-            <p className="mt-3 text-xs text-zinc-500">{proj.program}</p>
-            <h3 className="mt-2 text-base font-medium leading-snug text-white">
+            <p className="text-muted mt-3 text-xs">{proj.program}</p>
+            <h3 className="text-card-title mt-2 text-base">
               {proj.fullTitle}
             </h3>
             <CollapsibleBlock

@@ -1,3 +1,5 @@
+export type ParticleTheme = 'dark' | 'light'
+
 export function generateDispersedPositions(count: number): Float32Array {
   const positions = new Float32Array(count * 3)
   for (let i = 0; i < count; i++) {
@@ -37,13 +39,23 @@ export function generateHeadTargetPositions(count: number): Float32Array {
   return positions
 }
 
-export function generateColors(count: number): Float32Array {
+export function generateColors(
+  count: number,
+  theme: ParticleTheme = 'dark',
+): Float32Array {
   const colors = new Float32Array(count * 3)
   for (let i = 0; i < count; i++) {
     const t = Math.random()
-    colors[i * 3] = 0.39 + t * 0.2
-    colors[i * 3 + 1] = 0.45 + t * 0.35
-    colors[i * 3 + 2] = 0.95 + t * 0.05
+    if (theme === 'light') {
+      // Morandi: dusty purple-blue, higher contrast on light bg
+      colors[i * 3] = 0.38 + t * 0.18
+      colors[i * 3 + 1] = 0.34 + t * 0.14
+      colors[i * 3 + 2] = 0.52 + t * 0.2
+    } else {
+      colors[i * 3] = 0.39 + t * 0.2
+      colors[i * 3 + 1] = 0.45 + t * 0.35
+      colors[i * 3 + 2] = 0.95 + t * 0.05
+    }
   }
   return colors
 }

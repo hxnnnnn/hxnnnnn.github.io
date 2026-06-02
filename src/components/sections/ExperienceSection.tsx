@@ -27,14 +27,14 @@ export function ExperienceSection() {
             <div className="glass-card p-6">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <h3 className="text-lg font-semibold text-white">
+                  <h3 className="text-card-title text-lg font-semibold">
                     {exp.org}
                   </h3>
-                  <p className="text-sm text-cyan-400">{exp.role}</p>
+                  <p className="text-role">{exp.role}</p>
                 </div>
                 <Badge variant="accent">{exp.period}</Badge>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+              <p className="text-body mt-4 text-sm leading-relaxed">
                 {exp.description}
               </p>
               {exp.highlights && exp.highlights.length > 0 && (
@@ -42,7 +42,7 @@ export function ExperienceSection() {
                   {exp.highlights.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start gap-2 text-xs leading-relaxed text-zinc-500"
+                      className="text-muted flex items-start gap-2 text-xs leading-relaxed"
                     >
                       <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan-400/80" />
                       {point}
