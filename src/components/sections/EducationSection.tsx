@@ -1,9 +1,12 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { profile } from '../../data/profile'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
 
 export function EducationSection() {
+  const [openCourses, setOpenCourses] = useState<number | null>(null)
+
   return (
     <section className="section-container pt-0">
       <SectionHeader id="education" title="教育背景" />
@@ -30,11 +33,45 @@ export function EducationSection() {
             </div>
             <ul className="mt-4 space-y-1">
               {edu.details.map((d) => (
-                <li key={d} className="text-sm text-zinc-400">
+                <li key={d} className="text-sm leading-relaxed text-zinc-400">
                   {d}
                 </li>
               ))}
             </ul>
+            {edu.courses && edu.courses.length > 0 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenCourses(openCourses === i ? null : i)
+                  }
+                  className="mt-4 text-sm text-indigo-400 transition hover:text-cyan-400"
+                >
+                  {openCourses === i ? '收起核心课程' : '查看核心课程'}
+                </button>
+                <AnimatePresence>
+                  {openCourses === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {edu.courses.map((c) => (
+                          <span
+                            key={c}
+                            className="rounded-lg bg-lab-bg px-2.5 py-1 text-xs text-zinc-500"
+                          >
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </>
+            )}
           </motion.div>
         ))}
       </div>

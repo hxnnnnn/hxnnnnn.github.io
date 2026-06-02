@@ -2,6 +2,37 @@ import { motion } from 'framer-motion'
 import { profile } from '../../data/profile'
 import { SectionHeader } from '../ui/SectionHeader'
 
+function AwardList({
+  items,
+  prefix,
+}: {
+  items: readonly { title: string; date?: string }[]
+  prefix: string
+}) {
+  return (
+    <div className="flex gap-3 overflow-x-auto pb-4">
+      {items.map((item, i) => (
+        <motion.div
+          key={item.title}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.03 }}
+          className="shrink-0 rounded-xl border border-lab-border bg-lab-surface px-4 py-3"
+        >
+          <p className="max-w-xs text-sm text-zinc-300">{item.title}</p>
+          {item.date && (
+            <p className="mt-1 text-xs text-zinc-500">
+              {prefix}
+              {item.date}
+            </p>
+          )}
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
 export function AwardsSection() {
   return (
     <section className="section-container">
@@ -10,20 +41,12 @@ export function AwardsSection() {
       <h3 className="mb-4 text-sm font-medium uppercase tracking-wider text-zinc-500">
         获奖情况
       </h3>
-      <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin">
-        {profile.awards.map((award, i) => (
-          <motion.span
-            key={award}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.03 }}
-            className="shrink-0 rounded-xl border border-lab-border bg-lab-surface px-4 py-3 text-sm text-zinc-300"
-          >
-            {award}
-          </motion.span>
-        ))}
-      </div>
+      <AwardList items={profile.awards} prefix="" />
+
+      <h3 className="mb-4 mt-10 text-sm font-medium uppercase tracking-wider text-zinc-500">
+        个人荣誉
+      </h3>
+      <AwardList items={profile.honors} prefix="" />
 
       <h3 className="mb-4 mt-10 text-sm font-medium uppercase tracking-wider text-zinc-500">
         实践经历

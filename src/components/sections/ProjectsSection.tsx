@@ -18,7 +18,7 @@ export function ProjectsSection() {
       <div className="space-y-4">
         {profile.projects.map((proj, i) => (
           <motion.div
-            key={proj.title}
+            key={proj.name}
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -27,9 +27,11 @@ export function ProjectsSection() {
           >
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="accent">{proj.role}</Badge>
+              <Badge>{proj.period}</Badge>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-              {proj.title}
+            <h3 className="mt-3 font-medium text-white">{proj.name}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+              {proj.description}
             </p>
           </motion.div>
         ))}

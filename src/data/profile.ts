@@ -7,6 +7,7 @@ export interface Publication {
   role: string
   tags: string[]
   impact?: string
+  abstract?: string
 }
 
 export interface Experience {
@@ -23,6 +24,7 @@ export interface Education {
   degree: string
   period: string
   details: string[]
+  courses?: string[]
 }
 
 export interface Patent {
@@ -31,8 +33,15 @@ export interface Patent {
 }
 
 export interface Project {
-  title: string
+  name: string
+  period: string
   role: string
+  description: string
+}
+
+export interface AwardItem {
+  title: string
+  date?: string
 }
 
 export const profile = {
@@ -76,10 +85,18 @@ export const profile = {
       school: '香港中文大学（深圳）',
       department: '数据科学学院 · 数据科学专业',
       degree: '英文授课硕士',
-      period: '2025.09 — 2027.06',
+      period: '2025.09 — 至今',
       details: [
-        '研究方向：以人为本的 3D 计算机视觉与图形学',
-        '研究重点：NeRF/3DGS 头部虚拟形象泛化性与鲁棒性',
+        '研究方向：在韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究',
+        '研究目标：以有限成本为所有人实时生成并驱动高保真 3D 虚拟形象',
+        '研究重点：基于 NeRF/3DGS 技术的大规模图像学习头部虚拟形象泛化性与鲁棒性',
+      ],
+      courses: [
+        '人工智能',
+        '数据挖掘',
+        '机器学习',
+        '自然语言处理',
+        '图像处理与计算机视觉',
       ],
     },
     {
@@ -89,54 +106,33 @@ export const profile = {
       period: '2021.09 — 2025.06',
       details: [
         'GPA 3.8/5.0 · 绩点排名 4/30 · 综测排名 1/30',
-        'IELTS 6.5',
+        '语言能力：IELTS 6.5 · CET-4 574 · CET-6 438',
+      ],
+      courses: [
+        '数据挖掘导论（100）',
+        '分布式数据结构（99）',
+        '人工智能（99）',
+        '深度学习算法（99）',
+        '数据挖掘与机器学习（97）',
+        '大数据分析技术（96）',
+        '数学基础实验（95）',
+        '数据科学导论（95）',
+        '统计计算（95）',
+        '并行与分布式计算（94）',
       ],
     },
   ] satisfies Education[],
   publications: [
     {
       title:
-        'InfiHead: Learning a Feedforward Disentangled 3D Full-Head Model from Scalable Monocular 2D Data',
-      venue: 'SIGGRAPH Asia 2026',
-      status: '在投',
-      role: '第二作者',
-      tags: ['3D', 'NeRF', 'Full-Head'],
-    },
-    {
-      title:
-        'DAS: A Dynamic Adaptation System for Pest Detection via Edge-Cloud Collaboration',
-      venue: 'IEEE Transactions on Instrumentation and Measurement',
-      status: '在投',
-      role: '第二作者',
-      tags: ['Edge-Cloud', 'Detection'],
-      impact: 'Q2, IF=5.90',
-    },
-    {
-      title:
-        'MS-FDD: A Lightweight Multi-Scale Module for Fatigue Driving Detection',
-      venue: 'ACM Transactions on Intelligent Systems and Technology',
-      status: '在投',
-      role: '第二作者',
-      tags: ['Fatigue', 'Lightweight'],
-      impact: 'Q1, IF=7.20',
-    },
-    {
-      title:
         'LEPS: A lightweight and effective single-stage detector for pothole segmentation',
       venue: 'IEEE Sensors Journal',
       status: '已发表',
       role: '第一作者',
-      tags: ['Segmentation', 'Detection'],
-      impact: 'Q2, IF=4.30',
-    },
-    {
-      title:
-        'Real-time Underwater Visual Target Sensing System with Multitasking via Edge-Cloud Collaboration',
-      venue: 'IEEE Journal of Oceanic Engineering',
-      status: '已发表',
-      role: '第二作者',
-      tags: ['Underwater', 'Edge-Cloud'],
-      impact: 'Q2, IF=3.80',
+      tags: ['Segmentation', 'Edge Computing'],
+      impact: 'SCI Q2, IF=4.30',
+      abstract:
+        '针对城市路面坑洼识别的复杂性与边缘计算设备的部署需求，自主研发并实现了一种轻量化实例分割检测器 LEPS。通过在主干网络中引入卷积叠加补充卷积核模块，有效增强了特征提取能力；同时对颈部层进行轻量化创新设计，并优化检测头结构以实现细粒度特征的高质量掩码生成。实验结果表明，该模型在 URTIRI 与 COCO 权威数据集上展现了极强的竞争力，成功平衡了检测精度与模型负载，为视觉传感器在真实环境下的实时巡检提供了高效的解决方案。',
     },
     {
       title:
@@ -145,7 +141,34 @@ export const profile = {
       status: '已发表',
       role: '第二作者',
       tags: ['Agriculture', 'YOLO'],
-      impact: 'Q3, IF=3.90',
+      impact: 'SCI Q3, IF=3.90',
+    },
+    {
+      title:
+        'DAS: A Dynamic Adaptation System for Pest Detection via Edge-Cloud Collaboration',
+      venue: 'IEEE Transactions on Instrumentation and Measurement',
+      status: '在投',
+      role: '第二作者',
+      tags: ['Edge-Cloud', 'Detection'],
+      impact: 'SCI Q2, IF=5.90',
+    },
+    {
+      title:
+        'Real-time Underwater Visual Target Sensing System with Multitasking via Edge-Cloud Collaboration',
+      venue: 'IEEE Journal of Oceanic Engineering',
+      status: '在投',
+      role: '第二作者',
+      tags: ['Underwater', 'Edge-Cloud'],
+      impact: 'SCI Q2, IF=3.80',
+    },
+    {
+      title:
+        'MS-FDD: A Lightweight Multi-Scale Module for Fatigue Driving Detection',
+      venue: 'ACM Transactions on Intelligent Systems and Technology',
+      status: '在投',
+      role: '第二作者',
+      tags: ['Fatigue', 'Lightweight'],
+      impact: 'SCI Q1, IF=7.20',
     },
     {
       title:
@@ -177,13 +200,15 @@ export const profile = {
       status: '已发表',
       role: '第三作者',
       tags: ['Agriculture', 'YOLO'],
+      impact: '北大核心',
     },
     {
       title: '基于改进 YOLO11 的无人机小目标轻量级高速检测器',
       venue: '华南师范大学学报（自然科学版）',
-      status: '已发表',
+      status: '在投',
       role: '第三作者',
       tags: ['UAV', 'Detection'],
+      impact: '北大核心',
     },
   ] satisfies Publication[],
   patents: [
@@ -202,76 +227,115 @@ export const profile = {
   ] satisfies Patent[],
   experience: [
     {
-      org: '字节跳动',
-      role: '3D 生成算法实习生',
-      period: '2026.03 — 至今',
-      description:
-        '聚焦 3D 生成方向，协同算法、工程及产品团队攻克视角不一致、多模态融合等技术难题。负责多类型 3D 数据的生成、清洗、标注与标准化预处理，构建并维护团队内部 3D 生成专用数据集。使用 Blender/Unity 进行 3D 场景建模与渲染，独立完成 3 项数据专项任务交付。',
-      tags: ['3D Generation', 'Blender', 'Unity', 'Data Pipeline'],
-    },
-    {
-      org: '港中深 GAP 实验室',
+      org: '香港中文大学（深圳）GAP Lab',
       role: '科研助理',
-      period: '2025.08 — 至今',
+      period: '2025.09 — 至今',
       description:
-        '深度参与前沿 3D 视觉与生成式 AI 研究。利用 FLUX.1 与 Qwen2.5-VL 构建 1120 万样本平衡数据集。协助开发实时上半身化身生成框架，将 3D 重建特征与自回归视频扩散模型结合，实现 15 FPS 高保真视频合成。负责可控人脸模型数据代码，用生成模型补齐表情与光照数据缺口。',
+        '深度参与多项前沿 3D 视觉与生成式 AI 研究。针对 3D-aware GAN 的视角偏差问题，利用 FLUX.1 与 Qwen2.5-VL 构建了包含 1120 万样本的平衡数据集。协助开发实时上半身化身生成框架，将 3D 重建特征与自回归视频扩散模型结合，实现 15 FPS 高保真视频合成。目前负责下一代可控人脸模型的数据代码，利用生成模型补齐表情与光照数据缺口，支持大视角人脸识别等下游任务研究。',
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
     {
-      org: '华南师范大学 RI Lab',
-      role: '科研助理 / 本科团队负责人',
-      period: '2021 — 2025',
+      org: '深圳市一零二四机器人科技有限公司',
+      role: '产品经理',
+      period: '2025.07 — 2025.09',
       description:
-        '参与机器人感知、目标检测与边缘-云协作等方向研究，带领本科团队完成多项竞赛与论文产出。',
-      tags: ['Robotics', 'Detection', 'Edge-Cloud'],
+        '聚焦低速自动驾驶领域，深度参与商用无人洗地机与物流车的产品定义与迭代。通过实地调研与竞品分析识别用户痛点，利用仿真与实测数据驱动识别技术瓶颈，为感知定位模块的优化提供决策支持。负责跨职能团队协作，协调研发与测试推进功能交付，成功构建从底层功能定义到交互原型的完整闭环。',
+      tags: ['Autonomous Driving', 'Product', 'Perception'],
+    },
+    {
+      org: '奥智元科技（深圳）有限公司',
+      role: 'AI 解决方案助理实习生',
+      period: '2025.02 — 2025.07',
+      description:
+        '负责 AI 驱动方案的端到端设计与落地，重点实施面向香港工地的安全生产视觉检测系统，通过对 YOLO、VLM 及 LLM 的优化提升识别精度与边缘端部署效率。主导 Text-to-SQL 自然语言交互框架搭建，实现业务数据的智能化提取。深度参与从客户需求分析到技术架构整合的全流程，协调跨部门资源确保 AI 解决方案的交付与闭环调整。',
+      tags: ['YOLO', 'VLM', 'LLM', 'Text-to-SQL'],
+    },
+    {
+      org: '华南师范大学 RI Lab',
+      role: '科研助理',
+      period: '2021.09 — 2025.09',
+      description:
+        '主导计算机视觉与边缘计算方向多项研发：设计并实现轻量化单阶段实例分割检测器 LEPS；针对农业与水下场景研发基于端云协同的动态适配感知系统（DAS）及实时多任务感知框架；优化复杂背景下小目标轻量化检测算法；开发多尺度疲劳驾驶检测模块及实时面部表情识别模型；负责多传感器融合定位与机器人路径规划算法优化。',
+      tags: ['Computer Vision', 'Edge-Cloud', 'Robotics'],
     },
   ] satisfies Experience[],
   projects: [
     {
-      title:
-        '「攀登计划」科技创新培育省级一般项目：基于低空无人机遥感识别技术的智能巡检系统与保险定损模式一体化研究',
+      name: '智保百千村—多领域基础设施智能巡检与保险定损一体化研究',
+      period: '2025.03 — 至今',
       role: '参与成员',
+      description:
+        '「攀登计划」科技创新培育省级一般项目。负责基础设施智能巡检系统的端到端算法设计与落地，优化轻量化模型及边缘侧部署效率，提升低空复杂背景下小目标识别精度。主导基于遥感图像的目标识别与保险定损一体化框架搭建，协调巡检作业与定损理赔业务协同，确保 AI 解决方案在「智能巡检-自动定损」场景中的完整闭环。',
     },
     {
-      title:
-        '「攀登计划」科技创新培育省级重点项目：双减政策下课堂过程性智能评价模型的构建及其教学应用研究',
-      role: '参与成员',
-    },
-    {
-      title:
-        '「大学生创新创业训练计划」省级重点项目：基于改进 YOLOv5 的 5G 通信干扰源检测研究',
+      name: '基于改进 YOLOv5 的 5G 通信干扰源检测研究',
+      period: '2022.11 — 2024.05',
       role: '负责人',
+      description:
+        '「大学生创新创业训练计划」省级重点项目。结合传统移动通信干扰源排查流程，创新研发目标检测算法，采用无人机搭载检测器对高处、隐蔽处天线进行检测，辅助甚至替代人工巡检，填补天线干扰源目标检测领域在学习样本与检测模型上的空白，极大提升排查效率。',
     },
     {
-      title: '「金种子」校级一般课题：基于人脸情感识别的高校课堂教学评价研究',
+      name: '基于人脸情感识别的高校课堂教学评价研究',
+      period: '2022.03 — 2023.03',
       role: '核心成员',
+      description:
+        '「金种子」校级一般课题。构建高校课堂学生人脸情感识别模型，采用基于边缘的双通道特征融合模型进行特征提取，通过 MSAFNet 网络进行表情分类，并引入 PAD 三维情感模型测量情感投入评估。',
+    },
+    {
+      name: '「双减」政策下课堂过程性智能评价模型的构建及其教学应用研究',
+      period: '2021.11 — 2024.11',
+      role: '参与成员',
+      description:
+        '「攀登计划」科技创新培育省级重点项目。构建用于测量学生课堂学习状态的评价模型，引入面部情感识别、语音语义分析等技术对学生个体状态进行多角度、持续性课堂评价，为教师改进教学设计、提升课堂质量提供反馈参考。',
     },
   ] satisfies Project[],
   awards: [
-    '数据挖掘大赛国家级一等奖',
-    '广东大学生课外学术科技作品竞赛省级一等奖',
-    '「挑战杯」广东大学生课外学术科技作品竞赛省级一等奖',
-    '中国国际大学生创新大赛省级一等奖',
-    '「三下乡」暑期社会实践活动优秀团队、先进个人',
-    '百佳优秀毕业生',
-    '华为基座奖学金一等奖',
-    '百佳共青团员',
-    '创新奖学金特等奖',
-    '大学优秀学生干部',
-    '综合奖学金一等奖',
-  ],
+    { title: '第十届「泰迪杯」数据挖掘大赛国家级一等奖', date: '2022.06' },
+    {
+      title: '第十八届「挑战杯」广东大学生课外学术科技作品竞赛省级一等奖',
+      date: '2022.11',
+    },
+    {
+      title: '第十七届「挑战杯」广东大学生课外学术科技作品竞赛省级三等奖',
+      date: '2022.11',
+    },
+    {
+      title: '第十四届「挑战杯」广东大学生创业计划竞赛省级二等奖',
+      date: '2023.11',
+    },
+    { title: '2025 年中国国际大学生创新大赛省级一等奖', date: '2025.11' },
+    { title: '2024 年中国国际大学生创新大赛省级三等奖', date: '2024.11' },
+    { title: '2023 年全国大学生数学建模竞赛省级三等奖', date: '2023.11' },
+    {
+      title: '华南师范大学「三下乡」暑期社会实践活动优秀团队、先进个人',
+      date: '2022 — 2024',
+    },
+  ] satisfies AwardItem[],
+  honors: [
+    { title: '华南师范大学百佳优秀毕业生', date: '2025.06' },
+    { title: '华南师范大学华为基座奖学金一等奖', date: '2024.04' },
+    { title: '华南师范大学百佳共青团员', date: '2024.04' },
+    { title: '华南师范大学创新奖学金特等奖（论文类）', date: '2024.04' },
+    { title: '华南师范大学优秀学生干部', date: '2022 — 2024' },
+    { title: '华南师范大学综合奖学金一等奖', date: '2022 — 2025' },
+  ] satisfies AwardItem[],
   practice: [
-    '曾参与 SIGGRAPH Asia 2025、AIIIP 2024、ICEIT 2024、ICAUS 2023、ICICSP 2022 等国际学术会议',
-    '曾任华南师范大学 2021 级数据科学与大数据技术班长、学生兼职班主任、学生会主席团成员',
+    '曾参与国际学术会议 SIGGRAPH Asia 2025、AIIIP 2024、ICEIT 2024、ICAUS 2023、ICICSP 2022',
+    '曾任华南师范大学 RI Lab 科研助理、本科团队负责人（2021 — 2025）',
+    '曾任华南师范大学 2021 级数据科学与大数据技术班长（2021 — 2025）',
+    '曾任华南师范大学 2023 级数据科学与大数据技术学生兼职班主任（2023 — 2024）',
+    '曾任华南师范大学行知书院学生会主席团成员（2022 — 2023）',
   ],
   skills: [
     'Python',
+    'Java',
+    'C++',
+    'C',
     'Linux',
     'PyTorch',
+    'Microsoft 365',
     'Blender',
-    'Unreal Engine',
     'NeRF / 3DGS',
-    'Vibe-coding',
   ],
 } as const
 

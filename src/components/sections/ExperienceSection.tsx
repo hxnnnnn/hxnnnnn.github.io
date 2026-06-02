@@ -6,7 +6,11 @@ import { Badge } from '../ui/Badge'
 export function ExperienceSection() {
   return (
     <section className="section-container">
-      <SectionHeader id="experience" title="实习经历" />
+      <SectionHeader
+        id="experience"
+        title="实习经历"
+        subtitle="科研、产品与 AI 解决方案相关经历。"
+      />
       <div className="relative space-y-8 pl-6 before:absolute before:bottom-0 before:left-[7px] before:top-2 before:w-px before:bg-gradient-to-b before:from-indigo-500 before:to-cyan-400/30">
         {profile.experience.map((exp, i) => (
           <motion.div
