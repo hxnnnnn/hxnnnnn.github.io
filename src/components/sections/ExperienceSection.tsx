@@ -9,7 +9,7 @@ export function ExperienceSection() {
       <SectionHeader
         id="experience"
         title="实习经历"
-        subtitle="科研、产品与 AI 解决方案相关经历。"
+        subtitle="3D 视觉科研与工业界 3D 生成数据工程。"
       />
       <div className="relative space-y-8 pl-6 before:absolute before:bottom-0 before:left-[7px] before:top-2 before:w-px before:bg-gradient-to-b before:from-indigo-500 before:to-cyan-400/30">
         {profile.experience.map((exp, i) => (
@@ -35,6 +35,19 @@ export function ExperienceSection() {
               <p className="mt-4 text-sm leading-relaxed text-zinc-400">
                 {exp.description}
               </p>
+              {exp.highlights && exp.highlights.length > 0 && (
+                <ul className="mt-4 space-y-2 border-t border-lab-border/60 pt-4">
+                  {exp.highlights.map((point) => (
+                    <li
+                      key={point}
+                      className="flex items-start gap-2 text-xs leading-relaxed text-zinc-500"
+                    >
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan-400/80" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <div className="mt-4 flex flex-wrap gap-2">
                 {exp.tags.map((tag) => (
                   <Badge key={tag}>{tag}</Badge>

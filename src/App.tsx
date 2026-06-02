@@ -6,6 +6,7 @@ import { EducationSection } from './components/sections/EducationSection'
 import { PublicationsSection } from './components/sections/PublicationsSection'
 import { ExperienceSection } from './components/sections/ExperienceSection'
 import { ProjectsSection } from './components/sections/ProjectsSection'
+import { PatentsSection } from './components/sections/PatentsSection'
 import { AwardsSection } from './components/sections/AwardsSection'
 import { ContactSection } from './components/sections/ContactSection'
 import { profile } from './data/profile'
@@ -21,6 +22,7 @@ function App() {
         <PublicationsSection />
         <ExperienceSection />
         <ProjectsSection />
+        <PatentsSection />
         <AwardsSection />
         <ContactSection />
       </main>

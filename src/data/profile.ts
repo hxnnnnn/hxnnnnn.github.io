@@ -7,7 +7,16 @@ export interface Publication {
   role: string
   tags: string[]
   impact?: string
-  abstract?: string
+  url?: string
+}
+
+export interface PracticeTimelineItem {
+  id: string
+  role: string
+  org: string
+  startYear: number
+  endYear: number
+  summary: string
 }
 
 export interface Experience {
@@ -15,6 +24,7 @@ export interface Experience {
   role: string
   period: string
   description: string
+  highlights?: string[]
   tags: string[]
 }
 
@@ -56,6 +66,8 @@ export const profile = {
     site: 'https://hxnnnnn.github.io',
     scholar: '',
   },
+  publicationsSummary:
+    '涵盖 3D 全头部重建（NeRF / 3DGS）、轻量化目标检测与实例分割、端云协同多任务感知、农业/水下/道路场景视觉、疲劳驾驶与人脸表情识别，以及教育文本分类等方向；发表于 SIGGRAPH Asia、IEEE / ACM 期刊与会议及北大核心期刊。',
   research: {
     intro:
       '在香港中文大学（深圳）数据科学学院攻读硕士，于韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究。',
@@ -157,6 +169,7 @@ export const profile = {
       role: '第一作者',
       tags: ['Segmentation', 'Detection'],
       impact: 'Q2, IF=4.30',
+      url: 'https://doi.org/10.1109/JSEN.2023.3330335',
     },
     {
       title:
@@ -166,6 +179,7 @@ export const profile = {
       role: '第二作者',
       tags: ['Underwater', 'Edge-Cloud'],
       impact: 'Q2, IF=3.80',
+      url: 'https://doi.org/10.1109/JOE.2026.3678825',
     },
     {
       title:
@@ -175,6 +189,7 @@ export const profile = {
       role: '第二作者',
       tags: ['Agriculture', 'YOLO'],
       impact: 'Q3, IF=3.90',
+      url: 'https://doi.org/10.3390/s23063221',
     },
     {
       title:
@@ -183,6 +198,7 @@ export const profile = {
       status: '已发表',
       role: '第二作者',
       tags: ['FER', 'Real-time'],
+      url: 'https://doi.org/10.1145/3707292.3707342',
     },
     {
       title:
@@ -191,6 +207,7 @@ export const profile = {
       status: '已发表',
       role: '第二作者',
       tags: ['Robotics', 'SLAM'],
+      url: 'https://ieeexplore.ieee.org/document/10458454/',
     },
     {
       title:
@@ -199,6 +216,7 @@ export const profile = {
       status: '已发表',
       role: '第二作者',
       tags: ['NLP', 'Education'],
+      url: 'https://doi.org/10.1109/ICICSP55539.2022.10050570',
     },
     {
       title: '基于改进 YOLOv5 的农业害虫检测',
@@ -206,6 +224,7 @@ export const profile = {
       status: '已发表',
       role: '第三作者',
       tags: ['Agriculture', 'YOLO'],
+      url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2023048',
     },
     {
       title: '基于改进 YOLO11 的无人机小目标轻量级高速检测器',
@@ -213,6 +232,7 @@ export const profile = {
       status: '已发表',
       role: '第三作者',
       tags: ['UAV', 'Detection'],
+      url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2025050',
     },
   ] satisfies Publication[],
   patents: [
@@ -235,7 +255,12 @@ export const profile = {
       role: '科研助理',
       period: '2025.08 — 至今',
       description:
-        '深度参与前沿 3D 视觉与生成式 AI 研究。针对视角偏差问题，利用 FLUX.1 与 Qwen2.5-VL 构建了包含 1120 万样本的平衡数据集。协助开发了实时上半身化身生成框架，将 3D 重建特征与自回归视频扩散模型结合，实现 15 FPS 的高保真视频合成。负责可控人脸模型的数据代码，用生成模型补齐表情与光照数据缺口，支持大视角人脸识别等下游任务研究。',
+        '参与 3D 视觉与生成式 AI 前沿研究：构建千万级平衡数据集，开发实时上半身化身生成管线（3D 重建 + 视频扩散，15 FPS），并负责人脸可控模型的数据工程与生成式数据增广。',
+      highlights: [
+        'FLUX.1 + Qwen2.5-VL 构建 1120 万样本平衡数据集，缓解 3D-aware GAN 视角偏差',
+        '3D 重建特征对接自回归视频扩散，实现 15 FPS 高保真上半身视频合成',
+        '生成模型补齐表情/光照数据缺口，支撑大视角人脸识别等下游任务',
+      ],
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
     {
@@ -243,7 +268,12 @@ export const profile = {
       role: '3D 生成算法实习生',
       period: '2026.03 — 至今',
       description:
-        '聚焦 3D 生成方向，协同算法、工程及产品团队，攻克 3D 生成过程中视角不一致、多模态融合困难等技术难题，保障项目按节点交付。负责多类型 3D 数据的生成、清洗、标注与标准化预处理，构建并维护团队内部 3D 生成专用数据集。使用 Blender/Unity 进行 3D 场景建模与渲染，独立完成 3 项数据专项任务的交付，支撑模型的训练与迭代。',
+        '负责 3D 生成数据全链路：多模态 3D 资产的生产、清洗、标注与标准化，维护团队专用训练集；使用 Blender/Unity 完成场景建模与渲染，独立交付 3 项数据专项。',
+      highlights: [
+        '协同算法/工程/产品攻克视角不一致与多模态融合难题，保障里程碑交付',
+        '搭建并维护内部 3D 生成数据集与预处理规范',
+        'Blender / Unity 场景建模渲染，支撑模型训练迭代',
+      ],
       tags: ['3D Generation', 'Blender', 'Unity', 'Data Pipeline'],
     },
   ] satisfies Experience[],
@@ -307,13 +337,50 @@ export const profile = {
     { title: '华南师范大学优秀学生干部', date: '2022 — 2024' },
     { title: '华南师范大学综合奖学金一等奖', date: '2022 — 2025' },
   ] satisfies AwardItem[],
-  practice: [
-    '曾参与国际学术会议 SIGGRAPH Asia 2025、AIIIP 2024、ICEIT 2024、ICAUS 2023、ICICSP 2022',
-    '曾任华南师范大学 RI Lab 科研助理、本科团队负责人（2021 — 2025）',
-    '曾任华南师范大学 2021 级数据科学与大数据技术班长（2021 — 2025）',
-    '曾任华南师范大学 2023 级数据科学与大数据技术学生兼职班主任（2023 — 2024）',
-    '曾任华南师范大学行知书院学生会主席团成员（2022 — 2023）',
-  ],
+  practiceTimeline: [
+    {
+      id: 'ri-lab',
+      role: '科研助理 · 本科团队负责人',
+      org: '华南师范大学 RI Lab',
+      startYear: 2021,
+      endYear: 2025,
+      summary:
+        '主导计算机视觉与边缘计算方向研发，产出 LEPS、端云协同感知等多篇论文与专利。',
+    },
+    {
+      id: 'class-monitor',
+      role: '班长',
+      org: '华南师范大学 · 2021 级数据科学与大数据技术',
+      startYear: 2021,
+      endYear: 2025,
+      summary: '负责班级日常事务、学风建设与活动组织。',
+    },
+    {
+      id: 'student-union',
+      role: '主席团成员',
+      org: '华南师范大学行知书院学生会',
+      startYear: 2022,
+      endYear: 2023,
+      summary: '参与书院学生会统筹与大型活动策划执行。',
+    },
+    {
+      id: 'part-time-ta',
+      role: '学生兼职班主任',
+      org: '华南师范大学 · 2023 级数据科学与大数据技术',
+      startYear: 2023,
+      endYear: 2024,
+      summary: '协助新生适应、学业辅导与班级管理。',
+    },
+    {
+      id: 'conferences',
+      role: '会议参与',
+      org: '国际学术会议',
+      startYear: 2022,
+      endYear: 2025,
+      summary:
+        'SIGGRAPH Asia 2025、AIIIP 2024、ICEIT 2024、ICAUS 2023、ICICSP 2022 等。',
+    },
+  ] satisfies PracticeTimelineItem[],
   skills: [
     'Python',
     'Java',
@@ -323,7 +390,8 @@ export const profile = {
     'PyTorch',
     'Microsoft 365',
     'Blender',
-    'NeRF / 3DGS',
+    'NeRF',
+    '3DGS',
   ],
 } as const
 

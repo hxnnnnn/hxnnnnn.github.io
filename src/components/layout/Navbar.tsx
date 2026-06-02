@@ -9,6 +9,7 @@ const links = [
   { href: '#publications', label: '论文' },
   { href: '#experience', label: '经历' },
   { href: '#projects', label: '项目' },
+  { href: '#patents', label: '专利' },
   { href: '#contact', label: '联系' },
 ]
 

@@ -24,7 +24,7 @@ export function PublicationsSection() {
       <SectionHeader
         id="publications"
         title="科研论文"
-        subtitle={`${profile.publications.length} 篇论文，涵盖 3D 视觉、目标检测与边缘-云协作等方向。`}
+        subtitle={profile.publicationsSummary}
       />
 
       <div className="mb-8 flex flex-wrap gap-2">
@@ -66,9 +66,33 @@ export function PublicationsSection() {
                 {pub.impact && <Badge>{pub.impact}</Badge>}
               </div>
               <h3 className="mt-3 font-medium leading-snug text-white group-hover:text-cyan-100">
-                {pub.title}
+                {pub.url ? (
+                  <a
+                    href={pub.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-start gap-2 hover:text-cyan-300"
+                  >
+                    <span>{pub.title}</span>
+                    <span className="shrink-0 text-cyan-400/80" aria-hidden>
+                      ↗
+                    </span>
+                  </a>
+                ) : (
+                  pub.title
+                )}
               </h3>
               <p className="mt-2 text-sm text-zinc-400">{pub.venue}</p>
+              {pub.url && pub.status === '已发表' && (
+                <a
+                  href={pub.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-xs text-indigo-400 transition hover:text-cyan-400"
+                >
+                  查看论文 →
+                </a>
+              )}
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {pub.tags.map((tag) => (
                   <span
