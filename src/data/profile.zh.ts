@@ -283,9 +283,9 @@ const profile: ProfileData = {
       description:
         '从事 3D 头部重建与生成式视觉研究，覆盖大规模数据构建、重建-生成管线与下游任务验证。',
       highlights: [
-        '基于 FLUX.1 与 Qwen2.5-VL 构建约 1120 万样本平衡数据集，缓解 3D-aware GAN 的视角分布偏差',
+        '基于 FLUX 与 Qwen-VL 构建千万样本平衡数据集，缓解 3D-aware GAN 的视角分布偏差',
         '将 3D 重建特征对接自回归视频扩散模型，实现约 15 FPS 的高保真上半身视频合成',
-        '通过生成式增广补齐表情与光照数据缺口，支撑大视角人脸识别等下游实验',
+        '实现单图重建解耦为身份–表情–姿态，驱动实时 360° 交互式数字人合成，多项指标 SOTA',
       ],
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },

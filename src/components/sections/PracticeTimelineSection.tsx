@@ -35,10 +35,10 @@ export function PracticeTimelineSection() {
                   {items.map((item) => (
                     <div
                       key={item.id}
-                      className="w-full max-w-[108px] rounded-md border border-lab-border/80 bg-lab-bg/80 px-1.5 py-1 text-center"
+                      className="timeline-card w-full max-w-[108px]"
                       title={`${item.role} · ${item.org}`}
                     >
-                      <p className="text-[10px] font-medium leading-tight text-cyan-300/90">
+                      <p className="timeline-role text-[10px] font-medium leading-tight text-cyan-300/90">
                         {item.role}
                       </p>
                       <p className="mt-0.5 text-[9px] leading-tight text-zinc-500">

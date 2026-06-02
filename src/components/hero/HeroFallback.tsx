@@ -10,7 +10,7 @@ export function HeroFallback({ progress }: HeroFallbackProps) {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <div
-        className="absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-lab-bg to-cyan-950/40"
+        className="hero-fallback-gradient absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-lab-bg to-cyan-950/40"
         style={{ opacity }}
       />
       <svg

@@ -286,9 +286,9 @@ const profile: ProfileData = {
       description:
         'Research on 3D head reconstruction and generative vision, covering large-scale data construction, reconstruction-generation pipelines, and downstream validation.',
       highlights: [
-        'Built a ~11.2M-sample balanced dataset with FLUX.1 and Qwen2.5-VL to mitigate viewpoint bias in 3D-aware GANs',
+        'Built a 10M-scale balanced dataset with FLUX and Qwen-VL to mitigate viewpoint bias in 3D-aware GANs',
         'Connected 3D reconstruction features to autoregressive video diffusion for ~15 FPS high-fidelity upper-body video synthesis',
-        'Used generative augmentation to fill expression and lighting gaps, supporting large-pose face recognition experiments',
+        'Disentangled single-image reconstruction into identity, expression, and pose for real-time 360° interactive digital human synthesis, achieving SOTA on multiple metrics',
       ],
       tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },

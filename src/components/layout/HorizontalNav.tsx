@@ -38,9 +38,7 @@ export function HorizontalNav() {
                 key={item.id}
                 href={`#${item.id}`}
                 className={`shrink-0 px-2 pb-1 transition-all duration-300 ${
-                  isActive
-                    ? 'scale-110 text-base font-semibold text-white'
-                    : 'text-sm font-medium text-zinc-500 hover:text-zinc-300'
+                  isActive ? 'nav-link-active' : 'nav-link-inactive'
                 }`}
               >
                 <span
@@ -59,7 +57,7 @@ export function HorizontalNav() {
           <ThemeToggle />
           <Link
             to={`${alternatePath}${location.hash}`}
-            className="rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300 transition hover:text-white"
+            className="nav-btn px-3 py-1 text-xs font-medium"
           >
             {ui.nav.langSwitch}
           </Link>

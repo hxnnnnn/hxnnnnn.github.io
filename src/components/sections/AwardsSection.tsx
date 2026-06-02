@@ -23,7 +23,7 @@ function MarqueeRow({
         {doubled.map((item, i) => (
           <div
             key={`${item.title}-${i}`}
-            className="w-64 shrink-0 rounded-xl border border-lab-border bg-lab-surface px-4 py-3"
+            className="marquee-card w-64 shrink-0 rounded-xl border border-lab-border bg-lab-surface px-4 py-3"
           >
             <p className="text-sm leading-snug text-zinc-300">{item.title}</p>
             {item.date && (
@@ -95,7 +95,7 @@ export function AwardsSection() {
         {profile.skills.map((skill) => (
           <span
             key={skill}
-            className="rounded-lg border border-indigo-500/20 bg-indigo-500/5 px-3 py-1.5 text-sm text-indigo-300"
+            className="skill-pill rounded-lg border border-indigo-500/20 bg-indigo-500/5 px-3 py-1.5 text-sm text-indigo-300"
           >
             {skill}
           </span>

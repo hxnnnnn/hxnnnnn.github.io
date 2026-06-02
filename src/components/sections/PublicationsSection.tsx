@@ -46,9 +46,7 @@ export function PublicationsSection() {
             type="button"
             onClick={() => setFilter(f.key)}
             className={`rounded-full px-4 py-1.5 text-sm transition ${
-              filter === f.key
-                ? 'bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/40'
-                : 'text-zinc-400 hover:text-white'
+              filter === f.key ? 'filter-pill-active' : 'filter-pill-inactive'
             }`}
           >
             {f.label}
@@ -99,10 +97,7 @@ export function PublicationsSection() {
               </h3>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {pub.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded bg-lab-bg px-2 py-0.5 text-xs text-zinc-500"
-                  >
+                  <span key={tag} className="pub-tag">
                     {tag}
                   </span>
                 ))}

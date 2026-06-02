@@ -19,7 +19,7 @@ export function CollapsibleBlock({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="text-sm text-indigo-400 transition hover:text-cyan-400"
+        className="link-muted text-sm"
       >
         {open ? openLabel : closedLabel}
       </button>

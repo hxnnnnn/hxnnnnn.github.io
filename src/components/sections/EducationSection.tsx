@@ -29,7 +29,7 @@ export function EducationSection() {
               {edu.meta.map((label) => (
                 <span
                   key={label}
-                  className="rounded-lg border border-lab-border bg-lab-bg px-2.5 py-1 text-xs text-zinc-400"
+                  className="meta-pill"
                 >
                   {label}
                 </span>
@@ -45,7 +45,7 @@ export function EducationSection() {
                   onClick={() =>
                     setOpenCourses(openCourses === i ? null : i)
                   }
-                  className="mt-4 text-sm text-indigo-400 transition hover:text-cyan-400"
+                  className="link-muted mt-4 text-sm"
                 >
                   {openCourses === i
                     ? ui.education.hideCourses
@@ -63,7 +63,7 @@ export function EducationSection() {
                         {edu.courses.map((c) => (
                           <span
                             key={c}
-                            className="rounded-lg bg-lab-bg px-2.5 py-1 text-xs text-zinc-500"
+                            className="course-pill"
                           >
                             {c}
                           </span>
