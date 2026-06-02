@@ -31,10 +31,9 @@ export interface Experience {
 
 export interface Education {
   school: string
-  department: string
-  degree: string
+  meta: string[]
   period: string
-  details: string[]
+  research: string
   courses?: string[]
 }
 
@@ -44,7 +43,8 @@ export interface Patent {
 }
 
 export interface Project {
-  name: string
+  program: string
+  fullTitle: string
   period: string
   role: string
   level: string
@@ -64,9 +64,10 @@ export function getPublicationStatusLabel(pub: Publication): string {
 export const profile = {
   name: '黄晓宁',
   heroName: 'XiaoningHuang',
-  identities: ['CUHK-DS-硕士生', 'ByteDance-Seed-实习生'] as const,
+  identities: ['CUHK-DS MSc Student', 'ByteDance Seed Intern'] as const,
   contact: {
     email: '225040002@link.cuhk.edu.cn',
+    location: 'Base · 深圳',
     github: 'https://github.com/hxnnnnn',
     site: 'https://hxnnnnn.github.io',
     scholar: '',
@@ -76,13 +77,15 @@ export const profile = {
   education: [
     {
       school: '香港中文大学（深圳）',
-      department: '数据科学学院 · 数据科学专业',
-      degree: '英文授课硕士 · GPA 3.3/4.0',
-      period: '2025.09 — 至今',
-      details: [
-        '在韩晓光教授指导下从事以人为本的 3D 计算机视觉与图形学研究，围绕单目图像学习可分解、可泛化的全头部 3D 表征，并探索其与生成式模型的结合路径。',
-        '研究重点为 NeRF/3DGS 驱动的高保真头部重建与实时驱动；目标是在有限算力与数据成本下，为广泛人群提供稳定、实时且表情可控的 3D 虚拟形象生成能力。',
+      meta: [
+        '数据科学学院',
+        '数据科学专业',
+        '英文授课硕士',
+        'GPA 3.3（满分4.0）',
       ],
+      period: '2025.09 — 至今',
+      research:
+        '在韩晓光教授指导下从事以人为本的三维计算机视觉与图形学研究，围绕单目图像学习可分解、可泛化的全头部三维表征，并探索与生成式模型的结合；研究重点为神经辐射场与三维高斯溅射驱动的高保真头部重建与实时驱动，目标是在有限算力与数据成本下，为广泛人群提供稳定、实时且表情可控的三维虚拟形象生成能力。',
       courses: [
         '人工智能',
         '数据挖掘',
@@ -93,13 +96,15 @@ export const profile = {
     },
     {
       school: '华南师范大学',
-      department: '数据科学与工程学院 · 数据科学与大数据技术',
-      degree: '工学学士 · GPA 3.8/5.0',
-      period: '2021.09 — 2025.06',
-      details: [
-        '本科阶段聚焦计算机视觉与智能感知，围绕目标检测、语义/实例分割、边缘-云协同推理及农业、交通、课堂等场景开展算法研究与系统落地。',
-        '研究重点为轻量化检测架构、多尺度特征融合与小目标鲁棒感知；目标是将模型效率、精度与部署成本平衡，并支撑无人机巡检、害虫监测、路面病害与课堂情感分析等应用。',
+      meta: [
+        '数据科学与工程学院',
+        '数据科学与大数据技术',
+        '工学学士',
+        'GPA 3.8（满分5.0）',
       ],
+      period: '2021.09 — 2025.06',
+      research:
+        '本科阶段聚焦计算机视觉与智能感知，围绕目标检测、语义与实例分割、边缘云协同推理及农业、交通、课堂等场景开展算法研究与系统落地；重点探索轻量化检测架构、多尺度特征融合与小目标鲁棒感知，力求平衡模型效率、精度与部署成本，并服务无人机巡检、害虫监测、路面病害与课堂情感分析等应用。',
       courses: [
         '数据挖掘导论（100）',
         '分布式数据结构（99）',
@@ -130,11 +135,11 @@ export const profile = {
         'Disentangled Representation',
       ],
       abstract:
-        'Proposes a feedforward disentangled 3D full-head model learned from large-scale monocular 2D data, enabling scalable avatar creation with explicit control over identity, expression, and appearance without per-subject optimization.',
+        'While 3D Gaussian Splatting enables real-time rendering, generative head models still rely on rigid geometric priors and lack diverse multi-view training data. We propose InfiHead, a scalable framework for disentangled 3D Gaussian full heads from monocular 2D video, with an automated multi-view dataset pipeline, template-free feedforward reconstruction, and adversarial training for consistent 360° textures. Experiments show improved visual quality and structural accuracy over state-of-the-art methods.',
     },
     {
       title:
-        'DAS: A Dynamic Adaptation System for Pest Detection via Edge-Cloud Collaboration',
+        'DAS: Deployable Dynamic Adaptation System for Pest Detection via Edge-Cloud Collaboration',
       venue: 'IEEE Transactions on Instrumentation and Measurement',
       venueMeta: 'SCI 二区 · IF 5.90',
       status: '在投',
@@ -147,7 +152,7 @@ export const profile = {
         'Agricultural Vision',
       ],
       abstract:
-        'Introduces a dynamic adaptation system that coordinates edge devices and cloud servers for pest detection, adjusting models and inference strategies under shifting field conditions to improve accuracy and deployment efficiency.',
+        'Traditional agricultural pest control in IoT settings faces limits in accuracy, efficiency, and scalability. We propose DAS, integrating single-stage detection with edge-cloud collaboration, and introduce Dynamic Multi-scale Fusion (DMF) and Hybrid Local-Global Attention (HLGA) to adapt across scales and scenes. Validated on 17,725 high-resolution images and multiple benchmarks, DAS improves mAP by 7.8%–15.7% over baselines, supporting deployable field use.',
     },
     {
       title:
@@ -164,7 +169,7 @@ export const profile = {
         'Real-Time Inference',
       ],
       abstract:
-        'Presents MS-FDD, a lightweight multi-scale module designed for fatigue driving detection that captures fine-grained facial and behavioral cues while maintaining low latency suitable for in-vehicle deployment.',
+        'Fatigue cues can be subtle and temporal, while edge devices impose strict latency and power limits. We present MS-FDD, combining FE-MSC strip-kernel multi-scale modeling, LAPF cross-scale fusion, and SCCH for efficient compression, with sliding-window aggregation of eye and mouth cues for robust risk inference. Multi-dataset evaluation and Jetson AGX Orin benchmarks demonstrate feasible real-time edge deployment.',
     },
     {
       title:
@@ -182,7 +187,7 @@ export const profile = {
         'Lightweight Model',
       ],
       abstract:
-        'Proposes LEPS, a lightweight single-stage detector tailored for pothole segmentation in road images, balancing detection speed and segmentation quality for practical infrastructure inspection pipelines.',
+        'Urban road potholes are increasingly severe, making timely detection a key challenge for maintenance. We propose LEPS, a lightweight single-stage instance segmentation detector that efficiently extracts edge and gradient cues via dedicated convolutional modules, delivering accurate pothole segmentation suitable for real-time monitoring.',
       url: 'https://doi.org/10.1109/JSEN.2023.3330335',
     },
     {
@@ -201,7 +206,7 @@ export const profile = {
         'Target Detection',
       ],
       abstract:
-        'Develops a real-time underwater visual sensing system that performs multitask perception through edge-cloud collaboration, improving robustness and throughput for marine target monitoring in bandwidth-limited environments.',
+        'Underwater images often suffer from fogging, color distortion, and edge degradation, limiting general object detectors. We propose UVTS, an underwater visual target sensing system with multitasking and edge-cloud collaboration to improve robustness and real-time throughput for marine monitoring under degraded imaging conditions.',
       url: 'https://doi.org/10.1109/JOE.2026.3678825',
     },
     {
@@ -220,7 +225,7 @@ export const profile = {
         'Attention Mechanism',
       ],
       abstract:
-        'Introduces Yolo-Pest with a CAC3 module to enhance multi-scale representation for insect pest detection in complex agricultural scenes, improving recall on small pests while keeping the detector efficient.',
+        'Insect pests threaten crop yield and quality, yet small-pest detection lacks sufficient samples and tailored models. We propose Yolo-Pest with a CAC3 module for lightweight, effective small-target pest detection, improving feature extraction and performance on agricultural pest benchmarks.',
       url: 'https://doi.org/10.3390/s23063221',
     },
     {
@@ -239,7 +244,7 @@ export const profile = {
         'Emotion Analysis',
       ],
       abstract:
-        'Presents Mini-SCXception, a compact network architecture that balances accuracy and efficiency for real-time facial expression recognition in classroom and human-computer interaction scenarios.',
+        'Facial expression recognition models are often too large for resource-constrained devices. We propose an improved Mini-SCXception based on Mini-Xception, integrating SCConv to reduce redundant computation while preserving efficiency and strengthening feature extraction for real-time FER.',
       url: 'https://doi.org/10.1145/3707292.3707342',
     },
     {
@@ -258,7 +263,7 @@ export const profile = {
         'Multi-Sensor Localization',
       ],
       abstract:
-        'Designs a robust mobile robot system that fuses multi-sensor localization with optimized path planning to improve navigation stability and task completion in structured indoor environments.',
+        'Reliable indoor navigation requires stable localization and efficient motion planning under sensor noise. This work presents a robust mobile robot system that fuses multi-sensor localization with optimized path planning to improve positioning accuracy and task execution in structured environments.',
       url: 'https://ieeexplore.ieee.org/document/10458454/',
     },
     {
@@ -277,7 +282,7 @@ export const profile = {
         'Classroom Analytics',
       ],
       abstract:
-        'Investigates classroom concept learning effects using BERT-based text classification, analyzing student-generated content to support formative assessment and instructional feedback.',
+        'Students gradually form concept systems through classroom learning, and discourse analysis helps teachers assess conceptual mastery. We introduce a BERT-based text classification pipeline to evaluate students’ concept-learning levels from classroom content and support instructional evaluation.',
       url: 'https://doi.org/10.1109/ICICSP55539.2022.10050570',
     },
     {
@@ -295,7 +300,7 @@ export const profile = {
         '特征融合',
       ],
       abstract:
-        '针对复杂田间背景与小目标害虫识别难题，改进检测骨干与特征融合策略，在保持推理效率的同时提升农业害虫检测精度与鲁棒性。',
+        '针对田间复杂背景、害虫形态多样及小目标难检等问题，在主流单阶段检测框架上改进骨干网络与特征融合结构，构建面向农业场景的害虫检测模型，在公开与自建数据上验证其精度与推理效率，为田间智能监测提供可用方案。',
       url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2023048',
     },
     {
@@ -313,7 +318,7 @@ export const profile = {
         '实时推理',
       ],
       abstract:
-        '面向无人机航拍场景中的小目标检测需求，设计轻量级高速检测器，在算力受限的机载平台上实现较高帧率与检测精度的平衡。',
+        '无人机航拍存在目标尺度小、背景复杂与机载算力受限等挑战。本文在轻量级检测架构上引入多尺度特征增强与结构剪枝策略，设计面向航拍小目标的高速检测器，在保持较高推理速度的同时提升复杂场景下的检测精度与稳定性。',
       url: 'https://journal-n.scnu.edu.cn/article/doi/10.6054/j.jscnun.2025050',
     },
   ] satisfies Publication[],
@@ -361,7 +366,9 @@ export const profile = {
   ] satisfies Experience[],
   projects: [
     {
-      name: '智保百千村—多领域基础设施智能巡检与保险定损一体化研究',
+      program: '「攀登计划」科技创新培育省级一般项目',
+      fullTitle:
+        '基于低空无人机遥感识别技术的智能巡检系统与保险定损模式一体化研究',
       period: '2025.03 — 至今',
       role: '参与成员',
       level: '省级一般项目',
@@ -369,7 +376,18 @@ export const profile = {
         '负责基础设施智能巡检系统的端到端算法设计与落地，优化轻量化模型及边缘侧部署效率，提升低空复杂背景下小目标识别精度。主导基于遥感图像的目标识别与保险定损一体化框架搭建，协调巡检作业与定损理赔业务协同。',
     },
     {
-      name: '基于改进 YOLOv5 的 5G 通信干扰源检测研究',
+      program: '「攀登计划」科技创新培育省级重点项目',
+      fullTitle:
+        '「双减」政策下课堂过程性智能评价模型的构建及其教学应用研究',
+      period: '2021.11 — 2024.11',
+      role: '参与成员',
+      level: '省级重点项目',
+      description:
+        '构建用于测量学生课堂学习状态的评价模型，引入面部情感识别、语音语义分析等技术对学生个体状态进行多角度、持续性课堂评价，为教师改进教学设计、提升课堂质量提供反馈参考。',
+    },
+    {
+      program: '「大学生创新创业训练计划项目」省级重点项目',
+      fullTitle: '基于改进 Yolov5 的 5G 通信干扰源检测研究',
       period: '2022.11 — 2024.05',
       role: '负责人',
       level: '省级重点项目',
@@ -377,20 +395,13 @@ export const profile = {
         '结合传统移动通信干扰源排查流程，创新研发目标检测算法，采用无人机搭载检测器对高处、隐蔽处天线进行检测，辅助甚至替代人工巡检，填补天线干扰源目标检测领域在学习样本与检测模型上的空白。',
     },
     {
-      name: '基于人脸情感识别的高校课堂教学评价研究',
+      program: '「金种子」校级一般课题',
+      fullTitle: '基于人脸情感识别的高校课堂教学评价研究',
       period: '2022.03 — 2023.03',
       role: '核心成员',
       level: '校级一般课题',
       description:
         '构建高校课堂学生人脸情感识别模型，采用基于边缘的双通道特征融合模型进行特征提取，通过 MSAFNet 网络进行表情分类，并引入 PAD 三维情感模型测量情感投入评估。',
-    },
-    {
-      name: '「双减」政策下课堂过程性智能评价模型的构建及其教学应用研究',
-      period: '2021.11 — 2024.11',
-      role: '参与成员',
-      level: '省级重点项目',
-      description:
-        '构建用于测量学生课堂学习状态的评价模型，引入面部情感识别、语音语义分析等技术对学生个体状态进行多角度、持续性课堂评价，为教师改进教学设计、提升课堂质量提供反馈参考。',
     },
   ] satisfies Project[],
   awards: [
@@ -479,6 +490,20 @@ export const profile = {
       org: 'CCF-A 会议',
       startYear: 2025,
       endYear: 2025,
+    },
+    {
+      id: 'gap-2026',
+      role: 'GAP Lab',
+      org: '3D重建科研助理',
+      startYear: 2026,
+      endYear: 2026,
+    },
+    {
+      id: 'seed-2026',
+      role: 'Seed视觉',
+      org: '3D生成算法实习',
+      startYear: 2026,
+      endYear: 2026,
     },
   ] satisfies PracticeTimelineItem[],
   skills: [

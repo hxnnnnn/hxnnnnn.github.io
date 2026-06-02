@@ -27,34 +27,15 @@ export function ContactSection() {
         className="glass-card p-8 text-center"
       >
         <p className="text-2xl font-bold text-white">{profile.heroName}</p>
-        <div className="mt-3 flex flex-wrap justify-center gap-2">
-          {profile.identities.map((id) => (
-            <span
-              key={id}
-              className="text-sm text-cyan-400/90"
-            >
-              {id}
-            </span>
-          ))}
-        </div>
+        <p className="mt-2 text-sm text-zinc-500">{profile.contact.location}</p>
 
-        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <button
-            type="button"
-            onClick={copyEmail}
-            className="rounded-xl border border-lab-border bg-lab-bg px-6 py-3 text-sm text-zinc-300 transition hover:border-cyan-500/40 hover:text-white"
-          >
-            {copied ? '已复制 ✓' : profile.contact.email}
-          </button>
-          <a
-            href={profile.contact.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-xl border border-lab-border bg-lab-bg px-6 py-3 text-sm text-zinc-300 transition hover:border-cyan-500/40 hover:text-white"
-          >
-            GitHub · @hxnnnnn
-          </a>
-        </div>
+        <button
+          type="button"
+          onClick={copyEmail}
+          className="mt-8 rounded-xl border border-lab-border bg-lab-bg px-6 py-3 text-sm text-zinc-300 transition hover:border-cyan-500/40 hover:text-white"
+        >
+          {copied ? '已复制 ✓' : profile.contact.email}
+        </button>
       </motion.div>
     </section>
   )

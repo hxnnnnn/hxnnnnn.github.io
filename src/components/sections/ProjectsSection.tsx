@@ -12,7 +12,7 @@ export function ProjectsSection() {
       <div className="space-y-4">
         {profile.projects.map((proj, i) => (
           <motion.div
-            key={proj.name}
+            key={proj.fullTitle}
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -24,8 +24,9 @@ export function ProjectsSection() {
               <Badge>{proj.period}</Badge>
               <Badge variant="status">{proj.level}</Badge>
             </div>
-            <h3 className="mt-3 text-base font-medium leading-snug text-white">
-              {proj.name}
+            <p className="mt-3 text-xs text-zinc-500">{proj.program}</p>
+            <h3 className="mt-2 text-base font-medium leading-snug text-white">
+              《{proj.fullTitle}》
             </h3>
             <CollapsibleBlock
               closedLabel="展开项目内容"

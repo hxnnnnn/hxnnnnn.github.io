@@ -21,23 +21,22 @@ export function EducationSection() {
             className="glass-card p-6"
           >
             <div className="flex flex-wrap items-start justify-between gap-2">
-              <div>
-                <h3 className="text-lg font-semibold text-white">
-                  {edu.school}
-                </h3>
-                <p className="text-sm text-zinc-400">
-                  {edu.department} · {edu.degree}
-                </p>
-              </div>
+              <h3 className="text-lg font-semibold text-white">{edu.school}</h3>
               <Badge variant="accent">{edu.period}</Badge>
             </div>
-            <div className="mt-4 space-y-3">
-              {edu.details.map((d) => (
-                <p key={d} className="text-sm leading-relaxed text-zinc-400">
-                  {d}
-                </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {edu.meta.map((label) => (
+                <span
+                  key={label}
+                  className="rounded-lg border border-lab-border bg-lab-bg px-2.5 py-1 text-xs text-zinc-400"
+                >
+                  {label}
+                </span>
               ))}
             </div>
+            <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+              {edu.research}
+            </p>
             {edu.courses && edu.courses.length > 0 && (
               <>
                 <button

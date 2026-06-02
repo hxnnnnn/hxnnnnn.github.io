@@ -70,8 +70,8 @@ export function PublicationsSection() {
                   {getPublicationStatusLabel(pub)}
                 </Badge>
                 <Badge variant="accent">{pub.role}</Badge>
-                <Badge>{pub.venue}</Badge>
-                <Badge>{pub.venueMeta}</Badge>
+                <Badge variant="venue">{pub.venue}</Badge>
+                <Badge variant="venueMeta">{pub.venueMeta}</Badge>
               </div>
               <h3 className="mt-3 font-medium leading-snug text-white group-hover:text-cyan-100">
                 {pub.url ? (
