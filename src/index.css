@@ -156,10 +156,15 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .section-rule {
-    background: linear-gradient(to right, var(--m-purple-border), var(--m-sage-soft));
+    background: linear-gradient(to right, var(--m-purple-border), var(--m-purple-soft));
   }
 
-  /* Badges — Morandi */
+  /*
+   * Badge semantics (same roles in dark & light; light = Morandi desaturation):
+   * status → cyan / sage   | accent → indigo / purple
+   * venue  → sky blue      | venueMeta → zinc / warm gray
+   * default → neutral (published year)
+   */
   .badge-default {
     @apply border-lab-border bg-lab-surface text-zinc-300;
   }
@@ -188,8 +193,9 @@ html[data-theme="dark"] {
     color: var(--m-sage);
   }
 
+  /* venue: blue (distinct from status cyan in the same card) */
   .badge-venue {
-    @apply border-cyan-400/50 bg-cyan-500/20 text-cyan-100;
+    @apply border-sky-400/50 bg-sky-500/20 text-sky-100;
   }
 
   html[data-theme="light"] .badge-venue {
@@ -257,7 +263,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .link-muted:hover {
-    color: var(--m-sage);
+    color: var(--m-purple-deep);
   }
 
   .nav-link-active {
@@ -276,7 +282,7 @@ html[data-theme="dark"] {
     background: linear-gradient(
       to right,
       var(--m-purple),
-      var(--m-sage)
+      var(--m-purple-soft)
     );
   }
 
@@ -288,7 +294,7 @@ html[data-theme="dark"] {
     background: linear-gradient(
       to right,
       var(--m-purple-border),
-      var(--m-blue-border)
+      var(--m-purple-soft)
     );
   }
 
@@ -326,39 +332,12 @@ html[data-theme="dark"] {
     color: var(--m-purple-deep);
   }
 
-  html[data-theme="light"] .hero-identity:nth-child(3n + 2) {
-    border-color: var(--m-sage-border);
-    background-color: var(--m-sage-bg);
-    color: var(--m-sage);
-  }
-
-  html[data-theme="light"] .hero-identity:nth-child(3n) {
-    border-color: var(--m-blue-border);
-    background-color: var(--m-blue-bg);
-    color: var(--m-blue);
-  }
-
   .timeline-card {
     @apply rounded-md border border-lab-border/80 bg-lab-bg/80 px-1.5 py-1 text-center;
   }
 
   html[data-theme="light"] .timeline-card {
     @apply border-[#c5bfb4] bg-[#f5f2ec] shadow-sm;
-  }
-
-  html[data-theme="light"] .timeline-card:nth-child(4n + 2) {
-    border-color: var(--m-sage-border);
-    background-color: color-mix(in srgb, var(--m-sage-bg) 35%, #f5f2ec);
-  }
-
-  html[data-theme="light"] .timeline-card:nth-child(4n + 3) {
-    border-color: var(--m-blue-border);
-    background-color: color-mix(in srgb, var(--m-blue-bg) 35%, #f5f2ec);
-  }
-
-  html[data-theme="light"] .timeline-card:nth-child(4n) {
-    border-color: var(--m-rose-border);
-    background-color: color-mix(in srgb, var(--m-rose-bg) 30%, #f5f2ec);
   }
 
   .timeline-label {
@@ -394,8 +373,9 @@ html[data-theme="dark"] {
     @apply from-indigo-500/85 to-violet-400/75;
   }
 
+  /* venue bars: same hue as dark, lower saturation */
   html[data-theme="light"] .pub-venue-bar--siggraph {
-    background: linear-gradient(to right, var(--m-rose-border), var(--m-rose-soft));
+    background: linear-gradient(to right, #c9a882, #ddd0bc);
   }
 
   html[data-theme="light"] .pub-venue-bar--ieee {
@@ -407,7 +387,7 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .pub-venue-bar--sensors {
-    background: linear-gradient(to right, var(--m-clay-border), var(--m-clay-soft));
+    background: linear-gradient(to right, var(--m-purple-border), var(--m-purple-soft));
   }
 
   html[data-theme="light"] .pub-venue-bar--default {
@@ -424,7 +404,7 @@ html[data-theme="dark"] {
     background: linear-gradient(
       to bottom,
       var(--m-purple-border),
-      color-mix(in srgb, var(--m-sage-soft) 60%, transparent)
+      color-mix(in srgb, var(--m-purple-soft) 50%, transparent)
     );
   }
 
@@ -445,28 +425,17 @@ html[data-theme="dark"] {
     background-color: var(--m-sage);
   }
 
-  html[data-theme="light"] li:nth-child(3n + 1) .list-bullet {
-    background-color: var(--m-purple);
-  }
-
-  html[data-theme="light"] li:nth-child(3n) .list-bullet {
-    background-color: var(--m-blue);
-  }
-
-  html[data-theme="light"] li:nth-child(3n + 2) .list-bullet {
-    background-color: var(--m-clay);
-  }
-
   /* Practice horizontal timeline */
   .practice-axis-line {
     @apply bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent;
   }
 
+  /* practice: single accent (cyan in dark → morandi teal in light) */
   html[data-theme="light"] .practice-axis-line {
     background: linear-gradient(
       to right,
       transparent,
-      color-mix(in srgb, var(--m-blue-border) 70%, var(--m-sage-border)),
+      color-mix(in srgb, var(--m-sage) 50%, transparent),
       transparent
     );
   }
@@ -476,8 +445,8 @@ html[data-theme="dark"] {
   }
 
   html[data-theme="light"] .practice-axis-dot {
-    border-color: var(--m-blue);
-    background-color: var(--m-blue-bg);
+    border-color: var(--m-sage);
+    background-color: var(--m-sage-bg);
     box-shadow: none;
   }
 
@@ -487,18 +456,6 @@ html[data-theme="dark"] {
 
   html[data-theme="light"] .marquee-card {
     @apply border-[#c5bfb4] bg-[#f5f2ec] shadow-sm;
-  }
-
-  html[data-theme="light"] .marquee-card:nth-child(6n + 2) {
-    border-color: var(--m-sage-border);
-  }
-
-  html[data-theme="light"] .marquee-card:nth-child(6n + 4) {
-    border-color: var(--m-blue-border);
-  }
-
-  html[data-theme="light"] .marquee-card:nth-child(6n) {
-    border-color: var(--m-rose-border);
   }
 
   .marquee-title {
@@ -517,30 +474,6 @@ html[data-theme="dark"] {
     border-color: var(--m-purple-border);
     background-color: var(--m-purple-bg);
     color: var(--m-purple-deep);
-  }
-
-  html[data-theme="light"] .skill-pill:nth-child(5n + 2) {
-    border-color: var(--m-sage-border);
-    background-color: var(--m-sage-bg);
-    color: var(--m-sage);
-  }
-
-  html[data-theme="light"] .skill-pill:nth-child(5n + 3) {
-    border-color: var(--m-blue-border);
-    background-color: var(--m-blue-bg);
-    color: var(--m-blue);
-  }
-
-  html[data-theme="light"] .skill-pill:nth-child(5n + 4) {
-    border-color: var(--m-rose-border);
-    background-color: var(--m-rose-bg);
-    color: var(--m-rose);
-  }
-
-  html[data-theme="light"] .skill-pill:nth-child(5n) {
-    border-color: var(--m-clay-border);
-    background-color: var(--m-clay-bg);
-    color: var(--m-clay);
   }
 
   .external-link-icon {
@@ -570,7 +503,7 @@ html[data-theme="dark"] {
     background-image: linear-gradient(
       to right,
       var(--m-purple),
-      var(--m-blue)
+      var(--m-purple-soft)
     );
   }
 
@@ -630,7 +563,7 @@ html[data-theme="dark"] {
       to bottom right,
       color-mix(in srgb, var(--m-purple-soft) 80%, transparent),
       var(--color-lab-bg),
-      color-mix(in srgb, var(--m-sage-soft) 70%, transparent)
+      color-mix(in srgb, var(--m-purple-soft) 50%, transparent)
     );
   }
 

@@ -1,4 +1,4 @@
-interface BadgeProps {
+export interface BadgeProps {
   children: React.ReactNode
   variant?: 'default' | 'accent' | 'status' | 'venue' | 'venueMeta'
 }

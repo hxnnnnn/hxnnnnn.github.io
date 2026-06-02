@@ -2,7 +2,14 @@ import { motion } from 'framer-motion'
 import { useLocale } from '../../i18n/LocaleContext'
 import { SectionHeader } from '../ui/SectionHeader'
 import { Badge } from '../ui/Badge'
+import type { BadgeProps } from '../ui/Badge'
 import { PracticeTimelineSection } from './PracticeTimelineSection'
+
+const PATENT_BADGE_VARIANTS: BadgeProps['variant'][] = [
+  'status',
+  'accent',
+  'venue',
+]
 
 function MarqueeRow({
   items,
@@ -80,7 +87,9 @@ export function AwardsSection() {
             transition={{ delay: i * 0.05 }}
             className="glass-card flex h-full flex-col p-4"
           >
-            <Badge variant="status">{pat.role}</Badge>
+            <Badge variant={PATENT_BADGE_VARIANTS[i] ?? 'status'}>
+              {pat.role}
+            </Badge>
             <p className="text-body mt-3 flex-1 text-sm leading-relaxed">
               {pat.title}
             </p>
