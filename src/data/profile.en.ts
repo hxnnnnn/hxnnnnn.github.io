@@ -287,11 +287,10 @@ const profile: ProfileData = {
       role: 'Algorithm Intern',
       period: 'Mar 2026 — Present',
       description:
-        'Seedream reference-image generation fine-tuning with 3D synthetic data, large-scale data pipelines, distributed full fine-tuning, and product delivery.',
+        'Reference-image generation fine-tuning with 3D synthetic data as the fine-tuning source, large-scale data asset and 10M-scale training pipelines, distributed full fine-tuning, and product delivery.',
       highlights: [
-        'Adopted 3D synthetic data after comparing video frames and AI-generated images, addressing poor controllability and label quality of real data.',
         'Built asset library (10k+ poses, 1M+ scenes), multi-task rendering on 1k+ GPUs, multimodal labeling prompts, and quality pipelines for stable 10M-scale datasets.',
-        'Distributed full fine-tuning on Seedream with mixed multi-source ratios to boost task performance without hurting general capabilities.',
+        'Distributed full fine-tuning on Seedream with mixed multi-source ratios to boost task performance for real-world applications.',
         'Shipped pose-reference (+5%) and object-transformation (+7%) tasks, enabled reference-to-image features, and built an operator-dev Agent for large-scale automation.',
       ],
       tags: ['Seedream', '3D Synthetic Data', 'Fine-tuning', 'Blender', 'Data Pipeline'],
