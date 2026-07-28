@@ -3,7 +3,7 @@ import type { ProfileData, SiteBundle, UiStrings } from '../i18n/types'
 const profile: ProfileData = {
   name: '黄晓宁',
   heroName: 'XiaoningHuang',
-  identities: ['CUHK-DS MSc Student', 'ByteDance Seed Intern'] as const,
+  identities: ['CUHK-DS MSc Student', 'ByteDance Seed Algorithm Intern'] as const,
   contact: {
     email: '225040002@link.cuhk.edu.cn',
     location: 'Base · 深圳',
@@ -22,9 +22,9 @@ const profile: ProfileData = {
         '英文授课硕士',
         'GPA 3.3（满分4.0）',
       ],
-      period: '2025.09 — 至今',
+      period: '2025.09 — 2027.06',
       research:
-        '在韩晓光教授指导下从事以人为本的三维计算机视觉与图形学研究，围绕单目图像学习可分解、可泛化的全头部三维表征，并探索与生成式模型的结合；研究重点为神经辐射场与三维高斯溅射驱动的高保真头部重建与实时驱动，目标是在有限算力与数据成本下，为广泛人群提供稳定、实时且表情可控的三维虚拟形象生成能力。',
+        '业务方向探索以 3D 合成数据替代真实样本、驱动生图大模型参考编辑能力提升的全参数微调新范式；研究方向从事以人为本的 3D 视觉与图形学研究，重点为基于 NeRF/3DGS 的头部虚拟形象泛化性与鲁棒性，围绕单目图像学习可分解、可泛化的全头部三维表征，并探索与生成式模型的结合。',
       courses: [
         '人工智能',
         '数据挖掘',
@@ -40,6 +40,9 @@ const profile: ProfileData = {
         '数据科学与大数据技术',
         '工学学士',
         'GPA 3.8（满分5.0）',
+        '绩点排名 4/30',
+        '综测排名 1/30',
+        'IELTS 6.5',
       ],
       period: '2021.09 — 2025.06',
       research:
@@ -65,7 +68,7 @@ const profile: ProfileData = {
       venue: 'SIGGRAPH Asia 2026',
       venueMeta: 'CCF-A 会议',
       status: 'submitted',
-      role: '第二作者',
+      role: '共一二作',
       tags: [
         '3D Reconstruction',
         'Neural Radiance Fields',
@@ -277,30 +280,31 @@ const profile: ProfileData = {
   ],
   experience: [
     {
-      org: '港中深 · GAP 实验室',
-      role: '3D重建方向科研助理',
-      period: '2025.08 — 至今',
-      description:
-        '从事 3D 头部重建与生成式视觉研究，覆盖大规模数据构建、重建-生成管线与下游任务验证。',
-      highlights: [
-        '基于 FLUX 与 Qwen-VL 构建千万样本平衡数据集，缓解 3D-aware GAN 的视角分布偏差',
-        '将 3D 重建特征对接自回归视频扩散模型，实现约 15 FPS 的高保真上半身视频合成',
-        '实现单图重建解耦为身份–表情–姿态，驱动实时 360° 交互式数字人合成，多项指标 SOTA',
-      ],
-      tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
-    },
-    {
-      org: '字节跳动·Seed视觉',
-      role: '3D 生成算法实习生',
+      org: '字节跳动 · Seed',
+      role: '算法实习生',
       period: '2026.03 — 至今',
       description:
-        '参与 SeeDream 相关 3D 生成训练数据方案、模型迭代支撑与数据工具链建设。',
+        '参与 Seedream 图片参考生成能力微调，首创以 3D 合成数据作为微调数据源，搭建数据资产与千万级训练 Pipeline，并完成分布式全参数微调与业务落地。',
       highlights: [
-        '参与 SeeDream 训练数据方案设计，制定多模态数据配对与准入标准，提升数据一致性与训练可用性。',
-        '利用 3D 渲染支持图像编辑功能与版本迭代，按实验需求构建与维护训练子集，分析回流数据策略。',
-        '开发优化数据处理算子，配合 Blender 完成建模渲染，搭建维护团队工程化标准，独立交付多项数据专项。',
+        '针对参考不准与形变失真，对比视频取帧、AI 生图等方案后采用 3D 合成数据，解决真实数据可控性差、标注质量不稳定的痛点',
+        '从零整理上万种人体姿态与百万场景资产库，设计参考生成与可控编辑任务，千卡级自动化渲染与多模态打标 Pipeline，稳定产出千万级高质量数据集',
+        '基于 Seedream 分布式全参数微调，多源数据配比混合训练，提升专项任务能力并避免通用能力退化',
+        '交付动作参考与物体变换任务，准确率分别提升 5% 与 7%，支撑参考图生图新功能落地，并沉淀 3D 合成数据驱动方法论与算子开发 Agent',
       ],
-      tags: ['SeeDream', '3D Generation', 'Blender', 'Data Pipeline'],
+      tags: ['Seedream', '3D Synthetic Data', 'Fine-tuning', 'Blender', 'Data Pipeline'],
+    },
+    {
+      org: '港中深 · GAP 实验室',
+      role: '科研助理',
+      period: '2025.08 — 至今',
+      description:
+        '从事以人为本的 3D 头部重建与生成式视觉研究，围绕从单目 2D 视频学习可分解、可泛化的 3D 高斯全头部表征。',
+      highlights: [
+        '搭建多视图自动化生产 Pipeline，基于 FLUX 与 Qwen-VL 构建千万级平衡数据集，缓解 3D-aware GAN 的视角分布偏差',
+        '负责可控人脸模型，用生成模型补齐表情与光照缺口，服务大规模单目学习与大视角人脸识别等数据需求',
+        '设计无模板前馈重建网络，解耦身份–表情–姿态并引入对抗训练保证 360° 纹理一致性；对接视频扩散实现约 15 FPS 上半身合成与实时 360° 数字人',
+      ],
+      tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
   ],
   projects: [
@@ -370,7 +374,7 @@ const profile: ProfileData = {
     { title: '华为基座奖学金一等奖', date: '2024.04' },
     { title: '百佳共青团员', date: '2024.04' },
     { title: '创新奖学金特等奖（论文类）', date: '2024.04' },
-    { title: '优秀学生干部', date: '2022 — 2024' },
+    { title: '大学优秀学生干部', date: '2022 — 2024' },
     { title: '综合奖学金一等奖', date: '2022 — 2025' },
   ],
   practiceTimeline: [
@@ -410,11 +414,25 @@ const profile: ProfileData = {
       endYear: 2022,
     },
     {
+      id: 'conf-2023-icaus',
+      role: 'ICAUS 2023',
+      org: '国际会议',
+      startYear: 2023,
+      endYear: 2023,
+    },
+    {
       id: 'conf-2023',
       role: 'ICRAE 2023',
       org: 'IEEE 国际会议',
       startYear: 2023,
       endYear: 2023,
+    },
+    {
+      id: 'conf-2024-iceit',
+      role: 'ICEIT 2024',
+      org: '国际会议',
+      startYear: 2024,
+      endYear: 2024,
     },
     {
       id: 'conf-2024',
@@ -439,23 +457,19 @@ const profile: ProfileData = {
     },
     {
       id: 'seed-2026',
-      role: 'Seed视觉',
-      org: '3D生成算法实习',
+      role: 'Seed 算法实习',
+      org: '字节跳动',
       startYear: 2026,
       endYear: 2026,
     },
   ],
   skills: [
     'Python',
-    'Java',
-    'C++',
-    'C',
     'Linux',
     'PyTorch',
-    'Microsoft 365',
     'Blender',
-    'NeRF',
-    '3DGS',
+    'UE',
+    'Vibe-coding',
   ],
 }
 
@@ -485,7 +499,7 @@ const ui: UiStrings = {
     publications: '科研论文',
     experience: '实习经历',
     experienceSubtitle:
-      '3D视觉在科研界与工业界的算法研究、数据工程、业务应用',
+      '生图模型微调、3D 合成数据与头部重建：算法研究、数据工程与业务落地',
     projects: '项目经历',
     awards: '荣誉与实践',
     contact: '联系我',

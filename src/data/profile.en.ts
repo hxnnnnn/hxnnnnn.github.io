@@ -3,7 +3,7 @@ import type { ProfileData, SiteBundle, UiStrings } from '../i18n/types'
 const profile: ProfileData = {
   name: 'MSc Student, CUHK-SZ',
   heroName: 'Xiaoning Huang',
-  identities: ['CUHK-DS MSc Student', 'ByteDance Seed Intern'],
+  identities: ['CUHK-DS MSc Student', 'ByteDance Seed Algorithm Intern'],
   contact: {
     email: '225040002@link.cuhk.edu.cn',
     location: 'Based in Shenzhen',
@@ -22,9 +22,9 @@ const profile: ProfileData = {
         'English-taught MSc',
         'GPA 3.3 (out of 4.0)',
       ],
-      period: 'Sep 2025 — Present',
+      period: 'Sep 2025 — Jun 2027',
       research:
-        'Under Prof. Xiaoguang Han, I work on human-centric 3D computer vision and graphics, learning disentangled and generalizable full-head 3D representations from monocular images and their integration with generative models. My focus is NeRF- and 3DGS-based high-fidelity head reconstruction and real-time driving, aiming for stable, real-time, expression-controllable 3D avatars at practical compute and data cost.',
+        'Thesis track: full-parameter fine-tuning with 3D synthetic data for reference-image editing in generative image models. Research: human-centric 3D vision and graphics, focusing on NeRF/3DGS head avatars with generalization and robustness, learning disentangled full-head 3D representations from monocular images and their integration with generative models.',
       courses: [
         'Artificial Intelligence',
         'Data Mining',
@@ -40,6 +40,9 @@ const profile: ProfileData = {
         'Data Science and Big Data Technology',
         'B.Eng.',
         'GPA 3.8 (out of 5.0)',
+        'Rank 4/30 (GPA)',
+        'Rank 1/30 (Comprehensive)',
+        'IELTS 6.5',
       ],
       period: 'Sep 2021 — Jun 2025',
       research:
@@ -65,7 +68,7 @@ const profile: ProfileData = {
       venue: 'SIGGRAPH Asia 2026',
       venueMeta: 'CCF-A Conference',
       status: 'submitted',
-      role: '2nd Author',
+      role: 'Co-1st & 2nd Author',
       tags: [
         '3D Reconstruction',
         'Neural Radiance Fields',
@@ -280,30 +283,31 @@ const profile: ProfileData = {
   ],
   experience: [
     {
-      org: 'CUHK-SZ · GAP Lab',
-      role: 'Research Assistant, 3D Reconstruction',
-      period: 'Aug 2025 — Present',
-      description:
-        '3D head reconstruction and generative vision: data, pipelines, and validation.',
-      highlights: [
-        '10M-scale FLUX + Qwen-VL dataset to reduce 3D GAN viewpoint bias.',
-        '3D recon features to video diffusion for ~15 FPS upper-body synthesis.',
-        'Single-image identity–expression–pose disentanglement for real-time 360° avatars (SOTA).',
-      ],
-      tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
-    },
-    {
-      org: 'ByteDance · Seed Vision',
-      role: '3D Generation Algorithm Intern',
+      org: 'ByteDance · Seed',
+      role: 'Algorithm Intern',
       period: 'Mar 2026 — Present',
       description:
-        'SeeDream 3D generation: training data strategy, iteration support, and toolchain.',
+        'Seedream reference-image generation fine-tuning with 3D synthetic data, large-scale data pipelines, distributed full fine-tuning, and product delivery.',
       highlights: [
-        'SeeDream data design: multimodal pairing and admission criteria.',
-        '3D rendering for image editing; training subsets and feedback-driven strategy.',
-        'Data operators and Blender pipeline; team standards and multi-project delivery.',
+        'Adopted 3D synthetic data after comparing video frames and AI-generated images, addressing poor controllability and label quality of real data.',
+        'Built asset library (10k+ poses, 1M+ scenes), multi-task rendering on 1k+ GPUs, multimodal labeling prompts, and quality pipelines for stable 10M-scale datasets.',
+        'Distributed full fine-tuning on Seedream with mixed multi-source ratios to boost task performance without hurting general capabilities.',
+        'Shipped pose-reference (+5%) and object-transformation (+7%) tasks, enabled reference-to-image features, and built an operator-dev Agent for large-scale automation.',
       ],
-      tags: ['SeeDream', '3D Generation', 'Blender', 'Data Pipeline'],
+      tags: ['Seedream', '3D Synthetic Data', 'Fine-tuning', 'Blender', 'Data Pipeline'],
+    },
+    {
+      org: 'CUHK-SZ · GAP Lab',
+      role: 'Research Assistant',
+      period: 'Aug 2025 — Present',
+      description:
+        'Human-centric 3D head reconstruction and generative vision: learning disentangled, generalizable 3D Gaussian full-head representations from monocular 2D video.',
+      highlights: [
+        'Multi-view auto-production pipeline; 10M-scale FLUX + Qwen-VL balanced dataset to reduce 3D GAN viewpoint bias.',
+        'Controllable face models with generative fill for expression and lighting gaps, supporting large-scale monocular learning and wide-angle face recognition.',
+        'Template-free feedforward recon with identity–expression–pose disentanglement and adversarial 360° consistency; video diffusion at ~15 FPS for real-time 360° avatars.',
+      ],
+      tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
     },
   ],
   projects: [
@@ -432,11 +436,25 @@ const profile: ProfileData = {
       endYear: 2022,
     },
     {
+      id: 'conf-2023-icaus',
+      role: 'ICAUS 2023',
+      org: 'International Conference',
+      startYear: 2023,
+      endYear: 2023,
+    },
+    {
       id: 'conf-2023',
       role: 'ICRAE 2023',
       org: 'IEEE Conference',
       startYear: 2023,
       endYear: 2023,
+    },
+    {
+      id: 'conf-2024-iceit',
+      role: 'ICEIT 2024',
+      org: 'International Conference',
+      startYear: 2024,
+      endYear: 2024,
     },
     {
       id: 'conf-2024',
@@ -461,23 +479,19 @@ const profile: ProfileData = {
     },
     {
       id: 'seed-2026',
-      role: 'Seed Vision',
-      org: '3D Generation Intern',
+      role: 'Seed Algorithm Intern',
+      org: 'ByteDance',
       startYear: 2026,
       endYear: 2026,
     },
   ],
   skills: [
     'Python',
-    'Java',
-    'C++',
-    'C',
     'Linux',
     'PyTorch',
-    'Microsoft 365',
     'Blender',
-    'NeRF',
-    '3DGS',
+    'UE',
+    'Vibe-coding',
   ],
 }
 
@@ -507,7 +521,7 @@ const ui: UiStrings = {
     publications: 'Publications',
     experience: 'Experience',
     experienceSubtitle:
-      '3D vision across research and industry: algorithms, data engineering, and applications',
+      'Image-model fine-tuning, 3D synthetic data, and head reconstruction across research and industry',
     projects: 'Projects',
     awards: 'Awards & Activities',
     contact: 'Contact',
