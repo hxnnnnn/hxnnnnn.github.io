@@ -83,7 +83,7 @@ const ROUTE_METAS: RouteMeta[] = [
     title:
       'Xiaoning Huang · Multimodal Data Infrastructure & 3D Data Engineering',
     description:
-      'Xiaoning Huang — Multimodal data infrastructure, 1,000-GPU async pipeline optimization, distributed batch operators, and sensor platforms.',
+      'Xiaoning Huang — Multimodal data infrastructure, distributed async pipeline optimization, batch operators, and sensor platforms.',
     url: 'https://hxnnnnn.github.io/data-dev/en',
   },
 ]
