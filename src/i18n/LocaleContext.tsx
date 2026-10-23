@@ -5,11 +5,18 @@ import {
   useMemo,
   type ReactNode,
 } from 'react'
-import type { Locale, ProfileData, SiteBundle, UiStrings } from './types'
+import type {
+  Locale,
+  ProfileData,
+  SiteBundle,
+  SiteVariant,
+  UiStrings,
+} from './types'
 import { getSiteData } from './site'
 
 interface LocaleContextValue {
   locale: Locale
+  variant: SiteVariant
   profile: ProfileData
   ui: UiStrings
 }
@@ -18,12 +25,17 @@ const LocaleContext = createContext<LocaleContextValue | null>(null)
 
 export function LocaleProvider({
   locale,
+  variant = 'default',
   children,
 }: {
   locale: Locale
+  variant?: SiteVariant
   children: ReactNode
 }) {
-  const bundle: SiteBundle = useMemo(() => getSiteData(locale), [locale])
+  const bundle: SiteBundle = useMemo(
+    () => getSiteData(locale, variant),
+    [locale, variant],
+  )
 
   useEffect(() => {
     document.documentElement.lang = bundle.ui.htmlLang
@@ -33,10 +45,11 @@ export function LocaleProvider({
   const value = useMemo(
     () => ({
       locale: bundle.locale,
+      variant,
       profile: bundle.profile,
       ui: bundle.ui,
     }),
-    [bundle],
+    [bundle, variant],
   )
 
   return (

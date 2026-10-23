@@ -1,5 +1,12 @@
 export type Locale = 'zh' | 'en'
 
+export type SiteVariant =
+  | 'default'
+  | 'ai-gen'
+  | 'aigc-data'
+  | 'embodied'
+  | 'data-dev'
+
 export type PublicationStatus = 'submitted' | 'published'
 
 export interface Publication {

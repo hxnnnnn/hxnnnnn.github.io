@@ -1,5 +1,6 @@
 export type {
   Locale,
+  SiteVariant,
   PublicationStatus,
   Publication,
   ProfileData,

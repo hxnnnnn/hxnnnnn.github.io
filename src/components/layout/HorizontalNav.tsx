@@ -6,9 +6,9 @@ import { getAlternateLocalePath } from '../../i18n/site'
 import { ThemeToggle } from '../ui/ThemeToggle'
 
 export function HorizontalNav() {
-  const { ui, locale } = useLocale()
+  const { ui, locale, variant } = useLocale()
   const location = useLocation()
-  const alternatePath = getAlternateLocalePath(locale)
+  const alternatePath = getAlternateLocalePath(locale, variant)
 
   const navItems = [
     { id: 'education', label: ui.nav.education },
