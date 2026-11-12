@@ -3,6 +3,7 @@ import type {
   Experience,
   Locale,
   PracticeTimelineItem,
+  Publication,
   SiteBundle,
   SiteVariant,
 } from '../i18n/types'
@@ -20,8 +21,76 @@ interface VariantOverride {
   cuhkResearch: string
   scnuRankMeta: string
   experience: Experience[]
+  publications?: Publication[]
   seedTimelineRole: string
   mpilTimelineItem: PracticeTimelineItem
+}
+
+function build1112Publications(
+  basePubs: Publication[],
+  locale: Locale,
+): Publication[] {
+  const cutTex: Publication =
+    locale === 'zh'
+      ? {
+          title:
+            'CutTex: Sharp Heat Kernel Textures via Learnable Cuts and Heights',
+          venue:
+            'The IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR) 2027',
+          venueMeta: 'CCF-A 会议',
+          status: 'submitted',
+          role: '第二作者',
+          tags: [
+            'Surface Texture Representation',
+            'Heat Kernel Textures',
+            'Learnable Cuts & Virtual Heights',
+            'Sharp Boundaries',
+            'UV-Free Appearance',
+          ],
+          abstract:
+            'Heat Kernel Textures (HKTex) represents mesh appearance directly on the surface using learnable anisotropic heat kernels, avoiding UV seams and parameterization distortion. However, their approximately elliptical footprints and gradually decaying responses leak color across sharp boundaries. We introduce CutTex, which learns a cut line for each kernel to cut away unwanted color influence and capture sharp transitions in text, barcodes, and high-contrast graphics. Instead of signed residuals, CutTex blends directly learned RGB colors in [0,1] and introduces learnable virtual heights so higher kernels suppress lower kernels’ color contributions, providing layer-like control without changing geometry.',
+        }
+      : {
+          title:
+            'CutTex: Sharp Heat Kernel Textures via Learnable Cuts and Heights',
+          venue:
+            'The IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR) 2027',
+          venueMeta: 'CCF-A Conference',
+          status: 'submitted',
+          role: '2nd Author',
+          tags: [
+            'Surface Texture Representation',
+            'Heat Kernel Textures',
+            'Learnable Cuts & Virtual Heights',
+            'Sharp Boundaries',
+            'UV-Free Appearance',
+          ],
+          abstract:
+            'Heat Kernel Textures (HKTex) represents mesh appearance directly on the surface using learnable anisotropic heat kernels, avoiding UV seams and parameterization distortion. However, their approximately elliptical footprints and gradually decaying responses leak color across sharp boundaries. We introduce CutTex, which learns a cut line for each kernel to cut away unwanted color influence and capture sharp transitions in text, barcodes, and high-contrast graphics. Instead of signed residuals, CutTex blends directly learned RGB colors in [0,1] and introduces learnable virtual heights so higher kernels suppress lower kernels’ color contributions, providing layer-like control without changing geometry.',
+        }
+
+  const findPub = (keyword: string) =>
+    basePubs.find((p) => p.title.includes(keyword))!
+
+  const leps = findPub('LEPS:')
+  const infiHead = {
+    ...findPub('InfiHead:'),
+    role: locale === 'zh' ? '共一作者' : 'Co-1st Author',
+  }
+  const msFdd = findPub('MS-FDD:')
+  const das = {
+    ...findPub('DAS:'),
+    role: locale === 'zh' ? '第二作者' : '2nd Author',
+  }
+  const rest = basePubs.filter(
+    (p) =>
+      !p.title.includes('LEPS:') &&
+      !p.title.includes('InfiHead:') &&
+      !p.title.includes('MS-FDD:') &&
+      !p.title.includes('DAS:'),
+  )
+
+  return [leps, cutTex, infiHead, msFdd, das, ...rest]
 }
 
 function buildVariantBundle(
@@ -67,6 +136,7 @@ function buildVariantBundle(
         site: `https://hxnnnnn.github.io/${variant}`,
       },
       education,
+      publications: override.publications ?? base.profile.publications,
       experience: override.experience,
       practiceTimeline,
     },
@@ -396,6 +466,81 @@ const zhOverrides: Record<CustomVariant, VariantOverride> = {
       },
     ],
   },
+
+  '1112': {
+    documentTitle: '黄晓宁 · 3D 计算机视觉与图形学',
+    identities: [
+      'CUHK-DS MSc Student',
+      'ByteDance Seed Data Algorithm Intern',
+    ] as const,
+    publicationsSummary:
+      '专注于 3D 与 2D 计算机视觉及图形学，涵盖表面纹理与几何表征、三维数字人重建、目标检测与分割任务。',
+    experienceSubtitle:
+      '三维物理渲染数据合成、几何材质光照解耦、分布式渲染算子与 3D 视觉研究',
+    contactSubtitle: '欢迎就 3D 视觉、图形学或合作研究进行交流。',
+    cuhkResearch:
+      '业务方向：探索以数据为中心的多模态生成，用三维合成数据补齐空间、材质与光影等难获取样本，并服务生图模型训练。研究方向：从事 3D 视觉与生成式数据研究，围绕几何、材质与光照解耦表征以及可规模化的物理渲染数据管线开展探索。',
+    scnuRankMeta: '绩点排名 1/30',
+    publications: build1112Publications(profileZh.profile.publications, 'zh'),
+    seedTimelineRole: 'Seed 数据算法实习',
+    mpilTimelineItem: {
+      id: 'mpil-2026',
+      role: 'MPIL 访学科研助理',
+      org: '英国兰卡斯特大学',
+      startYear: 2026,
+      endYear: 2026,
+    },
+    experience: [
+      {
+        org: '字节跳动 · Seed',
+        role: '数据算法实习生',
+        period: '2026.03 — 至今',
+        description:
+          '针对 Seedream 等生成模型缺少空间与光影真值、真实样本多变量耦合局限，采用三维物理渲染构建配对样本。',
+        highlights: [
+          '研究内容：参与基于百万级三维资产与姿态库，围绕动作参考、多自由度位姿尺度、镜头畸变、正交三视图、部件拆解、白模贴图及 PBR 材质迁移等十余个数据桶构建样本，实现几何、材质、相机与光照单变量解耦，同步导出前景掩码与深度真值。',
+          '技术路线：参与开发基于 Ray 的千卡配置分布式渲染算子，打通资产准入、异步批渲染、样本配对、姿态去重与逐视角过滤管线；引入射线碰撞与接触落地门禁抑制穿模悬浮，同步尺度与相机参数保证跨视角几何纹理对齐，高保留率产出千万级数据。',
+          '评测闭环：参与构建多模态模型多轮投票定标与结构化指令改写链路以对齐图文及三维语义；建立小模型消融、GSB 主观盲测与护栏指标评测闭环，迭代二维图对与三联图混训策略，推进核心数据在继续预训练、监督微调与强化学习后训练复用。',
+          '成果产出：参与交付白模贴图解耦、人体姿态、视角参考、物体变换等任务，规模四千万+，用物理光追保持全局光影自洽，助力 Seedream 等生成模型编辑一致性及动作、形状、材质、视角专项提升超过 30%，支撑可控编辑落地并沉淀算子智能体。',
+        ],
+        tags: [
+          'Seedream',
+          '3D Physical Rendering',
+          'PBR & Intrinsic Decomposition',
+          'Ray Distributed Pipeline',
+          'CPT / SFT / RL',
+        ],
+      },
+      {
+        org: '香港中文大学（深圳） · GAP 实验室',
+        role: '科研助理',
+        period: '2025.08 — 至今',
+        description:
+          '从事以人为本的 3D 头部重建与生成式视觉研究，围绕从单目 2D 视频学习可分解、可泛化的 3D 高斯全头部表征。',
+        highlights: [
+          '研究内容：围绕单目视频学习可分解的 3D 高斯全头部表征，参与搭建多视图自动化生产管线，基于 FLUX 与 Qwen-VL 构建千万级样本平衡数据集以缓解大视角分布偏差，并用生成模型补齐表情与光照缺口，支撑大规模单目学习与大视角人脸识别。',
+          '工作产出：参与设计无模板前馈重建网络，将单图解耦为身份、表情与姿态三类可控因子，引入对抗训练保证 360° 全景纹理与几何一致性；并将三维重建特征对接自回归视频扩散管线，实现约 15 FPS 高保真上半身视频合成与实时交互数字人驱动。',
+        ],
+        tags: ['3DGS', 'FLUX', 'Qwen-VL', 'Video Diffusion', 'NeRF'],
+      },
+      {
+        org: '英国兰卡斯特大学 · MPIL 实验室',
+        role: '访学科研助理',
+        period: '2026.09 — 2026.10',
+        description:
+          '聚焦具身智能与多模态行为理解，围绕机械臂交互操作场景开展视觉等多模态信号的时空同步与数据质量治理。',
+        highlights: [
+          '工作内容：参与机械臂视觉等多模态数据采集平台建设，完成相机与机械臂手眼标定、采样参数配置与实时质检，支撑落盘。',
+        ],
+        tags: [
+          'Embodied AI',
+          'Multimodal Perception',
+          'Hand-Eye Calibration',
+          'Quality Governance',
+        ],
+      },
+    ],
+  },
 }
 
 const enOverrides: Record<CustomVariant, VariantOverride> = {
@@ -713,6 +858,82 @@ const enOverrides: Record<CustomVariant, VariantOverride> = {
       },
     ],
   },
+
+  '1112': {
+    documentTitle: 'Xiaoning Huang · 3D Vision & Graphics',
+    identities: [
+      'CUHK-DS MSc Student',
+      'ByteDance Seed Data Algorithm Intern',
+    ],
+    publicationsSummary:
+      'Focused on 3D/2D computer vision and graphics, covering surface texture & geometry representation, 3D digital human reconstruction, object detection, and segmentation.',
+    experienceSubtitle:
+      '3D physical rendering synthesis, geometry-material-lighting disentanglement, distributed rendering operators, and 3D vision',
+    contactSubtitle:
+      'Open to collaboration on 3D vision, graphics, and related research.',
+    cuhkResearch:
+      'Business Track: Data-centric multimodal generation, using 3D synthetic data to complement hard-to-acquire spatial, material, and lighting samples for generative image model training. Research Track: 3D vision and generative data research, focusing on disentangled geometry, material, and lighting representations and scalable physical rendering data pipelines.',
+    scnuRankMeta: 'Rank 1/30 (GPA)',
+    publications: build1112Publications(profileEn.profile.publications, 'en'),
+    seedTimelineRole: 'Seed Data Algo Intern',
+    mpilTimelineItem: {
+      id: 'mpil-2026',
+      role: 'MPIL Visiting RA',
+      org: 'Lancaster Univ.',
+      startYear: 2026,
+      endYear: 2026,
+    },
+    experience: [
+      {
+        org: 'ByteDance · Seed',
+        role: 'Data Algorithm Intern',
+        period: 'Mar 2026 — Present',
+        description:
+          'Addressed the lack of spatial and lighting ground truth in generative models such as Seedream and the multi-variable coupling limitations of real samples by constructing paired training data via 3D physical rendering.',
+        highlights: [
+          'Research Scope: Participated in building samples across 10+ data buckets (motion reference, multi-DoF pose & scale, lens distortion, orthographic 3-views, part disassembly, clay-to-texture, and PBR material transfer) from a million-scale 3D asset and pose library, achieving single-variable disentanglement of geometry, material, camera, and lighting with foreground masks and depth ground truth.',
+          'Technical Pipeline: Participated in developing Ray-based 1,000-GPU distributed rendering operators connecting asset admission, async batch rendering, sample pairing, pose deduplication, and per-view filtering; introduced raycast collision and ground-contact gates to suppress interpenetration and floating, synchronizing scale and camera parameters to yield 10M-scale aligned data.',
+          'Evaluation Loop: Participated in building multi-round VLM voting calibration and structured instruction rewriting for image-text-3D semantic alignment; established small-model ablations, GSB blind evaluations, and guardrail metrics, iterating 2D pair and triplet mixing strategies to reuse core data across CPT, SFT, and RL post-training.',
+          'Deliverables & Impact: Participated in delivering clay-texture decomposition, human pose, viewpoint reference, and object transformation tasks (40M+ scale) with physical path tracing for global shading consistency, boosting editing consistency and specialized metrics (motion, shape, material, viewpoint) of Seedream and related generative models by >30%, while building an operator-dev Agent.',
+        ],
+        tags: [
+          'Seedream',
+          '3D Physical Rendering',
+          'PBR & Intrinsic Decomposition',
+          'Ray Distributed Pipeline',
+          'CPT / SFT / RL',
+        ],
+      },
+      {
+        org: 'CUHK-SZ · GAP Lab',
+        role: 'Research Assistant',
+        period: 'Aug 2025 — Present',
+        description:
+          'Human-centric 3D head reconstruction and generative vision: learning disentangled, generalizable 3D Gaussian full-head representations from monocular 2D video.',
+        highlights: [
+          'Research Content: Focusing on learning decomposable 3D Gaussian full-head representations from monocular video, participated in building an automated multi-view production pipeline using FLUX and Qwen-VL to curate a 10M-scale balanced dataset mitigating wide-angle distribution bias, and filling expression and lighting gaps with generative models.',
+          'Research Output: Participated in designing a template-free feedforward reconstruction network disentangling identity, expression, and pose with adversarial training for 360° panoramic texture and geometric consistency; bridged 3D reconstruction features with an autoregressive video diffusion pipeline for ~15 FPS upper-body video synthesis and real-time interactive avatar driving.',
+        ],
+        tags: ['3DGS', 'FLUX', 'Qwen-VL', 'Video Diffusion', 'NeRF'],
+      },
+      {
+        org: 'Lancaster University · MPIL Lab',
+        role: 'Visiting Research Assistant',
+        period: 'Sep 2026 — Oct 2026',
+        description:
+          'Focused on embodied intelligence and multimodal behavior understanding, conducting spatiotemporal synchronization and data quality governance for visual and multimodal signals in robotic manipulation.',
+        highlights: [
+          'Work Content: Participated in building a robotic visual and multimodal data acquisition platform, completing camera-robot hand-eye calibration, sampling configuration, and real-time quality inspection for dataset storage.',
+        ],
+        tags: [
+          'Embodied AI',
+          'Multimodal Perception',
+          'Hand-Eye Calibration',
+          'Quality Governance',
+        ],
+      },
+    ],
+  },
 }
 
 const variantBundles: Record<CustomVariant, Record<Locale, SiteBundle>> = {
@@ -731,6 +952,10 @@ const variantBundles: Record<CustomVariant, Record<Locale, SiteBundle>> = {
   'data-dev': {
     zh: buildVariantBundle(profileZh, 'data-dev', zhOverrides['data-dev']),
     en: buildVariantBundle(profileEn, 'data-dev', enOverrides['data-dev']),
+  },
+  '1112': {
+    zh: buildVariantBundle(profileZh, '1112', zhOverrides['1112']),
+    en: buildVariantBundle(profileEn, '1112', enOverrides['1112']),
   },
 }
 

@@ -12,6 +12,7 @@ const VARIANTS: Exclude<SiteVariant, 'default'>[] = [
   'aigc-data',
   'embodied',
   'data-dev',
+  '1112',
 ]
 
 createRoot(document.getElementById('root')!).render(

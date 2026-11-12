@@ -86,6 +86,22 @@ const ROUTE_METAS: RouteMeta[] = [
       'Xiaoning Huang — Multimodal data infrastructure, distributed async pipeline optimization, batch operators, and sensor platforms.',
     url: 'https://hxnnnnn.github.io/data-dev/en',
   },
+  {
+    routePath: '1112',
+    lang: 'zh-CN',
+    title: '黄晓宁 · 3D 计算机视觉与图形学',
+    description:
+      '黄晓宁 — 3D 计算机视觉与生成式数据研究，聚焦三维物理渲染合成、几何材质光照解耦与三维重建。',
+    url: 'https://hxnnnnn.github.io/1112',
+  },
+  {
+    routePath: '1112/en',
+    lang: 'en',
+    title: 'Xiaoning Huang · 3D Vision & Graphics',
+    description:
+      'Xiaoning Huang — 3D computer vision and generative data research, focusing on 3D physical synthesis, geometry-material-lighting disentanglement, and 3D reconstruction.',
+    url: 'https://hxnnnnn.github.io/1112/en',
+  },
 ]
 
 function multiVariantPagesPlugin(): Plugin {
