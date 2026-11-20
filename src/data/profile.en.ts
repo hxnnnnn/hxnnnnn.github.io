@@ -69,15 +69,9 @@ const profile: ProfileData = {
       venueMeta: 'CCF-A Conference',
       status: 'submitted',
       role: 'Co-1st & 2nd Author',
-      tags: [
-        '3D Reconstruction',
-        'Neural Radiance Fields',
-        'Full-Head Avatar',
-        'Monocular Learning',
-        'Disentangled Representation',
-      ],
+      tags: ['3D Reconstruction', 'Full-Head Avatar', 'Monocular Learning'],
       abstract:
-        'While 3D Gaussian Splatting enables real-time rendering, generative head models still rely on rigid geometric priors and lack diverse multi-view training data. We propose InfiHead, a scalable framework for disentangled 3D Gaussian full heads from monocular 2D video, with an automated multi-view dataset pipeline, template-free feedforward reconstruction, and adversarial training for consistent 360° textures. Experiments show improved visual quality and structural accuracy over state-of-the-art methods.',
+        'We study learning a generalizable and disentangled 3D full-head avatar representation from scalable monocular 2D data to support consistent multi-view synthesis and animation. (Under review.)',
     },
     {
       title:
@@ -287,26 +281,25 @@ const profile: ProfileData = {
       role: 'Algorithm Intern',
       period: 'Mar 2026 — Present',
       description:
-        'Reference-image generation fine-tuning with 3D synthetic data as the fine-tuning source, large-scale data asset and 10M-scale training pipelines, distributed full fine-tuning, and product delivery.',
+        'Participated in 3D synthetic data construction, rendering pipeline development, and controllable generation fine-tuning for generative models.',
       highlights: [
-        'Built asset library (10k+ poses, 1M+ scenes), multi-task rendering on 1k+ GPUs, multimodal labeling prompts, and quality pipelines for stable 10M-scale datasets.',
-        'Distributed full fine-tuning on Seedream with mixed multi-source ratios to boost task performance for real-world applications.',
-        'Shipped pose-reference (+5%) and object-transformation (+7%) tasks, enabled reference-to-image features, and built an operator-dev Agent for large-scale automation.',
+        'Participated in building 3D scene and human-pose synthetic data pipelines with automated rendering and multimodal labeling.',
+        'Participated in multi-source data mixing experiments and model fine-tuning to improve spatial consistency in reference-guided and controllable editing.',
+        'Supported task evaluations, feature delivery, and internal synthetic data pipeline tooling.',
       ],
-      tags: ['Seedream', '3D Synthetic Data', 'Fine-tuning', 'Blender', 'Data Pipeline'],
+      tags: ['3D Synthetic Data', 'Fine-tuning', 'Blender', 'Data Pipeline'],
     },
     {
       org: 'CUHK-SZ · GAP Lab',
       role: 'Research Assistant',
       period: 'Aug 2025 — Present',
       description:
-        'Human-centric 3D head reconstruction and generative vision: learning disentangled, generalizable 3D Gaussian full-head representations from monocular 2D video.',
+        'Human-centric 3D vision and digital avatar research, focusing on monocular 3D head representation and controllable generation.',
       highlights: [
-        'Multi-view auto-production pipeline; 10M-scale FLUX + Qwen-VL balanced dataset to reduce 3D GAN viewpoint bias.',
-        'Controllable face models with generative fill for expression and lighting gaps, supporting large-scale monocular learning and wide-angle face recognition.',
-        'Template-free feedforward recon with identity–expression–pose disentanglement and adversarial 360° consistency; video diffusion at ~15 FPS for real-time 360° avatars.',
+        'Participated in building automated multi-view head and face data pipelines to mitigate wide-angle and lighting distribution bias.',
+        'Participated in developing disentangled 3D head reconstruction and avatar driving methods for multi-view geometric and appearance consistency.',
       ],
-      tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
+      tags: ['3DGS', '3D Head Avatar', 'Monocular Reconstruction'],
     },
   ],
   projects: [

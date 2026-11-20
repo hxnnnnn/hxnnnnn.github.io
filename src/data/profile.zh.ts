@@ -69,15 +69,9 @@ const profile: ProfileData = {
       venueMeta: 'CCF-A 会议',
       status: 'submitted',
       role: '共一二作',
-      tags: [
-        '3D Reconstruction',
-        'Neural Radiance Fields',
-        'Full-Head Avatar',
-        'Monocular Learning',
-        'Disentangled Representation',
-      ],
+      tags: ['3D Reconstruction', 'Full-Head Avatar', 'Monocular Learning'],
       abstract:
-        'While 3D Gaussian Splatting enables real-time rendering, generative head models still rely on rigid geometric priors and lack diverse multi-view training data. We propose InfiHead, a scalable framework for disentangled 3D Gaussian full heads from monocular 2D video, with an automated multi-view dataset pipeline, template-free feedforward reconstruction, and adversarial training for consistent 360° textures. Experiments show improved visual quality and structural accuracy over state-of-the-art methods.',
+        'We study learning a generalizable and disentangled 3D full-head avatar representation from scalable monocular 2D data to support consistent multi-view synthesis and animation. (Under review.)',
     },
     {
       title:
@@ -284,26 +278,25 @@ const profile: ProfileData = {
       role: '算法实习生',
       period: '2026.03 — 至今',
       description:
-        '参与图片参考生成能力微调，利用 3D 合成数据作为微调数据源，搭建数据资产与千万级训练 Pipeline，并完成分布式全参数微调与业务落地。',
+        '参与生成模型的三维合成数据构建、渲染管线开发与模型可控生成微调。',
       highlights: [
-        '从零整理上万种人体姿态与百万场景资产库，设计参考生成与可控编辑任务，千卡级自动化渲染与多模态打标 Pipeline，稳定产出千万级高质量数据集',
-        '基于 Seedream 分布式全参数微调，多源数据配比混合训练，提升专项任务能力，面向实际应用优化。',
-        '交付动作参考与物体变换任务，准确率分别提升 5% 与 7%，支撑参考图生图新功能落地，并沉淀 3D 合成数据驱动方法论与算子开发 Agent',
+        '参与构建三维场景与人体姿态合成数据管线，结合自动化渲染与多模态打标产出配对训练样本。',
+        '参与多源训练数据配比实验与模型微调，提升参考生图与可控编辑场景下的空间一致性。',
+        '配合完成专项任务评测与交付，并参与沉淀合成数据管线工具。',
       ],
-      tags: ['Seedream', '3D Synthetic Data', 'Fine-tuning', 'Blender', 'Data Pipeline'],
+      tags: ['3D Synthetic Data', 'Fine-tuning', 'Blender', 'Data Pipeline'],
     },
     {
       org: '港中深 · GAP 实验室',
       role: '科研助理',
       period: '2025.08 — 至今',
       description:
-        '从事以人为本的 3D 头部重建与生成式视觉研究，围绕从单目 2D 视频学习可分解、可泛化的 3D 高斯全头部表征。',
+        '从事以人为本的三维视觉与数字人研究，围绕单目三维头部表征与可控生成开展探索。',
       highlights: [
-        '搭建多视图自动化生产 Pipeline，基于 FLUX 与 Qwen-VL 构建千万级平衡数据集，缓解 3D-aware GAN 的视角分布偏差',
-        '负责可控人脸模型，用生成模型补齐表情与光照缺口，服务大规模单目学习与大视角人脸识别等数据需求',
-        '设计无模板前馈重建网络，解耦身份–表情–姿态并引入对抗训练保证 360° 纹理一致性；对接视频扩散实现约 15 FPS 上半身合成与实时 360° 数字人',
+        '参与多视角头部与人脸数据自动化处理管线搭建，改善单目数据在大视角与光照分布上的偏差。',
+        '参与可解耦三维头部重建与数字人驱动算法研发，提升多视角几何与纹理一致性。',
       ],
-      tags: ['3DGS', 'FLUX', 'Video Diffusion', 'NeRF'],
+      tags: ['3DGS', '3D Head Avatar', 'Monocular Reconstruction'],
     },
   ],
   projects: [
