@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      ;(function () {
+        var p = window.location.pathname.toLowerCase()
+        var isAiData =
+          p === '/ai-data' ||
+          p.indexOf('/ai-data/') === 0 ||
+          p === '/1112' ||
+          p.indexOf('/1112/') === 0
+        var key = isAiData ? 'site-theme-ai-data' : 'site-theme'
+        var fallback = isAiData ? 'light' : 'dark'
+        var t = localStorage.getItem(key)
+        document.documentElement.setAttribute(
+          'data-theme',
+          t === 'light' || t === 'dark' ? t : fallback,
+        )
+      })()
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Xiaoning Huang — 3D computer vision and generative data research, focusing on 3D physical synthesis, geometry-material-lighting disentanglement, and 3D reconstruction." />
+    <meta property="og:title" content="Xiaoning Huang · 3D Vision & Graphics" />
+    <meta property="og:description" content="Xiaoning Huang — 3D computer vision and generative data research, focusing on 3D physical synthesis, geometry-material-lighting disentanglement, and 3D reconstruction." />
+    <meta property="og:url" content="https://hxnnnnn.github.io/AI-data/en" />
+    <meta property="og:image" content="/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Xiaoning Huang · 3D Vision & Graphics</title>
+    <script type="module" crossorigin src="/assets/index-B11YFPBF.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CPQYI-vQ.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
