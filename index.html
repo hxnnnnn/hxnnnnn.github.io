@@ -3,10 +3,18 @@
   <head>
     <script>
       ;(function () {
-        var t = localStorage.getItem('site-theme')
+        var p = window.location.pathname.toLowerCase()
+        var isAiData =
+          p === '/ai-data' ||
+          p.indexOf('/ai-data/') === 0 ||
+          p === '/1112' ||
+          p.indexOf('/1112/') === 0
+        var key = isAiData ? 'site-theme-ai-data' : 'site-theme'
+        var fallback = isAiData ? 'light' : 'dark'
+        var t = localStorage.getItem(key)
         document.documentElement.setAttribute(
           'data-theme',
-          t === 'light' || t === 'dark' ? t : 'dark',
+          t === 'light' || t === 'dark' ? t : fallback,
         )
       })()
     </script>

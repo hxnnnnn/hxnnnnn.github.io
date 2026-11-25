@@ -10,18 +10,31 @@ import {
 
 export type Theme = 'dark' | 'light'
 
-const STORAGE_KEY = 'site-theme'
+function isAiDataPath(): boolean {
+  if (typeof window === 'undefined') return false
+  const p = window.location.pathname.toLowerCase()
+  return (
+    p === '/ai-data' ||
+    p.startsWith('/ai-data/') ||
+    p === '/1112' ||
+    p.startsWith('/1112/')
+  )
+}
+
+function getStorageKey(): string {
+  return isAiDataPath() ? 'site-theme-ai-data' : 'site-theme'
+}
 
 function readStoredTheme(): Theme {
   if (typeof window === 'undefined') return 'dark'
-  const stored = localStorage.getItem(STORAGE_KEY)
+  const fallback: Theme = isAiDataPath() ? 'light' : 'dark'
+  const stored = localStorage.getItem(getStorageKey())
   if (stored === 'light' || stored === 'dark') return stored
-  return 'dark'
+  return fallback
 }
 
 function applyTheme(theme: Theme) {
   document.documentElement.setAttribute('data-theme', theme)
-  localStorage.setItem(STORAGE_KEY, theme)
 }
 
 interface ThemeContextValue {
@@ -40,11 +53,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [theme])
 
   const setTheme = useCallback((next: Theme) => {
+    localStorage.setItem(getStorageKey(), next)
     setThemeState(next)
   }, [])
 
   const toggleTheme = useCallback(() => {
-    setThemeState((prev) => (prev === 'dark' ? 'light' : 'dark'))
+    setThemeState((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark'
+      localStorage.setItem(getStorageKey(), next)
+      return next
+    })
   }, [])
 
   const value = useMemo(
