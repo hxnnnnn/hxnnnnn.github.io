@@ -87,6 +87,38 @@ const ROUTE_METAS: RouteMeta[] = [
     url: 'https://hxnnnnn.github.io/data-dev/en',
   },
   {
+    routePath: 'AI-data',
+    lang: 'zh-CN',
+    title: '黄晓宁 · 3D 计算机视觉与图形学',
+    description:
+      '黄晓宁 — 3D 计算机视觉与生成式数据研究，聚焦三维物理渲染合成、几何材质光照解耦与三维重建。',
+    url: 'https://hxnnnnn.github.io/AI-data',
+  },
+  {
+    routePath: 'AI-data/en',
+    lang: 'en',
+    title: 'Xiaoning Huang · 3D Vision & Graphics',
+    description:
+      'Xiaoning Huang — 3D computer vision and generative data research, focusing on 3D physical synthesis, geometry-material-lighting disentanglement, and 3D reconstruction.',
+    url: 'https://hxnnnnn.github.io/AI-data/en',
+  },
+  {
+    routePath: 'ai-data',
+    lang: 'zh-CN',
+    title: '黄晓宁 · 3D 计算机视觉与图形学',
+    description:
+      '黄晓宁 — 3D 计算机视觉与生成式数据研究，聚焦三维物理渲染合成、几何材质光照解耦与三维重建。',
+    url: 'https://hxnnnnn.github.io/AI-data',
+  },
+  {
+    routePath: 'ai-data/en',
+    lang: 'en',
+    title: 'Xiaoning Huang · 3D Vision & Graphics',
+    description:
+      'Xiaoning Huang — 3D computer vision and generative data research, focusing on 3D physical synthesis, geometry-material-lighting disentanglement, and 3D reconstruction.',
+    url: 'https://hxnnnnn.github.io/AI-data/en',
+  },
+  {
     routePath: '1112',
     lang: 'zh-CN',
     title: '黄晓宁 · 3D 计算机视觉与图形学',

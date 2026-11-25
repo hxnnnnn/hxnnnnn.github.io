@@ -12,6 +12,7 @@ const VARIANTS: Exclude<SiteVariant, 'default'>[] = [
   'aigc-data',
   'embodied',
   'data-dev',
+  'AI-data',
   '1112',
 ]
 
@@ -64,6 +65,23 @@ createRoot(document.getElementById('root')!).render(
               element={<Navigate to={`/${variant}`} replace />}
             />,
           ])}
+
+          <Route
+            path="/ai-data"
+            element={
+              <LocaleProvider locale="zh" variant="AI-data">
+                <App />
+              </LocaleProvider>
+            }
+          />
+          <Route
+            path="/ai-data/en"
+            element={
+              <LocaleProvider locale="en" variant="AI-data">
+                <App />
+              </LocaleProvider>
+            }
+          />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

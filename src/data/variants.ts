@@ -367,14 +367,10 @@ const zhOverrides: Record<CustomVariant, VariantOverride> = {
     ],
   },
 
-  '1112': {
+  'AI-data': {
     documentTitle: '黄晓宁 · 3D 计算机视觉与图形学',
-    identities: [
-      'CUHK-DS MSc Student',
-      'ByteDance Seed Data Algorithm Intern',
-    ] as const,
-    publicationsSummary:
-      '专注于 3D 与 2D 计算机视觉及图形学，涵盖表面纹理与几何表征、三维数字人重建、目标检测与分割任务。',
+    identities: ['CUHK-DS MSc Student', 'ByteDance Seed Intern'] as const,
+    publicationsSummary: '',
     experienceSubtitle:
       '三维物理渲染数据合成、几何材质光影解耦、数据管线建设与 3D 视觉研究',
     contactSubtitle: '欢迎就 3D 视觉、图形学或合作研究进行交流。',
@@ -382,7 +378,7 @@ const zhOverrides: Record<CustomVariant, VariantOverride> = {
       '业务方向：探索以数据为中心的多模态生成，用三维合成数据补齐空间、材质与光影等难获取样本，并服务生成模型训练。研究方向：从事 3D 视觉与生成式数据研究，围绕几何、材质与光照解耦表征及物理渲染数据管线开展探索。',
     scnuRankMeta: '绩点排名 1/30',
     publications: build1112Publications(profileZh.profile.publications, 'zh'),
-    seedTimelineRole: 'Seed 数据算法实习',
+    seedTimelineRole: 'Seed AI 数据算法实习',
     mpilTimelineItem: {
       id: 'mpil-2026',
       role: 'MPIL 访学科研助理',
@@ -393,7 +389,49 @@ const zhOverrides: Record<CustomVariant, VariantOverride> = {
     experience: [
       {
         org: '字节跳动 · Seed',
-        role: '数据算法实习生',
+        role: 'AI 数据算法实习生',
+        period: '2026.03 — 至今',
+        description:
+          '参与生成模型相关的三维合成数据构建、分布式渲染管线开发与训练数据优化。',
+        highlights: [
+          '数据合成：参与构建三维物理渲染数据合成流程，生成涵盖几何、材质、视角与光影解耦控制的配对样本。',
+          '技术管线：参与分布式批渲染算子、几何质量校验及多模态自动标注链路建设，提升合成数据质量与产出效率。',
+          '评测与应用：参与训练数据配比消融与评测闭环验证，支撑生成模型在参考生图与可控编辑方向的能力迭代。',
+        ],
+        tags: [
+          '3D Synthetic Data',
+          'Physical Rendering',
+          'Data Pipeline',
+          'Generative Models',
+        ],
+      },
+      zhGapExperience,
+      zhMpilExperience,
+    ],
+  },
+  '1112': {
+    documentTitle: '黄晓宁 · 3D 计算机视觉与图形学',
+    identities: ['CUHK-DS MSc Student', 'ByteDance Seed Intern'] as const,
+    publicationsSummary: '',
+    experienceSubtitle:
+      '三维物理渲染数据合成、几何材质光影解耦、数据管线建设与 3D 视觉研究',
+    contactSubtitle: '欢迎就 3D 视觉、图形学或合作研究进行交流。',
+    cuhkResearch:
+      '业务方向：探索以数据为中心的多模态生成，用三维合成数据补齐空间、材质与光影等难获取样本，并服务生成模型训练。研究方向：从事 3D 视觉与生成式数据研究，围绕几何、材质与光照解耦表征及物理渲染数据管线开展探索。',
+    scnuRankMeta: '绩点排名 1/30',
+    publications: build1112Publications(profileZh.profile.publications, 'zh'),
+    seedTimelineRole: 'Seed AI 数据算法实习',
+    mpilTimelineItem: {
+      id: 'mpil-2026',
+      role: 'MPIL 访学科研助理',
+      org: '英国兰卡斯特大学',
+      startYear: 2026,
+      endYear: 2026,
+    },
+    experience: [
+      {
+        org: '字节跳动 · Seed',
+        role: 'AI 数据算法实习生',
         period: '2026.03 — 至今',
         description:
           '参与生成模型相关的三维合成数据构建、分布式渲染管线开发与训练数据优化。',
@@ -585,14 +623,10 @@ const enOverrides: Record<CustomVariant, VariantOverride> = {
     ],
   },
 
-  '1112': {
+  'AI-data': {
     documentTitle: 'Xiaoning Huang · 3D Vision & Graphics',
-    identities: [
-      'CUHK-DS MSc Student',
-      'ByteDance Seed Data Algorithm Intern',
-    ],
-    publicationsSummary:
-      'Focused on 3D/2D computer vision and graphics, covering surface texture & geometry representation, 3D digital human reconstruction, object detection, and segmentation.',
+    identities: ['CUHK-DS MSc Student', 'ByteDance Seed Intern'],
+    publicationsSummary: '',
     experienceSubtitle:
       '3D physical rendering synthesis, geometry-material-lighting disentanglement, data pipelines, and 3D vision',
     contactSubtitle:
@@ -601,7 +635,7 @@ const enOverrides: Record<CustomVariant, VariantOverride> = {
       'Business Track: Data-centric multimodal generation, using 3D synthetic data to complement hard-to-acquire spatial, material, and lighting samples for generative model training. Research Track: 3D vision and generative data research, focusing on disentangled geometry, material, and lighting representations and physical rendering data pipelines.',
     scnuRankMeta: 'Rank 1/30 (GPA)',
     publications: build1112Publications(profileEn.profile.publications, 'en'),
-    seedTimelineRole: 'Seed Data Algo Intern',
+    seedTimelineRole: 'Seed AI Data Algo Intern',
     mpilTimelineItem: {
       id: 'mpil-2026',
       role: 'MPIL Visiting RA',
@@ -612,7 +646,50 @@ const enOverrides: Record<CustomVariant, VariantOverride> = {
     experience: [
       {
         org: 'ByteDance · Seed',
-        role: 'Data Algorithm Intern',
+        role: 'AI Data Algorithm Intern',
+        period: 'Mar 2026 — Present',
+        description:
+          'Participated in 3D synthetic data construction, distributed rendering pipeline development, and training data optimization for generative models.',
+        highlights: [
+          'Data Synthesis: Participated in building 3D physical rendering workflows to produce paired samples with disentangled geometry, material, viewpoint, and lighting control.',
+          'Technical Pipeline: Participated in distributed batch rendering operators, geometric quality filtering, and multimodal auto-labeling pipelines to improve data quality and throughput.',
+          'Evaluation & Application: Participated in data mixing ablations and benchmark evaluations to support reference-guided and controllable editing in generative models.',
+        ],
+        tags: [
+          '3D Synthetic Data',
+          'Physical Rendering',
+          'Data Pipeline',
+          'Generative Models',
+        ],
+      },
+      enGapExperience,
+      enMpilExperience,
+    ],
+  },
+  '1112': {
+    documentTitle: 'Xiaoning Huang · 3D Vision & Graphics',
+    identities: ['CUHK-DS MSc Student', 'ByteDance Seed Intern'],
+    publicationsSummary: '',
+    experienceSubtitle:
+      '3D physical rendering synthesis, geometry-material-lighting disentanglement, data pipelines, and 3D vision',
+    contactSubtitle:
+      'Open to collaboration on 3D vision, graphics, and related research.',
+    cuhkResearch:
+      'Business Track: Data-centric multimodal generation, using 3D synthetic data to complement hard-to-acquire spatial, material, and lighting samples for generative model training. Research Track: 3D vision and generative data research, focusing on disentangled geometry, material, and lighting representations and physical rendering data pipelines.',
+    scnuRankMeta: 'Rank 1/30 (GPA)',
+    publications: build1112Publications(profileEn.profile.publications, 'en'),
+    seedTimelineRole: 'Seed AI Data Algo Intern',
+    mpilTimelineItem: {
+      id: 'mpil-2026',
+      role: 'MPIL Visiting RA',
+      org: 'Lancaster Univ.',
+      startYear: 2026,
+      endYear: 2026,
+    },
+    experience: [
+      {
+        org: 'ByteDance · Seed',
+        role: 'AI Data Algorithm Intern',
         period: 'Mar 2026 — Present',
         description:
           'Participated in 3D synthetic data construction, distributed rendering pipeline development, and training data optimization for generative models.',
@@ -651,9 +728,13 @@ const variantBundles: Record<CustomVariant, Record<Locale, SiteBundle>> = {
     zh: buildVariantBundle(profileZh, 'data-dev', zhOverrides['data-dev']),
     en: buildVariantBundle(profileEn, 'data-dev', enOverrides['data-dev']),
   },
+  'AI-data': {
+    zh: buildVariantBundle(profileZh, 'AI-data', zhOverrides['AI-data']),
+    en: buildVariantBundle(profileEn, 'AI-data', enOverrides['AI-data']),
+  },
   '1112': {
-    zh: buildVariantBundle(profileZh, '1112', zhOverrides['1112']),
-    en: buildVariantBundle(profileEn, '1112', enOverrides['1112']),
+    zh: buildVariantBundle(profileZh, 'AI-data', zhOverrides['1112']),
+    en: buildVariantBundle(profileEn, 'AI-data', enOverrides['1112']),
   },
 }
 

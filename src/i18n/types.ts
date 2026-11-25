@@ -6,6 +6,7 @@ export type SiteVariant =
   | 'aigc-data'
   | 'embodied'
   | 'data-dev'
+  | 'AI-data'
   | '1112'
 
 export type PublicationStatus = 'submitted' | 'published'
